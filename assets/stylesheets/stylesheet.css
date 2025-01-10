@@ -9,7 +9,7 @@
 #myDIV {
   width: 100%;
   height: 100%;
-  border-top: 5px solid #912b57;
+  border-top: 5px solid #1482ad;
 }
 
 html {
@@ -35,7 +35,7 @@ a {
 
 .clickables:hover {
   cursor: url('../others/cursor.png'), default;
-  color: #AD1456;
+  color: #1482ad;
   text-decoration: none;
 }
 
