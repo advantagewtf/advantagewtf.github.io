@@ -104,16 +104,14 @@ input {
   text-align: center;
   top: 50%;
   left: 35%;
-  -webkit-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
+ 
 }
 .container2 {
   position: fixed;
   text-align: center;
   top: 50%;
   left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
+ 
 }
 
 .container3 {
@@ -121,8 +119,7 @@ input {
   text-align: center;
   top: 50%;
   left: 65%;
-  -webkit-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
+
 }
 
 .skip-container {
