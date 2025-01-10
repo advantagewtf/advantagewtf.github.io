@@ -2,39 +2,61 @@
 // Credits to expl0it, shellcode.team
 // GitHub: https://github.com/Lumm1t/obnoxious.club
 
-class _app {
-  id = 0;
-  videoElement = null;
-  audioElement = null;
-  musicVolume = 0.12;
-  musicFadeIn = 4000;
-  skippedIntro = false;
-  backgroundToggler = false;
-  shouldIgnoreVideo = false;
-  effects = ['bounce', 'flash', 'pulse', 'rubberBand', 'shake', 'swing', 'tada', 'wobble', 'jello'];
-  brandDescription = ['awesome cheats', 'sexy sources', 'really cheap cheats', 'weed addict', 'the one and only'];
+const canvas = document.getElementById('falling-dots');
+    const ctx = canvas.getContext('2d');
 
-  iconChanger = (urls, delay) => {
-    if (!urls) return;
+    // Resize canvas to fill the window
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
 
-    delay = delay || 2000;
+    // Dot class to represent each falling dot
+    class Dot {
+      constructor(x, y, radius, speed) {
+        this.x = x;
+        this.y = y;
+        this.radius = radius;
+        this.color = '#fff'; // White color
+        this.speed = speed;
+      }
 
-    let counter = 0;
+      // Draw the dot on the canvas
+      draw() {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+        ctx.fillStyle = this.color;
+        ctx.fill();
+        ctx.closePath();
+      }
 
-    setInterval(() => {
-      if (counter < urls.length) {
-        const link = document.querySelector("link[rel*='icon']") || document.createElement('link');
+      // Update the dot's position
+      update() {
+        this.y += this.speed;
+        if (this.y - this.radius > canvas.height) {
+          this.y = -this.radius;
+        }
+        this.draw();
+      }
+    }
 
-        link.type = 'image/x-icon';
-        link.rel = 'shortcut icon';
-        link.href = urls[counter];
+    // Initialize dots
+    const dots = [];
+    for (let i = 0; i < 150; i++) { // Increased number of dots for a denser effect
+      const x = Math.random() * canvas.width;
+      const y = Math.random() * canvas.height;
+      const radius = Math.random() * 2 + 1; // Smaller radius for small dots
+      const speed = Math.random() * 2 + 1;
+      dots.push(new Dot(x, y, radius, speed));
+    }
 
-        document.getElementsByTagName('head')[0].appendChild(link);
-      } else counter = 0;
+    // Animate the dots
+    function animate() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      dots.forEach(dot => dot.update());
+      requestAnimationFrame(animate);
+    }
 
-      ++counter;
-    }, delay);
-  };
-}
-
-const app = new _app();
+    animate();
