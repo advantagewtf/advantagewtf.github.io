@@ -103,7 +103,7 @@ input {
   position: fixed;
   text-align: center;
   top: 50%;
-  left: 35%;
+  left: 50%;
   -webkit-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
 }
@@ -111,7 +111,7 @@ input {
   position: fixed;
   text-align: center;
   top: 50%;
-  left: 50%;
+  left: 35%;
   -webkit-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
 }
