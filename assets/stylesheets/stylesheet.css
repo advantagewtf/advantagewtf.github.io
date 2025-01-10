@@ -1,141 +1,97 @@
-/* Inspiration + CSS "intro" credits: bones.sesh.team */
-/* Sources used list:
-    - spinbot.pw (video tag, #center),
-    - http://static.tumblr.com/zlim8hm/29yn6561z/force-cursor.png (cursor),
-    - https://github.com/tsenart/sight/blob/master/fonts/Consolas.ttf (font),
-    - https://emerald.gg/images/dot.png (2x2 dot, inspiration and pattern CSS)
-*/
+/* General reset for margin and padding */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  cursor: url('../others/cursor.png'), default;
+  font-family: consolas, sans-serif;
+}
 
+/* Body settings */
+body {
+  color: #e4e3e3;
+  background-color: rgb(13, 13, 13);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Full height of the viewport */
+  overflow: hidden;
+  position: relative;
+}
+
+/* Full page container */
 #myDIV {
   width: 100%;
   height: 100%;
   border-top: 5px solid #1482ad;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
-html {
-  cursor: url('../others/cursor.png'), default;
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
+/* Centering the container, with separation between them horizontally */
+.container,
+.container2,
+.container3,
+.skip-container {
+  position: absolute;
+  text-align: center;
+  top: 50%; /* All containers vertically centered */
+  transform: translateY(-50%); /* Center vertically */
+  width: 100%; /* Full width */
 }
 
-a {
-  color: #e4e3e3;
-  text-decoration: none;
+.container {
+  left: 20%; /* Positioned towards the left */
 }
 
-.clickables {
-  cursor: url('../others/cursor.png'), default;
-  color: #e4e3e3;
-  text-decoration: none;
+.container2 {
+  left: 50%; /* Center container */
+  transform: translateX(-50%) translateY(-50%); /* Center horizontally and vertically */
 }
 
-.clickables:hover {
-  cursor: url('../others/cursor.png'), default;
-  color: #1482ad;
-  text-decoration: none;
+.container3 {
+  left: 80%; /* Positioned towards the right */
 }
 
-body,
-input {
-  color: #e4e3e3;
-  background-color: rgb(13, 13, 13);
+.skip-container {
+  left: 90%; /* Further to the right */
 }
 
-@font-face {
-  font-family: courier_regular;
-  src: url('../others/Consolas.html');
-}
-
-* {
-  cursor: url('../others/cursor.png'), default;
-  padding: 0;
-  margin: 0;
-  font-family: consolas, sans-serif;
-}
-
-body {
-  overflow-x: hidden;
-}
-
-input {
-  outline: 0;
-  border: none;
-}
-
-td {
-  padding: 3px;
-}
-
-hr {
-  margin-top: 15px;
-  margin-bottom: 15px;
-  border-style: dashed;
-}
-
-pre {
-  font-size: 1.15em;
-}
-
-.box,
-body,
-input {
-  background-color: rgb(13, 13, 13);
-}
-
+/* Custom box for content */
 .box {
   padding: 15px;
+  background-color: rgb(13, 13, 13);
+  color: #e4e3e3;
+  border: 1px solid #1482ad;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 100%;
   height: 100%;
   overflow: auto;
 }
 
-.top-right {
-  position: absolute;
-  top: 0;
-  right: 5px;
-}
-
-.container {
+/* Make sure background is blurred */
+.background {
   position: fixed;
-  text-align: center;
-  top: 50%;
-  left: 35%;
- 
-}
-.container2 {
-  position: fixed;
-  text-align: center;
   top: 50%;
   left: 50%;
- 
+  min-width: 135%;
+  min-height: 110%;
+  width: auto;
+  height: auto;
+  transform: translateX(-50%) translateY(-50%);
+  z-index: -3;
+  background-size: cover;
+  filter: blur(5px);
+  overflow: hidden;
 }
 
-.container3 {
-  position: fixed;
-  text-align: center;
-  top: 50%;
-  left: 65%;
-
-}
-
-.skip-container {
-  position: fixed;
-  text-align: center;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-}
-
-
-#brand {
-  margin-left: 0.65pc;
-}
-
+/* Center marquee container */
 .marquee-container {
   position: absolute;
   width: 100%;
@@ -151,65 +107,41 @@ input {
   font-size: 15px;
 }
 
-.emoticon {
-  vertical-align: middle;
-}
-
-.main {
-  overflow: hidden;
-}
-
-.background {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  z-index: -3;
-}
-
-#pattern {
-  background: transparent url('../others/dot.png') repeat 0 0;
-  top: 0;
-  left: 0;
-  margin: 0;
-  padding: 0;
-  z-index: -1;
-  opacity: 1;
-}
-
-#pattern,
-#background {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-}
-
-#background {
-  z-index: -2;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  min-width: 135%;
-  min-height: 110%;
-  width: auto;
-  height: auto;
-  transform: translateX(-50%) translateY(-50%);
-  background-size: cover;
-  overflow: hidden;
-  -webkit-filter: blur(5px);
-  -moz-filter: blur(5px);
-  -o-filter: blur(5px);
-  -ms-filter: blur(5px);
-  filter: blur(5px);
-}
-
+/* Footer positioning */
 .footer {
   position: absolute;
   bottom: 0;
   right: 5px;
 }
 
-
-
+/* Ensure no scrollbar is visible */
 ::-webkit-scrollbar {
   width: 0;
+}
+
+/* Pattern background */
+#pattern {
+  background: transparent url('../others/dot.png') repeat 0 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  opacity: 1;
+}
+
+/* Prevent scrolling on body */
+body {
+  overflow-x: hidden;
+}
+
+/* Input element styles */
+input {
+  outline: 0;
+  border: none;
+  background-color: rgb(13, 13, 13);
+  color: #e4e3e3;
+  padding: 10px;
+  margin: 5px;
 }
