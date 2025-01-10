@@ -103,7 +103,24 @@ input {
   position: fixed;
   text-align: center;
   top: 50%;
+  left: 35%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+.container2 {
+  position: fixed;
+  text-align: center;
+  top: 50%;
   left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.container3 {
+  position: fixed;
+  text-align: center;
+  top: 50%;
+  left: 65%;
   -webkit-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
 }
@@ -194,11 +211,7 @@ input {
   right: 5px;
 }
 
-.trollface-light {
-  -webkit-filter: invert(100%);
-  -moz-filter: invert(100%);
-  -ms-filter: invert(100%);
-}
+
 
 ::-webkit-scrollbar {
   width: 0;
