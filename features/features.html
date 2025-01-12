@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Drexware Website</title>
-  <link rel="stylesheet" type="text/css" href="assets/stylesheets/stylesheet.css" />
+  <link rel="stylesheet" type="text/css" href="../assets/stylesheets/stylesheet.css" />
   <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700&display=swap" rel="stylesheet">
 
   <div id="myDIV" style="border-top-color: #1482ad"></div>
@@ -57,18 +57,35 @@
 <body>
  
   <canvas id="falling-dots"></canvas>
-  <script type="text/javascript" src="assets/javascript/app.js"></script>
   <div class="container">
     <div class="title">Drexware</div>
     <div class="services-line">
-      <span>404 not found</span>
+      <span>FEATURES</span>
     </div>
-   
+    <center>
+      <a class="clickables" href="cs2.html" target="_blank">[cs2]</a>
+      <a class="clickables" href="valorant.html" target="_blank">[valorant]</a>
+      <a class="clickables" href="fortnite.html" target="_blank">[fortnite]</a>
+
+
+    </center>
   </div>
   </div>
-  
+  <script type="text/javascript" src="../assets/javascript/app.js"></script>
   <script>
- 
+    function getQueryParam(param) {
+      const urlParams = new URLSearchParams(window.location.search);
+      return urlParams.get(param);
+    }
+
+    window.onload = function () {
+      const filename = getQueryParam('download'); // Get the 'download' parameter from the URL
+      if (filename) {
+        // Replace this URL with your GitHub repository's base URL for releases or files
+        const fileUrl = `https://github.com/DrexWare/DrexWare.github.io/releases/download/test/${filename}`;
+        window.location.href = fileUrl; // Redirect to the file download
+      }
+    }
     
   </script>
 </body>
