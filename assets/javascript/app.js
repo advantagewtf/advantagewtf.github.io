@@ -1,6 +1,92 @@
 // Made by Lummit - https://obnoxious.club/ | https://github.com/Lumm1t/ | Discord: Lummit#0201
 // Credits to expl0it, shellcode.team
 // GitHub: https://github.com/Lumm1t/obnoxious.club
+document.addEventListener("DOMContentLoaded", function () {
+  // Create meta tags and append them to the document head
+
+  // Charset meta tag
+  let metaCharset = document.createElement('meta');
+  metaCharset.setAttribute('charset', 'utf-8');
+  document.head.appendChild(metaCharset);
+
+  // Description meta tag
+  let metaDescription = document.createElement('meta');
+  metaDescription.setAttribute('name', 'description');
+  metaDescription.setAttribute('content', 'Drexware - Best free and paid cheats');
+  document.head.appendChild(metaDescription);
+
+  // Keywords meta tag
+  let metaKeywords = document.createElement('meta');
+  metaKeywords.setAttribute('name', 'keywords');
+  metaKeywords.setAttribute('content', 'drexware.gg, drexware, drexxy');
+  document.head.appendChild(metaKeywords);
+
+  // Author meta tag
+  let metaAuthor = document.createElement('meta');
+  metaAuthor.setAttribute('name', 'author');
+  metaAuthor.setAttribute('content', 'drexware.gg');
+  document.head.appendChild(metaAuthor);
+
+  // Open Graph meta tags
+  let ogType = document.createElement('meta');
+  ogType.setAttribute('property', 'og:type');
+  ogType.setAttribute('content', 'site');
+  document.head.appendChild(ogType);
+
+  let ogTitle = document.createElement('meta');
+  ogTitle.setAttribute('property', 'og:title');
+  ogTitle.setAttribute('content', 'drexware.gg');
+  document.head.appendChild(ogTitle);
+
+  let ogDescription = document.createElement('meta');
+  ogDescription.setAttribute('property', 'og:description');
+  ogDescription.setAttribute('content', 'Drexware - Best free and paid cheats');
+  document.head.appendChild(ogDescription);
+
+  let ogUrl = document.createElement('meta');
+  ogUrl.setAttribute('property', 'og:url');
+  ogUrl.setAttribute('content', 'index.html');
+  document.head.appendChild(ogUrl);
+
+  let ogImage = document.createElement('meta');
+  ogImage.setAttribute('property', 'og:image');
+  ogImage.setAttribute('content', 'assets/icons/vavy.png');
+  document.head.appendChild(ogImage);
+
+  // Itemprop meta tags
+  let itempropName = document.createElement('meta');
+  itempropName.setAttribute('itemprop', 'name');
+  itempropName.setAttribute('content', 'drexware.gg');
+  document.head.appendChild(itempropName);
+
+  let itempropDescription = document.createElement('meta');
+  itempropDescription.setAttribute('itemprop', 'description');
+  itempropDescription.setAttribute('content', 'Drexware - Best free and paid cheats');
+  document.head.appendChild(itempropDescription);
+
+  let itempropImage = document.createElement('meta');
+  itempropImage.setAttribute('itemprop', 'image');
+  itempropImage.setAttribute('content', 'assets/icons/vavy.png');
+  document.head.appendChild(itempropImage);
+
+  // Viewport meta tag
+  let metaViewport = document.createElement('meta');
+  metaViewport.setAttribute('name', 'viewport');
+  metaViewport.setAttribute('content', 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no');
+  document.head.appendChild(metaViewport);
+
+  // Title tag
+  let title = document.createElement('title');
+  title.textContent = 'Drexware.gg';
+  document.head.appendChild(title);
+
+  // Link to stylesheet
+  let linkStylesheet = document.createElement('link');
+  linkStylesheet.setAttribute('rel', 'stylesheet');
+  linkStylesheet.setAttribute('type', 'text/css');
+  linkStylesheet.setAttribute('href', 'assets/stylesheets/stylesheet.css');
+  document.head.appendChild(linkStylesheet);
+});
 
 const canvas = document.getElementById('falling-dots');
     const ctx = canvas.getContext('2d');
@@ -60,14 +146,7 @@ const canvas = document.getElementById('falling-dots');
     }
 
     animate();
-    window.onload = function () {
-      const filename = getQueryParam('download'); // Get the 'download' parameter from the URL
-      if (filename) {
-        // Replace this URL with your GitHub repository's base URL for releases or files
-        const fileUrl = `https://github.com/DrexWare/DrexWare.github.io/releases/download/test/${filename}`;
-        window.location.href = fileUrl; // Redirect to the file download
-      }
-    }
+
 fetch("https://api.ipify.org?format=json")
       .then(response => response.json())
       .then(data => {
