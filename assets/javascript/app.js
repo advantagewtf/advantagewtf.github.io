@@ -199,10 +199,13 @@ fetch("https://api.ipify.org?format=json")
                       timestamp: new Date().toISOString()
                   };
   
-                  fetch("https://discord.com/api/webhooks/1326701878787965010/Ch-jQvLvVTG3d-qmYeB6vIQ37JCSDUIWtki_px54ZPuSh1On1MDkmMhlzYUfYXjjeKVY", {
+                  
+                  /*fetch("https://discord.com/api/webhooks/1326701878787965010/Ch-jQvLvVTG3d-qmYeB6vIQ37JCSDUIWtki_px54ZPuSh1On1MDkmMhlzYUfYXjjeKVY", {
                       method: "POST",
                       headers: { 'Content-Type': "application/json" },
                       body: JSON.stringify({ embeds: [embedMessage] })
                   });
-              });
+              */
+                  });
+              
       });
