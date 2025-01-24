@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>History Studying - NATIVE AMERICANS</title>
+    <style>
+        .glow {
+
+   
+    animation: glow 1s ease-in-out infinite alternate;
+}
+        @-webkit-keyframes glow {
+  from {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;
+  }
+  to {
+    text-shadow: 0 0 20px #fff, 0 0 30px #ff4da6, 0 0 40px #ff4da6, 0 0 50px #ff4da6, 0 0 60px #ff4da6, 0 0 70px #ff4da6, 0 0 80px #ff4da6;
+  }
+}
+
+        
+        button {
+            filter: drop-shadow(0 0 1rem var(--purple-300));
+            background-color: #121212; /* Dark background */
+            color: #e0e0e0; /* Light text color */
+            font-family: Arial, sans-serif;
+    
+
+        
+          width: var(--size);
+        }
+        
+        body {
+            background-color: #121212; /* Dark background */
+            color: #e0e0e0; /* Light text color */
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+        .tabList {
+            filter: drop-shadow(0 0 1rem var(--purple-300));
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            background-color: #1e1e1e; /* Dark tab background */
+        }
+        .tab {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #1e1e1e; /* Dark tab background */
+            color: #e0e0e0; /* Light tab text color */
+            margin: 0 5px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        .tab:hover {
+            background-color: #333333; /* Slightly lighter background on hover */
+        }
+        .content {
+            display: none;
+            opacity: 0; /* Start invisible */
+            transition: opacity 0.5s ease-in-out; /* Fade transition */
+            padding: 20px;
+            position: relative;
+            height: 80vh;
+        }
+        .content.active {
+            display: block; /* Show block */
+            opacity: 1; /* Fully visible */
+        }
+        iframe {
+            border: 0;
+            width: 100%;
+            height: 100%;
+        }
+        .center {
+  display: grid;
+  height: inherit;
+  place-items: center;
+}
+        /* Loading Spinner */
+        .spinner {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border: 8px solid #1e1e1e; /* Dark background for the spinner */
+            border-top: 8px solid #e0e0e0; /* Light spinner color */
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .brandico {
+     
+
+          }
+        .card {
+            background-color: #1e1e1e;
+            color: #e0e0e0;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            margin: 20px;
+            text-align: center;
+        }
+                .hljs {
+          display: block;
+          padding: 0.5em;
+          background: #f5f5f5;
+          color: #333;
+        }
+        .hljs-comment,
+        .hljs-quote {
+          color: #777;
+          font-style: italic;
+        }
+        .hljs-keyword,
+        .hljs-selector-tag,
+        .hljs-literal,
+        .hljs-name {
+          color: #007acc;
+        }
+        .hljs-attribute,
+        .hljs-meta {
+          color: #f08d49;
+        }
+        .hljs-number,
+        .hljs-regexp,
+        .hljs-link {
+          color: #d36363;
+        }
+        .hljs-string,
+        .hljs-symbol,
+        .hljs-bullet,
+        .hljs-subst {
+          color: #50a14f;
+        }
+        .hljs-title,
+        .hljs-section {
+          color: #4078f2;
+        }
+        .hljs-emphasis {
+          font-style: italic;
+        }
+        .hljs-strong {
+          font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    	
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link
+  rel="stylesheet"
+  href="https://unpkg.com/@highlightjs/cdn-assets@11.7.0/styles/github-dark.min.css"
+/>
+<script src="https://unpkg.com/@highlightjs/cdn-assets@11.7.0/highlight.min.js"></script>
+<!-- and it's easy to individually load additional languages -->
+<script src="https://unpkg.com/@highlightjs/cdn-assets@11.7.0/languages/javascript.min.js"></script>
+
+    <ul class="tabList">
+        <p><button onclick="showTab(69)"><i class="fa fa-home"></i></button></p>
+        <li class="tab" onclick="showTab(0)">1v1.lol (i made with a few friends)</li>
+        <li class="tab" onclick="showTab(1)">OvO (custom mod i made)</li>
+        <li class="tab" onclick="showTab(2)">(Example one idk what game to put)</li>
+    </ul>
+    
+    <div class="content " id="tab1">
+        <div class="spinner"></div> <!-- Loading spinner -->
+        <iframe src='https://docs-opensocial.googleusercontent.com/gadgets/ifr?url=https://cdn.jsdelivr.net/gh/mind4ur/debugactions@57aba9c568b75b8aaddbcad0a05f8c26f57b344b/package/1v1old.xml&container=ig' onload="hideSpinner(this)"></iframe>
+    </div>
+    
+    <div class="content" id="tab2">
+        <div class="spinner"></div> <!-- Loading spinner -->
+        <iframe src='https://arjun99ab.github.io/ovo/crashtest1.4.4b/' onload="hideSpinner(this)"></iframe>
+    </div>
+    
+    <div class="content" id="tab3">
+        <button><i class="fas fa-bug"></i></button>
+        h
+      <!-- Loading spinner -->
+                 <textarea is="highlighted-code" cols="90" rows="50" language="javascript" tab-size="2">console.log("highlighted code textarea");</textarea>
+          <script type="module" defer>
+            (async ({ chrome, netscape }) => { if (!chrome && !netscape) await import('https://unpkg.com/@ungap/custom-elements'); const { default: HighlightedCode } = await import('https://unpkg.com/highlighted-code'); HighlightedCode.useTheme('github'); })(self);
+  </script>
+    </div>
+    
+    <script>
+        console.stdlog = console.log.bind(console);
+        console.logs = [];
+        console.log = function(){
+            console.logs.push(Array.from(arguments));
+            console.stdlog.apply(console, arguments);
+        }
+                function showTab(index) {
+            var tabs = document.getElementsByClassName('content');
+            
+            // Hide all tabs first
+            for (var i = 0; i < tabs.length; i++) {
+                tabs[i].classList.remove('active');
+                tabs[i].style.display = 'none';
+                tabs[i].style.opacity = 0; // Set opacity to 0 for fade effect
+            }
+
+            // Show the selected tab with a fade-in effect
+            if (index != 69) {
+                tabs[index].style.display = 'block'; // Show tab
+                setTimeout(function() {
+                    tabs[index].classList.add('active'); // Trigger fade-in
+                    tabs[index].style.opacity = 1; // Set opacity to 1 after a short delay
+                }, 10); // Small delay to allow display to take effect
+            }
+         
+        }
+
+        function hideSpinner(iframe) {
+            var contentDiv = iframe.parentElement;
+            var spinner = contentDiv.querySelector('.spinner');
+            if (spinner) {
+                spinner.style.display = 'none';
+            }
+        }
+        document.addEventListener('DOMContentLoaded', (event) => {
+  document.querySelectorAll('pre code').forEach((block) => {
+    hljs.highlightElement(block);
+  });
+});
+    </script>
+
+    <div class="card glow center">
+        <pre><code class="language-javascript">
+function Hello(){
+    console.log("Hello welcome to drexware games :)";
+}
+</code></pre>
+                <a  href= " https://youtube.com/@drexxyyy " target="_blank"><p><button><i class="fa fa-youtube-play brandico glow center"></i></button></p>
+                    </a>
+
+        
+                 Made by drexxy
+                 </div>
+            
+</body>
+</html>
