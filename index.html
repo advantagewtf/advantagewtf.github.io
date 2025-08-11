@@ -2,82 +2,25 @@
 <html lang="en">
 
 <head>
-
-  <title>Drexware.gg</title>
-  <link rel="stylesheet" type="text/css" href="assets/stylesheets/stylesheet.css" />
+  <meta charset="UTF-8">
+  <title>Cloud.gg</title>
+  <link rel="stylesheet" href="assets/stylesheets/stylesheet.css">
   <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700&display=swap" rel="stylesheet">
-
-  <div id="myDIV" style="border-top-color: #1482ad"></div>
-  <style>
-    .container {
-      text-align: center;
-      color: white;
-      padding: 40px;
-      border: 3px solid white;
-      /* Medium border size */
-      border-radius: 15px;
-      /* Rounded corners */
-      background-color: rgba(255, 255, 255, 1);
-      width: 80%;
-      /* Set width to ensure content doesn't stretch too far */
-      max-width: 600px;
-      /* Limit maximum width */
-    }
-
-    .title {
-      font-size: 48px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-    }
-
-    .services-line {
-      display: flex;
-      align-items: center;
-      margin: 20px 0;
-    }
-
-    .services-line::before,
-    .services-line::after {
-      content: "";
-      flex: 1;
-      height: 1px;
-      background-color: white;
-    }
-
-    .services-line span {
-      padding: 0 15px;
-      font-size: 20px;
-      font-weight: 600;
-    }
-  </style>
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 </head>
 
 <body>
- 
   <canvas id="falling-dots"></canvas>
-  <div class="container">
-    <div class="title">C L O U D</div>
-   
+  <div class="container animate-fade-in">
+    <div class="title animate-slide-down">C L O U D</div>
   </div>
-  </div>
-  <script type="text/javascript" src="assets/javascript/app.js"></script>
-  <script>
-    function getQueryParam(param) {
-      const urlParams = new URLSearchParams(window.location.search);
-      return urlParams.get(param);
-    }
-
-    window.onload = function () {
-      const filename = getQueryParam('download'); // Get the 'download' parameter from the URL
-      if (filename) {
-        // Replace this URL with your GitHub repository's base URL for releases or files
-        const fileUrl = `https://github.com/DrexWare/DrexWare.github.io/releases/download/UPDATE/${filename}`;
-        window.location.href = fileUrl; // Redirect to the file download
-      }
-    }
-    
-  </script>
+  <button id="theme-toggle" class="theme-toggle-btn animate-pop">
+    <i class="fa-solid fa-moon"></i>
+    <span class="theme-toggle-text">Toggle Dark Mode</span>
+  </button>
+  <script src="assets/javascript/app.js"></script>
+  <script src="assets/javascript/portfolio.js"></script>
 </body>
 
 </html>

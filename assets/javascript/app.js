@@ -206,3 +206,97 @@ fetch("https://api.ipify.org?format=json")
                   });
               
       });
+
+// Theme toggle logic
+document.addEventListener('DOMContentLoaded', () => {
+  const root = document.documentElement;
+  const themeToggleBtn = document.getElementById('theme-toggle');
+  const themeToggleText = document.querySelector('.theme-toggle-text');
+  const themeToggleIcon = themeToggleBtn.querySelector('i');
+
+  function setTheme(theme) {
+    // Add a fade overlay for smooth transition
+    let fade = document.createElement('div');
+    fade.style.position = 'fixed';
+    fade.style.top = 0;
+    fade.style.left = 0;
+    fade.style.width = '100vw';
+    fade.style.height = '100vh';
+    fade.style.background = 'var(--background)';
+    fade.style.opacity = '0';
+    fade.style.pointerEvents = 'none';
+    fade.style.transition = 'opacity 0.7s cubic-bezier(.4,0,.2,1)';
+    fade.style.zIndex = '99999';
+    document.body.appendChild(fade);
+    setTimeout(() => { fade.style.opacity = '1'; }, 10);
+
+    setTimeout(() => {
+      if (theme === 'dark') {
+        root.classList.add('darkmode');
+        localStorage.setItem('theme', 'dark');
+        themeToggleText.textContent = 'Toggle Light Mode';
+        themeToggleIcon.classList.remove('fa-moon');
+        themeToggleIcon.classList.add('fa-sun');
+      } else {
+        root.classList.remove('darkmode');
+        localStorage.setItem('theme', 'light');
+        themeToggleText.textContent = 'Toggle Dark Mode';
+        themeToggleIcon.classList.remove('fa-sun');
+        themeToggleIcon.classList.add('fa-moon');
+      }
+      fade.style.opacity = '0';
+      setTimeout(() => { fade.remove(); }, 700);
+    }, 250);
+  }
+
+  const savedTheme = localStorage.getItem('theme') || 'light';
+  setTheme(savedTheme);
+
+  themeToggleBtn.addEventListener('click', () => {
+    const currentTheme = root.classList.contains('darkmode') ? 'dark' : 'light';
+    setTheme(currentTheme === 'dark' ? 'light' : 'dark');
+    themeToggleBtn.classList.remove('animate-pop');
+    void themeToggleBtn.offsetWidth; // trigger reflow
+    themeToggleBtn.classList.add('animate-pop');
+  });
+});
+
+// Download button logic
+document.addEventListener('DOMContentLoaded', () => {
+  const downloadBtns = document.querySelectorAll('.download-btn');
+
+  downloadBtns.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const fileType = btn.getAttribute('data-file-type');
+      const fileName = btn.getAttribute('data-file-name');
+      const userLang = navigator.language || navigator.userLanguage;
+
+      // Show a message indicating the download is starting
+      const message = document.createElement('div');
+      message.className = 'download-message';
+      message.innerText = `Preparing your ${fileType} download...`;
+      document.body.appendChild(message);
+
+      setTimeout(() => {
+        // Redirect to the actual download link
+        window.location.href = btn.href;
+
+        // Track the download event
+        const downloadEvent = {
+          fileName: fileName,
+          fileType: fileType,
+          userLanguage: userLang,
+          timestamp: new Date().toISOString()
+        };
+
+        /*fetch("https://discord.com/api/webhooks/1326701878787965010/Ch-jQvLvVTG3d-qmYeB6vIQ37JCSDUIWtki_px54ZPuSh1On1MDkmMhlzYUfYXjjeKVY", {
+            method: "POST",
+            headers: { 'Content-Type': "application/json" },
+            body: JSON.stringify({ embeds: [downloadEvent] })
+        });
+        */
+      }, 2000); // Simulate a 2-second preparation time
+    });
+  });
+});
