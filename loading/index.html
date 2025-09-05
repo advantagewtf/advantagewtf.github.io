@@ -1,0 +1,95 @@
+<html>
+<head>
+    <style>
+        :root {
+            --primary-color: #8539ff;
+            --bg-color: #1e1e2f;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, var(--bg-color) 0%, #151522 100%);
+        }
+
+        .loader-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .loader {
+            position: relative;
+            width: 160px;
+            height: 160px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            perspective: 800px;
+        }
+
+        .loader::before {
+            content: '';
+            position: absolute;
+            width: 120%;
+            height: 20px;
+            background: radial-gradient(circle, var(--primary-color) 0%, transparent 70%);
+            bottom: -20px;
+            filter: blur(10px);
+            opacity: 0.3;
+            animation: shadow 2.5s ease-in-out infinite;
+            transform-origin: center;
+        }
+
+        .loader img {
+            width: 80px;
+            height: 80px;
+            position: relative;
+            animation: glide 2.5s ease-in-out infinite;
+            filter: drop-shadow(0 0 20px rgba(133, 57, 255, 0.4));
+        }
+
+        @keyframes glide {
+            0% {
+                transform: translateY(0) rotateY(0);
+            }
+            25% {
+                transform: translateY(-20px) rotateY(15deg);
+            }
+            50% {
+                transform: translateY(0) rotateY(0);
+            }
+            75% {
+                transform: translateY(-20px) rotateY(-15deg);
+            }
+            100% {
+                transform: translateY(0) rotateY(0);
+            }
+        }
+
+        @keyframes shadow {
+            0%, 100% {
+                transform: scaleX(1);
+                opacity: 0.3;
+            }
+            50% {
+                transform: scaleX(0.7);
+                opacity: 0.15;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="loader-wrapper">
+        <div class="loader">
+            <img src="https://drexware.github.io/Branding/glideicon.svg" alt="Loading...">
+        </div>
+    </div>
+</body>
+</html>

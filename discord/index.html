@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:title" content="Advantage Discord">
+    <meta property="og:description" content="The Discord for Advantage">
+    <meta property="og:image" content="/assets/discord.png">
+    <meta property="og:url" content="https://drexware.github.io">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Advantage discord">
+    <meta name="twitter:description" content="The Discord for Advantage">
+    <meta name="twitter:image" content="/assets/discord.png">
+    <meta name="description" content="The Discord for Advantage">
+    <meta name="keywords" content="minecraft, glide client, Soar client">
+    <meta name="author" content="Advantage Discord">
+    <meta name="theme-color" content="#6603fc">
+    <title>Advantage - Discord</title>
+    <link rel="stylesheet" href="/style.css">
+    <link rel="icon" type="image/svg+xml" href="https://drexware.github.io/Branding/glideicon.svg">
+    <style>
+        .redirect-text {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .dots {
+            display: inline-block;
+        }
+        
+        .dots::after {
+            content: '';
+            animation: dots 2s steps(4, end) infinite;
+        }
+        
+        @keyframes dots {
+            0%, 20% { content: ''; }
+            40% { content: '.'; }
+            60% { content: '..'; }
+            80% { content: '...'; }
+        }
+    </style>
+</head>
+<body>
+    <div class="loader-wrapper">
+        <div class="loader">
+            <img src="https://drexware.github.io/Branding/glideicon.svg" alt="Advantage Logo">
+        </div>
+    </div>
+
+    <main class="main">
+        <section class="hero">
+            <h1>Discord</h1>
+            <div class="redirect-text">
+                <p>Redirecting to Discord<span class="dots"></span></p>
+                <noscript>
+                    <p>If you are not redirected automatically, <a href="https://discord.gg/42PXqKvwxq" style="color: var(--primary-color)">click here</a></p>
+                </noscript>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        window.addEventListener('load', () => {
+            const loaderWrapper = document.querySelector('.loader-wrapper');
+            loaderWrapper.classList.add('fade-out');
+            
+            // Delay redirect to show the loading animation
+            setTimeout(() => {
+                window.location.href = 'https://discord.gg/42PXqKvwxq';
+            }, 500);
+        });
+    </script>
+</body>
+</html>

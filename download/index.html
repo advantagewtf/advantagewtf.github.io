@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:title" content="Advantage">
+    <meta property="og:description" content="The website for Advantage">
+    <meta property="og:image" content="https://drexware.github.io/Branding/banner.png">
+    <meta property="og:url" content="https://drexware.github.io">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Advantage">
+    <meta name="twitter:description" content="The website for Advantage">
+    <meta name="twitter:image" content="https://drexware.github.io/Branding/banner.png">
+    <meta name="description" content="The website for Advantage">
+    <meta name="keywords" content="minecraft, glide client, Soar client">
+    <meta name="author" content="Advantage">
+    <meta name="theme-color" content="#6603fc">
+    <title>Advantage - Downloads</title>
+    <link rel="stylesheet" href="/style.css">
+    <link rel="icon" type="image/svg+xml" href="https://drexware.github.io/Branding/glideicon.svg">
+</head>
+<body>
+    <div class="loader-wrapper">
+        <div class="loader">
+            <img src="https://drexware.github.io/Branding/glideicon.svg" alt="Advantage Logo">
+        </div>
+    </div>
+
+    <header class="header">
+        <nav class="navbar">
+            <div class="logo">
+                <a href="/">
+                    <img src="https://drexware.github.io/Branding/glideicon.svg" alt="Advantage Logo">
+                </a>
+            </div>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/#features">Features</a></li>
+                <li><a href="/#about">About</a></li>
+                <li><a href="/download">Download</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="main">
+        <section class="hero">
+            <h1>Downloads</h1>
+            <p>Advantage download</p>
+            <div class="button-group">
+                <a href="https://discord.gg/dyq7bNVz5B" class="cta-button">Go to the download</a>
+            </div>
+        </section>
+    </main>
+
+    
+
+    <script>
+        window.addEventListener('load', () => {
+            const loaderWrapper = document.querySelector('.loader-wrapper');
+            loaderWrapper.classList.add('fade-out');
+        });
+
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+        
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+    </script>
+</body>
+</html>

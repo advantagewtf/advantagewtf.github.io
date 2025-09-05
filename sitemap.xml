@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+
+<url>
+  <loc>https://drexware.github.io/</loc>
+  <lastmod>2025-08-03T12:00:00+00:00</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>1.00</priority>
+  <image:image>
+  <image:loc>https://drexware.github.io/assets/logo.png</image:loc>
+  <image:title>Advantage Logo</image:title>
+  <image:caption>Advantage - Enhanced Minecraft 1.21 PvP Client</image:caption>
+  </image:image>
+  <image:image>
+  <image:loc>https://drexware.github.io/assets/screenshots/menu.webp</image:loc>
+  <image:title>Advantage Menu</image:title>
+  <image:caption>Modern interface of Advantage showing the home screen</image:caption>
+  </image:image>
+  <image:image>
+  <image:loc>https://drexware.github.io/assets/screenshots/huds.webp</image:loc>
+  <image:title>Advantage HUD Theme: Modern</image:title>
+  <image:caption>Custom HUD themes available in Advantage</image:caption>
+  </image:image>
+</url>
+<url>
+  <loc>https://drexware.github.io/download/</loc>
+  <lastmod>2025-08-03T12:00:00+00:00</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.70</priority>
+</url>
+<url>
+  <loc>https://drexware.github.io/discord/</loc>
+  <lastmod>2025-06-07T09:53:35+00:00</lastmod>
+  <changefreq>yearly</changefreq>
+  <priority>0.50</priority>
+</url>
+<url>
+  <loc>https://drexware.github.io/soareol</loc>
+  <lastmod>2025-06-07T09:53:40+00:00</lastmod>
+  <changefreq>yearly</changefreq>
+  <priority>0.30</priority>
+</url>
+<url>
+  <loc>https://drexware.github.io/data/branding/</loc>
+  <lastmod>2025-06-07T09:53:45+00:00</lastmod>
+  <changefreq>yearly</changefreq>
+  <priority>0.70</priority>
+</url>
+
+</urlset>

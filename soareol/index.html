@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Open Graph meta tags: Facebook and Discord -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Click here for your options">
+    <meta property="og:description" content="SoarClient 7 is now Discontinued so you must choose which option you would rather pick to continue using soar.">
+    <meta property="og:image" content="/assets/soareol.png">
+    <meta property="og:url" content="https://drexware.github.io/soareol">
+
+    <!-- Twitter Card embed tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Click here for your options">
+    <meta name="twitter:description" content="SoarClient 7 is now Discontinued so you must choose which option you would rather pick to continue using soar.">
+    <meta name="twitter:image" content="/assets/soareol.png">
+
+    <!-- SEO meta tags -->
+    <meta name="description" content="SoarClient 7 is now Discontinued so users can choose two different ways to contunue using soar">
+    <meta name="keywords" content="minecraft, glide client, Soar client, soarclient fix download, soarclient download, end of life soar, soar discontinued">
+    <meta name="author" content="Advantage">
+    <meta name="theme-color" content="#6603fc">
+
+    <title>Advantage - SoarClient 7 End Of Life</title>
+    <link rel="stylesheet" href="/style.css">
+    <link rel="icon" type="image/svg+xml" href="https://drexware.github.io/Branding/glideicon.svg">
+</head>
+
+<body>
+    <div class="loader-wrapper">
+        <div class="loader">
+            <img src="https://drexware.github.io/Branding/glideicon.svg" alt="Advantage Logo">
+        </div>
+    </div>
+
+    <header class="header">
+        <nav class="navbar">
+            <div class="logo">
+                <a href="/">
+                    <img src="https://drexware.github.io/Branding/glideicon.svg" alt="Advantage Logo">
+                </a>
+            </div>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/#features">Features</a></li>
+                <li><a href="/#about">About</a></li>
+                <li><a href="/download">Download</a></li>
+                <li><a href="/discord">Discord</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="main">
+        <section class="hero">
+            <h1>SoarClient 7 End Of Life</h1>
+            <p>SoarClient has been discontinued.</p>
+            <p>Many users have been asking questions like "How do I download?", "Why is the SoarClient site down?", and "Is SoarClient dead?" The answer is simple: you need to use an alternative version like SoarClient Legacy or Advantage.</p>
+            <p>Thank you for using SoarClient</p>
+            
+            <h2>Your Options</h2>
+            <p>For now, you have two options to continue using SoarClient features:</p>
+              <div class="option-cards">
+                <div class="option-card recommended">
+                    <span class="status-tag active">Actively Maintained</span>
+                    <h3>Advantage</h3>
+                    <p>Advantage is a fork of Soar developed by several of the SoarClient staff members. It's actively maintained with ongoing support and regular updates. Advantage includes all the features you love about Soar and continues to add new improvements.</p>
+                    <div class="button-group">
+                        <a href="https://drexware.github.io/" class="cta-button">Get Advantage</a>
+                    </div>
+                </div>
+                  <div class="option-card not-recommended">
+                    <span class="status-tag inactive">No Longer Updated</span>
+                    <h3>SoarClient Legacy</h3>
+                    <p>SoarClient Legacy/Offline is SoarClient as it was when v7 was abandoned. It's out of date and no longer maintained. While you can still use it, any bugs found will not be fixed, and no new features will be added. We recommend using Advantage for a better experience.</p>
+                    <div class="button-group">
+                        <a href="https://github.com/Soar-Client/Legacy-SoarClient/releases" class="cta-button legacy-button">Get SoarClient Legacy</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p>Website by Advantage Team</p>
+            <p>Follow us: <a href="https://www.youtube.com/@Advantage" target="_blank">Youtube</a> | <a href="https://github.com/Advantage/" target="_blank">GitHub</a> | <a href="/discord" target="_blank">Discord</a></p>
+            <p>Need our brand assets? <a href="https://drexware.github.io/data/branding/" target="_blank">Click here!</a></p>
+        </div>
+    </footer>
+
+    <script>
+        // Loader handling
+        window.addEventListener('load', () => {
+            const loaderWrapper = document.querySelector('.loader-wrapper');
+            loaderWrapper.classList.add('fade-out');
+        });
+
+        // Hamburger menu handling
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+        
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+    </script>
+</body>
+
+</html>
