@@ -11,17 +11,17 @@
   <changefreq>weekly</changefreq>
   <priority>1.00</priority>
   <image:image>
-  <image:loc>https://drexware.github.io/assets/logo.png</image:loc>
+  <image:loc>/assets/logo.png</image:loc>
   <image:title>Advantage Logo</image:title>
   <image:caption>Advantage - Enhanced Minecraft 1.21 PvP Client</image:caption>
   </image:image>
   <image:image>
-  <image:loc>https://drexware.github.io/assets/screenshots/menu.webp</image:loc>
+  <image:loc>/assets/screenshots/menu.webp</image:loc>
   <image:title>Advantage Menu</image:title>
   <image:caption>Modern interface of Advantage showing the home screen</image:caption>
   </image:image>
   <image:image>
-  <image:loc>https://drexware.github.io/assets/screenshots/huds.webp</image:loc>
+  <image:loc>/assets/screenshots/huds.webp</image:loc>
   <image:title>Advantage HUD Theme: Modern</image:title>
   <image:caption>Custom HUD themes available in Advantage</image:caption>
   </image:image>
