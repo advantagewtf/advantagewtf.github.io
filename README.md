@@ -5,7 +5,7 @@
 
 ## Information
 
-- Minecraft version: ```Fabric``` 1.21
+- Minecraft version: ```Fabric 1.21``` 
 - Default ClickGui keybind - **```P```**
 - Default prefix - **```>```**
 - Middle click the module to bind it.
