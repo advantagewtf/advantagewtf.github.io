@@ -1,0 +1,966 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Client Collection</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+    /* Base styles */
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', sans-serif; }
+    body {
+        background: #0f111a;
+        color: #e0e0e0;
+        padding: 40px;
+    }
+    h1 {
+        text-align: center;
+        color: #4fc3f7;
+        font-size: 2.2rem;
+        margin-bottom: 30px;
+        letter-spacing: 1px;
+    }
+    /* Search box */
+    #searchBox {
+        width: 100%;
+        max-width: 600px;
+        display: block;
+        margin: 0 auto 30px auto;
+        padding: 12px 15px;
+        border-radius: 12px;
+        border: none;
+        background: #1c1e2b;
+        color: #e0e0e0;
+        font-size: 16px;
+        transition: background 0.3s, box-shadow 0.3s;
+    }
+    #searchBox:focus {
+        outline: none;
+        box-shadow: 0 0 10px #4fc3f7;
+        background: #262837;
+    }
+    /* Table styles */
+    table {
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 0;
+        overflow: hidden;
+        border-radius: 12px;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+        background: #1c1e2b;
+    }
+    th, td {
+        padding: 16px 20px;
+        text-align: left;
+        transition: background 0.3s, color 0.3s;
+    }
+    th {
+        background: #262837;
+        color: #4fc3f7;
+        font-weight: 700;
+        font-size: 0.95rem;
+        cursor: pointer;
+        user-select: none;
+    }
+    th:hover {
+        background: #2f3244;
+    }
+    tr:nth-child(even) { background: #1c1e2b; }
+    tr:nth-child(odd) { background: #212338; }
+    tr:hover { background: #2f3244; }
+    td a {
+        color: #4fc3f7;
+        text-decoration: none;
+    }
+    td a:hover { text-decoration: underline; }
+    /* Scrollable table */
+    table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+    /* Responsive */
+    @media(max-width: 768px) {
+        th, td { padding: 12px 10px; font-size: 0.85rem; }
+    }
+</style>
+</head>
+<body>
+<h1>Client Collection</h1>
+<input type="text" id="searchBox" onkeyup="searchTable()" placeholder="Search clients...">
+
+<table id="clientTable">
+<thead>
+<tr><th onclick="sortTable(0)">Client Name &#x25B2;&#x25BC;</th><th onclick="sortTable(1)">Repository Link &#x25B2;&#x25BC;</th></tr>
+</thead>
+<tbody>
+<tr><td>06dWare</td><td><a href='https://github.com/GentlemanMC/Xulu-06dware' target='_blank'>https://github.com/GentlemanMC/Xulu-06dware</a></td></tr>
+<tr><td>1.19 Client</td><td><a href='https://github.com/zopac/1.19-client' target='_blank'>https://github.com/zopac/1.19-client</a></td></tr>
+<tr><td>303Hack / ThreeZeroThreeHack</td><td><a href='https://github.com/MikuSoCute/ThreeZeroThreeHack' target='_blank'>https://github.com/MikuSoCute/ThreeZeroThreeHack</a></td></tr>
+<tr><td>404</td><td><a href='https://github.com/dada994a/404-leak' target='_blank'>https://github.com/dada994a/404-leak</a></td></tr>
+<tr><td>3arthh4ck / Phobos Newbase</td><td><a href='https://github.com/3arthqu4ke/3arthh4ck // https://github.com/colorblindness/3arthh4ck' target='_blank'>https://github.com/3arthqu4ke/3arthh4ck // https://github.com/colorblindness/3arthh4ck</a></td></tr>
+<tr><td>5C</td><td><a href='https://github.com/calicosun258/5c-client-N' target='_blank'>https://github.com/calicosun258/5c-client-N</a></td></tr>
+<tr><td>711.club</td><td><a href='https://github.com/master7720/711.club' target='_blank'>https://github.com/master7720/711.club</a></td></tr>
+<tr><td>AbHack</td><td><a href='https://github.com/chunfeng666/abhack-main' target='_blank'>https://github.com/chunfeng666/abhack-main</a></td></tr>
+<tr><td>Abstract</td><td><a href='https://github.com/WMSGaming/Abstract-1.12.2' target='_blank'>https://github.com/WMSGaming/Abstract-1.12.2</a></td></tr>
+<tr><td>Abyss</td><td><a href='https://crystalpvp.ru/abyss/ // https://abyssclient.com // https://github.com/PlutoSolutions/Abyss // https://github.com/PlutoSolutions/AbyssOSS' target='_blank'>https://crystalpvp.ru/abyss/ // https://abyssclient.com // https://github.com/PlutoSolutions/Abyss // https://github.com/PlutoSolutions/AbyssOSS</a></td></tr>
+<tr><td>AbyssBeta</td><td><a href='https://github.com/PlutoSolutions/AbyssBetaEnforcer' target='_blank'>https://github.com/PlutoSolutions/AbyssBetaEnforcer</a></td></tr>
+<tr><td>Acid</td><td><a href='https://github.com/kyv3-v2/Acid-phobos-edition' target='_blank'>https://github.com/kyv3-v2/Acid-phobos-edition</a></td></tr>
+<tr><td>AClient</td><td><a href='https://github.com/KuromeSan/a1.2.2b-hacked-client' target='_blank'>https://github.com/KuromeSan/a1.2.2b-hacked-client</a></td></tr>
+<tr><td>Adequacy</td><td><a href='https://github.com/GuangChen2333/Adequacy' target='_blank'>https://github.com/GuangChen2333/Adequacy</a></td></tr>
+<tr><td>Adopted</td><td><a href='https://github.com/2young2care/Adopted-client' target='_blank'>https://github.com/2young2care/Adopted-client</a></td></tr>
+<tr><td>Agalar</td><td><a href='https://github.com/MrHakan/Agalar-Hack' target='_blank'>https://github.com/MrHakan/Agalar-Hack</a></td></tr>
+<tr><td>AgloHack</td><td><a href='https://github.com/aglostic/aglohack' target='_blank'>https://github.com/aglostic/aglohack</a></td></tr>
+<tr><td>AgonyClient</td><td><a href='https://github.com/VortexHFM/Agony-Client' target='_blank'>https://github.com/VortexHFM/Agony-Client</a></td></tr>
+<tr><td>AidsHack</td><td><a href='https://github.com/Dino-log/AidsHack' target='_blank'>https://github.com/Dino-log/AidsHack</a></td></tr>
+<tr><td>AimWhere</td><td><a href='https://github.com/Potion1337/AimWhere-Source-Code' target='_blank'>https://github.com/Potion1337/AimWhere-Source-Code</a></td></tr>
+<tr><td>Alien</td><td><a href='https://github.com/iM4dCat/Alien // https://github.com/RageCat420/AlienClient-OpenSource // https://github.com/hashdiana/Alien-Client' target='_blank'>https://github.com/iM4dCat/Alien // https://github.com/RageCat420/AlienClient-OpenSource // https://github.com/hashdiana/Alien-Client</a></td></tr>
+<tr><td>AllahClient</td><td><a href='https://github.com/pablushaa/AllahClient // https://github.com/pablushaa/AllahClient_old' target='_blank'>https://github.com/pablushaa/AllahClient // https://github.com/pablushaa/AllahClient_old</a></td></tr>
+<tr><td>AllahWare</td><td><a href='https://github.com/CumHax/AllahWare' target='_blank'>https://github.com/CumHax/AllahWare</a></td></tr>
+<tr><td>Allusion</td><td><a href='https://github.com/cattyngmd/allusion' target='_blank'>https://github.com/cattyngmd/allusion</a></td></tr>
+<tr><td>AlulaHack</td><td><a href='https://github.com/Auxnos/alulahack' target='_blank'>https://github.com/Auxnos/alulahack</a></td></tr>
+<tr><td>Ananta</td><td><a href='https://github.com/RitomG69/Ananta' target='_blank'>https://github.com/RitomG69/Ananta</a></td></tr>
+<tr><td>AndyClient</td><td><a href='https://github.com/MouathA/AndyClient-SRC' target='_blank'>https://github.com/MouathA/AndyClient-SRC</a></td></tr>
+<tr><td>ApeClient</td><td><a href='https://github.com/evaan/ApeClient' target='_blank'>https://github.com/evaan/ApeClient</a></td></tr>
+<tr><td>ApeHax</td><td><a href='https://github.com/Team-Kedy/ApeHax' target='_blank'>https://github.com/Team-Kedy/ApeHax</a></td></tr>
+<tr><td>Apollo</td><td><a href='https://github.com/IllegalException/Apollo-2.1' target='_blank'>https://github.com/IllegalException/Apollo-2.1</a></td></tr>
+<tr><td>ApollyonClient</td><td><a href='https://cdn.discordapp.com/attachments/611452108826214401/636114166620356618/ApollyonClient-0.4-release3_1.jar' target='_blank'>https://cdn.discordapp.com/attachments/611452108826214401/636114166620356618/ApollyonClient-0.4-release3_1.jar</a></td></tr>
+<tr><td>Aquarius</td><td><a href='https://github.com/epsilonteam/Aquarius' target='_blank'>https://github.com/epsilonteam/Aquarius</a></td></tr>
+<tr><td>Arctic</td><td><a href='https://github.com/Pseudonymous000/Arctic-Client' target='_blank'>https://github.com/Pseudonymous000/Arctic-Client</a></td></tr>
+<tr><td>Ares</td><td><a href='https://github.com/AresClient/ares' target='_blank'>https://github.com/AresClient/ares</a></td></tr>
+<tr><td>Argon</td><td><a href='https://github.com/LvStrnggg/argon' target='_blank'>https://github.com/LvStrnggg/argon</a></td></tr>
+<tr><td>ArchWare</td><td><a href='https://github.com/kisman2000/ArchWare' target='_blank'>https://github.com/kisman2000/ArchWare</a></td></tr>
+<tr><td>Arsenic</td><td><a href='https://github.com/ArsenicClient/Arsenic' target='_blank'>https://github.com/ArsenicClient/Arsenic</a></td></tr>
+<tr><td>Arsenic</td><td><a href='https://github.com/BlebDaPleb/ArsenicClient' target='_blank'>https://github.com/BlebDaPleb/ArsenicClient</a></td></tr>
+<tr><td>Aresnic</td><td><a href='https://github.com/ArsenicClient/Arsenic' target='_blank'>https://github.com/ArsenicClient/Arsenic</a></td></tr>
+<tr><td>Arsie</td><td><a href='https://github.com/maywr/arsie-mod-beta' target='_blank'>https://github.com/maywr/arsie-mod-beta</a></td></tr>
+<tr><td>Artemis</td><td><a href='https://intent.store // https://github.com/G8LOL/Artemis-Hacked-client' target='_blank'>https://intent.store // https://github.com/G8LOL/Artemis-Hacked-client</a></td></tr>
+<tr><td>Asteria.rip</td><td><a href='https://github.com/AsteriaDevelopment/asteria // https://github.com/WalmartSolutions/Asteria.rip' target='_blank'>https://github.com/AsteriaDevelopment/asteria // https://github.com/WalmartSolutions/Asteria.rip</a></td></tr>
+<tr><td>Astro.dev</td><td><a href='https://github.com/Nyaannn/Astro.dev' target='_blank'>https://github.com/Nyaannn/Astro.dev</a></td></tr>
+<tr><td>Atani</td><td><a href='https://github.com/WalmartSolutions/Atani-0.03 // https://github.com/Atani-Client/client' target='_blank'>https://github.com/WalmartSolutions/Atani-0.03 // https://github.com/Atani-Client/client</a></td></tr>
+<tr><td>Atlas</td><td><a href='https://github.com/chris2rich/Atlas' target='_blank'>https://github.com/chris2rich/Atlas</a></td></tr>
+<tr><td>Atom</td><td><a href='https://cdn.discordapp.com/attachments/676392227991453697/705037276018901093/atom-0.5-cracked-by-CCC.jar' target='_blank'>https://cdn.discordapp.com/attachments/676392227991453697/705037276018901093/atom-0.5-cracked-by-CCC.jar</a></td></tr>
+<tr><td>AtomBeta</td><td><a href='https://cdn.discordapp.com/attachments/689371591976681522/727966452900167762/AtomBeta-1.3-ReleasedByCrystallinqq.jar' target='_blank'>https://cdn.discordapp.com/attachments/689371591976681522/727966452900167762/AtomBeta-1.3-ReleasedByCrystallinqq.jar</a></td></tr>
+<tr><td>Atomic</td><td><a href='https://github.com/19MisterX98/Atomic' target='_blank'>https://github.com/19MisterX98/Atomic</a></td></tr>
+<tr><td>Atrium</td><td><a href='https://github.com/3000IQPlay/Atrium' target='_blank'>https://github.com/3000IQPlay/Atrium</a></td></tr>
+<tr><td>Augustus</td><td><a href='https://github.com/TwoNick/augustus' target='_blank'>https://github.com/TwoNick/augustus</a></td></tr>
+<tr><td>Aurora</td><td><a href='https://github.com/Memeszz/Aurora-public // https://github.com/IllegalException/Aurora-2.6' target='_blank'>https://github.com/Memeszz/Aurora-public // https://github.com/IllegalException/Aurora-2.6</a></td></tr>
+<tr><td>Aurora</td><td><a href='https://github.com/WalmartSolutions/Aurora-2.0' target='_blank'>https://github.com/WalmartSolutions/Aurora-2.0</a></td></tr>
+<tr><td>Aurora New</td><td><a href='https://github.com/Negro-Development/Aurora-0.0.6-BUILDABLE-SRC' target='_blank'>https://github.com/Negro-Development/Aurora-0.0.6-BUILDABLE-SRC</a></td></tr>
+<tr><td>Ayakashi</td><td><a href='https://github.com/MouathA/Ayakashi-unlicensed' target='_blank'>https://github.com/MouathA/Ayakashi-unlicensed</a></td></tr>
+<tr><td>Azorius.club</td><td><a href='https://github.com/haychk/azorius.club' target='_blank'>https://github.com/haychk/azorius.club</a></td></tr>
+<tr><td>AzuraX</td><td><a href='https://intent.store // https://github.com/Endemic1337/Azura-Client' target='_blank'>https://intent.store // https://github.com/Endemic1337/Azura-Client</a></td></tr>
+<tr><td>Azure</td><td><a href='https://github.com/Intel-i80486-DX4/Azure-For-Everyone' target='_blank'>https://github.com/Intel-i80486-DX4/Azure-For-Everyone</a></td></tr>
+<tr><td>Backdoored</td><td><a href='https://github.com/RIPBackdoored/Backdoored-1.8.2-Source-Leak' target='_blank'>https://github.com/RIPBackdoored/Backdoored-1.8.2-Source-Leak</a></td></tr>
+<tr><td>Badlion+ / BadlionPlus</td><td><a href='https://github.com/oyzipfile/badlion-plus-SRC // https://github.com/unfidelity/badlionplus' target='_blank'>https://github.com/oyzipfile/badlion-plus-SRC // https://github.com/unfidelity/badlionplus</a></td></tr>
+<tr><td>Banan+ / BananPlus</td><td><a href='https://github.com/Kanianan/b-archive' target='_blank'>https://github.com/Kanianan/b-archive</a></td></tr>
+<tr><td>Bandito.club</td><td><a href='https://github.com/gerald0mc/bandito.club' target='_blank'>https://github.com/gerald0mc/bandito.club</a></td></tr>
+<tr><td>Banzem</td><td><a href='https://github.com/yunusborazan/Banzem-Client' target='_blank'>https://github.com/yunusborazan/Banzem-Client</a></td></tr>
+<tr><td>Bape</td><td><a href='https://github.com/ImCzf233/Bape-Opensource // https://github.com/ImCzf233/bape-opensources' target='_blank'>https://github.com/ImCzf233/Bape-Opensource // https://github.com/ImCzf233/bape-opensources</a></td></tr>
+<tr><td>Bartender</td><td><a href='https://github.com/XeonLyfe/Bartender-Src' target='_blank'>https://github.com/XeonLyfe/Bartender-Src</a></td></tr>
+<tr><td>BaseBand</td><td><a href='https://github.com/PlutoSolutions/BaseBand // https://crystalpvp.ru/baseband // https://github.com/0x7DB/BaseBand-FOSS' target='_blank'>https://github.com/PlutoSolutions/BaseBand // https://crystalpvp.ru/baseband // https://github.com/0x7DB/BaseBand-FOSS</a></td></tr>
+<tr><td>BBCWare</td><td><a href='https://github.com/unnamedlife/bbcware' target='_blank'>https://github.com/unnamedlife/bbcware</a></td></tr>
+<tr><td>BeefSense</td><td><a href='https://github.com/HausemasterIssue/BeefSense-Decomp' target='_blank'>https://github.com/HausemasterIssue/BeefSense-Decomp</a></td></tr>
+<tr><td>Beer</td><td><a href='https://github.com/IUDevman/Beer' target='_blank'>https://github.com/IUDevman/Beer</a></td></tr>
+<tr><td>BetaX</td><td><a href='https://github.com/RageCat420/BetaX-OpenSource' target='_blank'>https://github.com/RageCat420/BetaX-OpenSource</a></td></tr>
+<tr><td>BigG</td><td><a href='https://github.com/ImCzf233/BIG-G-decompiled' target='_blank'>https://github.com/ImCzf233/BIG-G-decompiled</a></td></tr>
+<tr><td>BerryBobus</td><td><a href='https://github.com/kyv3-v3/BerryBobus-newrepo' target='_blank'>https://github.com/kyv3-v3/BerryBobus-newrepo</a></td></tr>
+<tr><td>BigRat</td><td><a href='https://github.com/ZimnyCat/BigRat' target='_blank'>https://github.com/ZimnyCat/BigRat</a></td></tr>
+<tr><td>BlackAndWhite</td><td><a href='https://github.com/AntiCope/reaper-addon' target='_blank'>https://github.com/AntiCope/reaper-addon</a></td></tr>
+<tr><td>Blackout</td><td><a href='https://github.com/chell-dev/Blackout-3.0' target='_blank'>https://github.com/chell-dev/Blackout-3.0</a></td></tr>
+<tr><td>BladeCore</td><td><a href='https://github.com/KuroHere/BladeCore-1.12.2' target='_blank'>https://github.com/KuroHere/BladeCore-1.12.2</a></td></tr>
+<tr><td>BleachHack</td><td><a href='https://github.com/BleachDev/bleachhack-legacy' target='_blank'>https://github.com/BleachDev/bleachhack-legacy</a></td></tr>
+<tr><td>Blessed</td><td><a href='https://github.com/Librry1337/Blessed-Client-1.16.5 // https://github.com/Librry1337/Blessed-Client-1.16.5' target='_blank'>https://github.com/Librry1337/Blessed-Client-1.16.5 // https://github.com/Librry1337/Blessed-Client-1.16.5</a></td></tr>
+<tr><td>BLM</td><td><a href='https://github.com/blmclient/client' target='_blank'>https://github.com/blmclient/client</a></td></tr>
+<tr><td>BloodHack</td><td><a href='https://github.com/gerald0mc/bloodhack' target='_blank'>https://github.com/gerald0mc/bloodhack</a></td></tr>
+<tr><td>BloodyClient</td><td><a href='https://github.com/WalmartSolutions/Bloody-1.0.1 // https://github.com/PlutoSolutions/BLOODYCLIENT1.0.0 // https://github.com/WalmartSolutions/BloodyClient-0.4.4 // https://github.com/PlutoSolutions/BloodyClient' target='_blank'>https://github.com/WalmartSolutions/Bloody-1.0.1 // https://github.com/PlutoSolutions/BLOODYCLIENT1.0.0 // https://github.com/WalmartSolutions/BloodyClient-0.4.4 // https://github.com/PlutoSolutions/BloodyClient</a></td></tr>
+<tr><td>BloomWare</td><td><a href='https://github.com/offeex/Bloomware // https://github.com/goztb22/Bloomware // https://github.com/TheBreakery/Bloomware-Lite / https://github.com/DiOnFire/bloomware-latest-buildable' target='_blank'>https://github.com/offeex/Bloomware // https://github.com/goztb22/Bloomware // https://github.com/TheBreakery/Bloomware-Lite / https://github.com/DiOnFire/bloomware-latest-buildable</a></td></tr>
+<tr><td>BlueZenith</td><td><a href='https://github.com/Endemic1337/Blue-Zenith' target='_blank'>https://github.com/Endemic1337/Blue-Zenith</a></td></tr>
+<tr><td>Bobr</td><td><a href='https://github.com/kisman2000/Bobr-Client-0.0.9' target='_blank'>https://github.com/kisman2000/Bobr-Client-0.0.9</a></td></tr>
+<tr><td>BobrWare</td><td><a href='https://anonfiles.com/n6Bcy3wey5/BoberWareFree_rar' target='_blank'>https://anonfiles.com/n6Bcy3wey5/BoberWareFree_rar</a></td></tr>
+<tr><td>Bonk</td><td><a href='https://cdn.discordapp.com/attachments/689371591976681522/708203599284666518/Bonk_Utility_Client_v0.1.1.jar' target='_blank'>https://cdn.discordapp.com/attachments/689371591976681522/708203599284666518/Bonk_Utility_Client_v0.1.1.jar</a></td></tr>
+<tr><td>Bopis.club</td><td><a href='https://github.com/IllegalException/Bopis.club' target='_blank'>https://github.com/IllegalException/Bopis.club</a></td></tr>
+<tr><td>BossHack</td><td><a href='https://github.com/master7720/boss-hack-v1.0-leak' target='_blank'>https://github.com/master7720/boss-hack-v1.0-leak</a></td></tr>
+<tr><td>BossWare</td><td><a href='https://github.com/vertent/bossware-leaked' target='_blank'>https://github.com/vertent/bossware-leaked</a></td></tr>
+<tr><td>BoyKisser</td><td><a href='https://github.com/ColdDarkHusky/BoyKisser-Client-1.12.2' target='_blank'>https://github.com/ColdDarkHusky/BoyKisser-Client-1.12.2</a></td></tr>
+<tr><td>Boze</td><td><a href='https://github.com/TwoNick/boze // https://github.com/PlutoSolutions/BozeUpdate // https://www.boze.dev // https://crystalpvp.ru/boze/' target='_blank'>https://github.com/TwoNick/boze // https://github.com/PlutoSolutions/BozeUpdate // https://www.boze.dev // https://crystalpvp.ru/boze/</a></td></tr>
+<tr><td>BozoWare</td><td><a href='https://github.com/Kobley/Bozoware' target='_blank'>https://github.com/Kobley/Bozoware</a></td></tr>
+<tr><td>Breeze</td><td><a href='https://mega.nz/file/1PtmUJzB#8H_fcQmoUcNCzgecUb8Xrg-hXW9AebrwIU0DbBi_-cA // https://crystalpvp.ru/breeze' target='_blank'>https://mega.nz/file/1PtmUJzB#8H_fcQmoUcNCzgecUb8Xrg-hXW9AebrwIU0DbBi_-cA // https://crystalpvp.ru/breeze</a></td></tr>
+<tr><td>BTHack</td><td><a href='https://github.com/Ferra13671/BThack // https://github.com/2young2care/BThack-client-for-mobile' target='_blank'>https://github.com/Ferra13671/BThack // https://github.com/2young2care/BThack-client-for-mobile</a></td></tr>
+<tr><td>BubbyClient</td><td><a href='https://github.com/BubbyRoosh1/BubbyClient-Fabric-1.16' target='_blank'>https://github.com/BubbyRoosh1/BubbyClient-Fabric-1.16</a></td></tr>
+<tr><td>BussinUtilites</td><td><a href='https://cdn.discordapp.com/attachments/992714822292619264/1035100460081745990/BussinUtilitesRedux-1.0-all.jar' target='_blank'>https://cdn.discordapp.com/attachments/992714822292619264/1035100460081745990/BussinUtilitesRedux-1.0-all.jar</a></td></tr>
+<tr><td>Byte</td><td><a href='https://github.com/SyutoBestCoder/Byte-1.21' target='_blank'>https://github.com/SyutoBestCoder/Byte-1.21</a></td></tr>
+<tr><td>Byte Utility</td><td><a href='https://github.com/danny-125/Byte-Utility-Mod' target='_blank'>https://github.com/danny-125/Byte-Utility-Mod</a></td></tr>
+<tr><td>C.U.M Fusion / CUM Fusion</td><td><a href='https://github.com/BebSxy/C.U.M-Fusion-1.6.9' target='_blank'>https://github.com/BebSxy/C.U.M-Fusion-1.6.9</a></td></tr>
+<tr><td>Caizm</td><td><a href='https://github.com/tRollaURa/Caizm' target='_blank'>https://github.com/tRollaURa/Caizm</a></td></tr>
+<tr><td>CakeClient</td><td><a href='https://github.com/GandelXIV/Cake-client' target='_blank'>https://github.com/GandelXIV/Cake-client</a></td></tr>
+<tr><td>Calypso</td><td><a href='https://github.com/Gav06/Calypso' target='_blank'>https://github.com/Gav06/Calypso</a></td></tr>
+<tr><td>Candy</td><td><a href='https://github.com/3000IQPlay/CANDY-0.0.8-BUILDABLE_SRC' target='_blank'>https://github.com/3000IQPlay/CANDY-0.0.8-BUILDABLE_SRC</a></td></tr>
+<tr><td>Candy++ / CandyPlusPlus</td><td><a href='https://github.com/cocoapc911/candy-plus-plus' target='_blank'>https://github.com/cocoapc911/candy-plus-plus</a></td></tr>
+<tr><td>CarnageReborn</td><td><a href='https://github.com/t1t0v/CarnageReborn' target='_blank'>https://github.com/t1t0v/CarnageReborn</a></td></tr>
+<tr><td>CarrotHack</td><td><a href='https://github.com/chris2rich/CarrotHack' target='_blank'>https://github.com/chris2rich/CarrotHack</a></td></tr>
+<tr><td>Cascade</td><td><a href='https://github.com/GurteX/Cascade-0.3.8 // https://github.com/AnotherNoName/Cascade-0.3.7-SRC // https://github.com/AnotherNoName/Cascade-0.2.7-SRC-BUILDABLE' target='_blank'>https://github.com/GurteX/Cascade-0.3.8 // https://github.com/AnotherNoName/Cascade-0.3.7-SRC // https://github.com/AnotherNoName/Cascade-0.2.7-SRC-BUILDABLE</a></td></tr>
+<tr><td>Catalyst</td><td><a href='https://github.com/GentlemanMC/Catalyst // https://github.com/Pr3roxDLC/Catalyst' target='_blank'>https://github.com/GentlemanMC/Catalyst // https://github.com/Pr3roxDLC/Catalyst</a></td></tr>
+<tr><td>CatClient</td><td><a href='https://github.com/CumHax/catclient // https://github.com/Tr0llMode/catclient-cc-bypass' target='_blank'>https://github.com/CumHax/catclient // https://github.com/Tr0llMode/catclient-cc-bypass</a></td></tr>
+<tr><td>CatClient+ / CatClientPlus / ThighWare</td><td><a href='https://github.com/kisman2000/CatClientPlus-aka-ThighWare' target='_blank'>https://github.com/kisman2000/CatClientPlus-aka-ThighWare</a></td></tr>
+<tr><td>Catmi</td><td><a href='https://github.com/4wl/Catmi' target='_blank'>https://github.com/4wl/Catmi</a></td></tr>
+<tr><td>CatsWare</td><td><a href='https://github.com/CatsAreGood1337/CatsWare' target='_blank'>https://github.com/CatsAreGood1337/CatsWare</a></td></tr>
+<tr><td>CatUtilities</td><td><a href='https://github.com/AlQaedaCracks/Cat-Utilities-0.8.4' target='_blank'>https://github.com/AlQaedaCracks/Cat-Utilities-0.8.4</a></td></tr>
+<tr><td>CCSHack</td><td><a href='https://github.com/Tr0llMode/CCShack' target='_blank'>https://github.com/Tr0llMode/CCShack</a></td></tr>
+<tr><td>Cebulionware.NEXT</td><td><a href='https://github.com/0x4d65/Cebulionware.NEXT' target='_blank'>https://github.com/0x4d65/Cebulionware.NEXT</a></td></tr>
+<tr><td>Celestial</td><td><a href='https://celka.xyz // https://github.com/noom1337/hacked-client-collection/tree/main/Celestial%20Premium%206.0%20(1.12.2)' target='_blank'>https://celka.xyz // https://github.com/noom1337/hacked-client-collection/tree/main/Celestial%20Premium%206.0%20(1.12.2)</a></td></tr>
+<tr><td>Celestial Recode</td><td><a href='https://github.com/tuskypaster/Celestial-Recode-src' target='_blank'>https://github.com/tuskypaster/Celestial-Recode-src</a></td></tr>
+<tr><td>Claudius</td><td><a href='https://github.com/Crimply/Claudius' target='_blank'>https://github.com/Crimply/Claudius</a></td></tr>
+<tr><td>Click</td><td><a href='https://github.com/noatmc/click' target='_blank'>https://github.com/noatmc/click</a></td></tr>
+<tr><td>ClickCrystals</td><td><a href='https://github.com/ItziSpyder/ClickCrystals' target='_blank'>https://github.com/ItziSpyder/ClickCrystals</a></td></tr>
+<tr><td>Client</td><td><a href='https://github.com/urelNiP/Client-2.0.0-SAFE // https://github.com/RealzPrestige/client2.0.0' target='_blank'>https://github.com/urelNiP/Client-2.0.0-SAFE // https://github.com/RealzPrestige/client2.0.0</a></td></tr>
+<tr><td>CliNet</td><td><a href='https://github.com/DarkiBoi/CliNet' target='_blank'>https://github.com/DarkiBoi/CliNet</a></td></tr>
+<tr><td>Cloud</td><td><a href='https://www.mediafire.com/file/f2s1r5bza79pvvt/cloud.zip/file' target='_blank'>https://www.mediafire.com/file/f2s1r5bza79pvvt/cloud.zip/file</a></td></tr>
+<tr><td>Cobalt</td><td><a href='https://github.com/Gav06/cobalt-utility-mod' target='_blank'>https://github.com/Gav06/cobalt-utility-mod</a></td></tr>
+<tr><td>Coffee</td><td><a href='https://github.com/Coffee-Client/Coffee' target='_blank'>https://github.com/Coffee-Client/Coffee</a></td></tr>
+<tr><td>CoinsClient</td><td><a href='https://github.com/mindlesslydev/CoinsClient' target='_blank'>https://github.com/mindlesslydev/CoinsClient</a></td></tr>
+<tr><td>ColaHack</td><td><a href='https://github.com/CumHax/ColaHack' target='_blank'>https://github.com/CumHax/ColaHack</a></td></tr>
+<tr><td>ConstHack.cc</td><td><a href='https://github.com/chris2rich/ConstHack.cc' target='_blank'>https://github.com/chris2rich/ConstHack.cc</a></td></tr>
+<tr><td>CookieClient</td><td><a href='https://github.com/bebeli555/CookieClient' target='_blank'>https://github.com/bebeli555/CookieClient</a></td></tr>
+<tr><td>Cosmos</td><td><a href='https://github.com/momentumdevelopment/cosmos' target='_blank'>https://github.com/momentumdevelopment/cosmos</a></td></tr>
+<tr><td>CousinWare</td><td><a href='https://github.com/Ace8Underscore/CousinWare // https://github.com/Ace8Underscore/CousinWare1.12.2Updated' target='_blank'>https://github.com/Ace8Underscore/CousinWare // https://github.com/Ace8Underscore/CousinWare1.12.2Updated</a></td></tr>
+<tr><td>Cr33pyWare</td><td><a href='https://github.com/SkidFxcte/Cr33pyware' target='_blank'>https://github.com/SkidFxcte/Cr33pyware</a></td></tr>
+<tr><td>Cracked</td><td><a href='https://github.com/primewk/future-skid // https://github.com/XG2025-Akaishin/Cracked-1.20.4-Continue' target='_blank'>https://github.com/primewk/future-skid // https://github.com/XG2025-Akaishin/Cracked-1.20.4-Continue</a></td></tr>
+<tr><td>Cranberry</td><td><a href='https://github.com/Snoworange420/Cranberry' target='_blank'>https://github.com/Snoworange420/Cranberry</a></td></tr>
+<tr><td>CreeperClient</td><td><a href='https://github.com/BigShotEmzy/Creeper-Client-Legacy' target='_blank'>https://github.com/BigShotEmzy/Creeper-Client-Legacy</a></td></tr>
+<tr><td>Creepy Salhack</td><td><a href='https://github.com/CreepyOrb924/creepy-salhack' target='_blank'>https://github.com/CreepyOrb924/creepy-salhack</a></td></tr>
+<tr><td>Crepe</td><td><a href='https://github.com/3000IQPlay/Crepes-deobf // https://github.com/cocoapc911/crepe-client-public' target='_blank'>https://github.com/3000IQPlay/Crepes-deobf // https://github.com/cocoapc911/crepe-client-public</a></td></tr>
+<tr><td>CrispyClient</td><td><a href='https://www.mediafire.com/file/vwuikhvcn03d53p/Crispy.7z/file' target='_blank'>https://www.mediafire.com/file/vwuikhvcn03d53p/Crispy.7z/file</a></td></tr>
+<tr><td>CrossSince</td><td><a href='https://github.com/shxp3/CrossSine' target='_blank'>https://github.com/shxp3/CrossSine</a></td></tr>
+<tr><td>CrystalClient</td><td><a href='https://github.com/3000IQPlay/crystal-client-src' target='_blank'>https://github.com/3000IQPlay/crystal-client-src</a></td></tr>
+<tr><td>Cue</td><td><a href='https://github.com/SudoDevs-inc/CueClientOld' target='_blank'>https://github.com/SudoDevs-inc/CueClientOld</a></td></tr>
+<tr><td>Cupid</td><td><a href='https://github.com/JonaPoka/Cupid-Client-SRC' target='_blank'>https://github.com/JonaPoka/Cupid-Client-SRC</a></td></tr>
+<tr><td>CurryMod</td><td><a href='https://github.com/Logging4J/CurryMod' target='_blank'>https://github.com/Logging4J/CurryMod</a></td></tr>
+<tr><td>Cursa</td><td><a href='https://github.com/epsilonteam/Cursa' target='_blank'>https://github.com/epsilonteam/Cursa</a></td></tr>
+<tr><td>Curse</td><td><a href='https://github.com/KuroHere/CurseClient-Forge' target='_blank'>https://github.com/KuroHere/CurseClient-Forge</a></td></tr>
+<tr><td>Cute</td><td><a href='https://github.com/4wl/Cute' target='_blank'>https://github.com/4wl/Cute</a></td></tr>
+<tr><td>CwHack</td><td><a href='https://github.com/femhack/CwHack' target='_blank'>https://github.com/femhack/CwHack</a></td></tr>
+<tr><td>CXClient</td><td><a href='https://github.com/pixelcmtd/CXClient' target='_blank'>https://github.com/pixelcmtd/CXClient</a></td></tr>
+<tr><td>Dactyl / Moonlight</td><td><a href='https://github.com/redvx/Dactyl-1.6.8 // https://github.com/fIuffy/Dactyl' target='_blank'>https://github.com/redvx/Dactyl-1.6.8 // https://github.com/fIuffy/Dactyl</a></td></tr>
+<tr><td>Dallas</td><td><a href='https://github.com/gerald0mc/Dallas' target='_blank'>https://github.com/gerald0mc/Dallas</a></td></tr>
+<tr><td>DarkClient</td><td><a href='https://github.com/Dark-Developments/DarkClient' target='_blank'>https://github.com/Dark-Developments/DarkClient</a></td></tr>
+<tr><td>DarkYaw</td><td><a href='https://github.com/tuskypaster/DarkYaw-Source' target='_blank'>https://github.com/tuskypaster/DarkYaw-Source</a></td></tr>
+<tr><td>DeadCode</td><td><a href='https://crystalpvp.ru/deadcode/ // https://github.com/PlutoSolutions/DeadCode' target='_blank'>https://crystalpvp.ru/deadcode/ // https://github.com/PlutoSolutions/DeadCode</a></td></tr>
+<tr><td>DebugHack</td><td><a href='https://github.com/MysticCat212417/DebugHack' target='_blank'>https://github.com/MysticCat212417/DebugHack</a></td></tr>
+<tr><td>DecClient</td><td><a href='https://github.com/MrDuhan/DecClient-Release // https://github.com/limping4jamal/dec-client' target='_blank'>https://github.com/MrDuhan/DecClient-Release // https://github.com/limping4jamal/dec-client</a></td></tr>
+<tr><td>Delta</td><td><a href='https://github.com/noatmc/delta' target='_blank'>https://github.com/noatmc/delta</a></td></tr>
+<tr><td>Demise</td><td><a href='https://github.com/kisman2000/Demise-0.1.5-beta-Ratted' target='_blank'>https://github.com/kisman2000/Demise-0.1.5-beta-Ratted</a></td></tr>
+<tr><td>Density</td><td><a href='https://github.com/hashPirate/archived-client' target='_blank'>https://github.com/hashPirate/archived-client</a></td></tr>
+<tr><td>DentClient</td><td><a href='https://github.com/DentClient/Client // https://github.com/DentClient/DentClient' target='_blank'>https://github.com/DentClient/Client // https://github.com/DentClient/DentClient</a></td></tr>
+<tr><td>Destroy Premium</td><td><a href='https://github.com/tuskypaster/Destroy-Premium-SRC' target='_blank'>https://github.com/tuskypaster/Destroy-Premium-SRC</a></td></tr>
+<tr><td>DestroySquad</td><td><a href='https://github.com/jabask3dd3r/DestroySquad-src-leak' target='_blank'>https://github.com/jabask3dd3r/DestroySquad-src-leak</a></td></tr>
+<tr><td>Devu</td><td><a href='https://github.com/4wl/Devu' target='_blank'>https://github.com/4wl/Devu</a></td></tr>
+<tr><td>DHMClient</td><td><a href='https://github.com/hf2kxn/DHMClient' target='_blank'>https://github.com/hf2kxn/DHMClient</a></td></tr>
+<tr><td>DiabloX</td><td><a href='https://github.com/WalmartSolutions/DiabloX-1.1.3' target='_blank'>https://github.com/WalmartSolutions/DiabloX-1.1.3</a></td></tr>
+<tr><td>Dimasik</td><td><a href='https://github.com/WalmartSolutions/Dimasik' target='_blank'>https://github.com/WalmartSolutions/Dimasik</a></td></tr>
+<tr><td>Distance</td><td><a href='https://github.com/YumeGod/Distance580 // https://github.com/ho3cn/Distance6.0-open' target='_blank'>https://github.com/YumeGod/Distance580 // https://github.com/ho3cn/Distance6.0-open</a></td></tr>
+<tr><td>Dog Client</td><td><a href='https://github.com/src-leaker/dog-client // https://crystalpvp.ru/dog' target='_blank'>https://github.com/src-leaker/dog-client // https://crystalpvp.ru/dog</a></td></tr>
+<tr><td>Doki</td><td><a href='https://github.com/YumeGod/OpenDokiClient2 // https://github.com/ImCzf233/DokiClient2-opensources // https://github.com/ImCzf233/DokiClient2-Src-Leaked // https://github.com/ImCzf233/DokiClient-opensources' target='_blank'>https://github.com/YumeGod/OpenDokiClient2 // https://github.com/ImCzf233/DokiClient2-opensources // https://github.com/ImCzf233/DokiClient2-Src-Leaked // https://github.com/ImCzf233/DokiClient-opensources</a></td></tr>
+<tr><td>Dope</td><td><a href='https://github.com/ssverify/dope-ghost-2.0' target='_blank'>https://github.com/ssverify/dope-ghost-2.0</a></td></tr>
+<tr><td>DoragonClient</td><td><a href='https://github.com/VortexHFM/Doragon-Client' target='_blank'>https://github.com/VortexHFM/Doragon-Client</a></td></tr>
+<tr><td>DotGod.cc</td><td><a href='https://github.com/Zane2b2t/DotGodCC // https://github.com/dabigbulletz638/dotgod.cc' target='_blank'>https://github.com/Zane2b2t/DotGodCC // https://github.com/dabigbulletz638/dotgod.cc</a></td></tr>
+<tr><td>Dragon</td><td><a href='https://cdn.discordapp.com/attachments/685842167947984966/705848667214446652/DragonClient_7.0_1.jar' target='_blank'>https://cdn.discordapp.com/attachments/685842167947984966/705848667214446652/DragonClient_7.0_1.jar</a></td></tr>
+<tr><td>Dream</td><td><a href='https://github.com/Doogie13/Dream-Reupload' target='_blank'>https://github.com/Doogie13/Dream-Reupload</a></td></tr>
+<tr><td>DrugHack Recode</td><td><a href='https://github.com/doickswag/drughack-recode' target='_blank'>https://github.com/doickswag/drughack-recode</a></td></tr>
+<tr><td>Duperman</td><td><a href='https://github.com/JAV1F/Project-Dupermen' target='_blank'>https://github.com/JAV1F/Project-Dupermen</a></td></tr>
+<tr><td>DulyClient</td><td><a href='https://github.com/VortexHFM/DulyClient' target='_blank'>https://github.com/VortexHFM/DulyClient</a></td></tr>
+<tr><td>Editme</td><td><a href='https://github.com/CoolClientCollectors/editme-release // https://github.com/Archive-xx/editme-deobfuscated-client' target='_blank'>https://github.com/CoolClientCollectors/editme-release // https://github.com/Archive-xx/editme-deobfuscated-client</a></td></tr>
+<tr><td>Elementars.com</td><td><a href='https://github.com/Elementars/Elementars.com' target='_blank'>https://github.com/Elementars/Elementars.com</a></td></tr>
+<tr><td>Elite</td><td><a href='https://github.com/Aspw-w/Elite-Client' target='_blank'>https://github.com/Aspw-w/Elite-Client</a></td></tr>
+<tr><td>Elypsa</td><td><a href='https://github.com/ferderplays/ElypsaClient' target='_blank'>https://github.com/ferderplays/ElypsaClient</a></td></tr>
+<tr><td>Elysian</td><td><a href='https://github.com/WarriorCrystal/Elysian' target='_blank'>https://github.com/WarriorCrystal/Elysian</a></td></tr>
+<tr><td>Ensamble</td><td><a href='https://github.com/Dimples-1337/Ensemble-1.8.9 // https://github.com/b0LBwZ7r5HOeh6CBMuQIhVu3-s-random-fork/Ensemble-1.8.9' target='_blank'>https://github.com/Dimples-1337/Ensemble-1.8.9 // https://github.com/b0LBwZ7r5HOeh6CBMuQIhVu3-s-random-fork/Ensemble-1.8.9</a></td></tr>
+<tr><td>Epitaph</td><td><a href='https://github.com/2young2care/Epitaph13-1.20.1-crack // https://github.com/2young2care/Epitaph-11-crack' target='_blank'>https://github.com/2young2care/Epitaph13-1.20.1-crack // https://github.com/2young2care/Epitaph-11-crack</a></td></tr>
+<tr><td>Epsilon</td><td><a href='https://github.com/SpartanB312/Epsilon' target='_blank'>https://github.com/SpartanB312/Epsilon</a></td></tr>
+<tr><td>EsoHack / gondal.club</td><td><a href='https://github.com/cryst-al/oyvey-skids/releases/tag/esohack // https://github.com/Nutelaspaceman/esohack-1.0.8 // https://github.com/LTHLeaks/Esohack-1.0.9' target='_blank'>https://github.com/cryst-al/oyvey-skids/releases/tag/esohack // https://github.com/Nutelaspaceman/esohack-1.0.8 // https://github.com/LTHLeaks/Esohack-1.0.9</a></td></tr>
+<tr><td>Estension</td><td><a href='https://github.com/Megaline233/estension' target='_blank'>https://github.com/Megaline233/estension</a></td></tr>
+<tr><td>Europa</td><td><a href='https://github.com/SkidFxcte/Europa-Buildable-Source' target='_blank'>https://github.com/SkidFxcte/Europa-Buildable-Source</a></td></tr>
+<tr><td>Evangelion</td><td><a href='https://github.com/BebSxy/Evangelion' target='_blank'>https://github.com/BebSxy/Evangelion</a></td></tr>
+<tr><td>Evaware</td><td><a href='https://github.com/WalmartSolutions/Evaware-3.1' target='_blank'>https://github.com/WalmartSolutions/Evaware-3.1</a></td></tr>
+<tr><td>EvliEye</td><td><a href='https://github.com/GSCSDSUN/EvliEye-OpenSource' target='_blank'>https://github.com/GSCSDSUN/EvliEye-OpenSource</a></td></tr>
+<tr><td>Evo</td><td><a href='https://github.com/WarriorCrystal/Evo' target='_blank'>https://github.com/WarriorCrystal/Evo</a></td></tr>
+<tr><td>Exception</td><td><a href='https://github.com/Cookie-Studio/Exception' target='_blank'>https://github.com/Cookie-Studio/Exception</a></td></tr>
+<tr><td>Exeter</td><td><a href='https://github.com/The-Gopro336-Archive/Exeter-1.12.2' target='_blank'>https://github.com/The-Gopro336-Archive/Exeter-1.12.2</a></td></tr>
+<tr><td>Existent</td><td><a href='https://github.com/Rabies1337/Existent-Old' target='_blank'>https://github.com/Rabies1337/Existent-Old</a></td></tr>
+<tr><td>Expensive</td><td><a href='https://expensiveclient.xyz // https://github.com/tuskypaster/Expensive-Client' target='_blank'>https://expensiveclient.xyz // https://github.com/tuskypaster/Expensive-Client</a></td></tr>
+<tr><td>Experium</td><td><a href='https://github.com/3000IQPlay/Experium' target='_blank'>https://github.com/3000IQPlay/Experium</a></td></tr>
+<tr><td>Extazyy</td><td><a href='https://github.com/0xFruzz/Extazyy-1.20.1' target='_blank'>https://github.com/0xFruzz/Extazyy-1.20.1</a></td></tr>
+<tr><td>ExVision</td><td><a href='https://github.com/Nutelaspaceman/exvision-b1-cracked' target='_blank'>https://github.com/Nutelaspaceman/exvision-b1-cracked</a></td></tr>
+<tr><td>FabricHax</td><td><a href='https://github.com/pranavgade20/FabricHax' target='_blank'>https://github.com/pranavgade20/FabricHax</a></td></tr>
+<tr><td>Fabuls</td><td><a href='https://github.com/WalmartSolutions/Fabuls-1.0' target='_blank'>https://github.com/WalmartSolutions/Fabuls-1.0</a></td></tr>
+<tr><td>FallenMod</td><td><a href='https://github.com/4wl/FallenUtilMod' target='_blank'>https://github.com/4wl/FallenUtilMod</a></td></tr>
+<tr><td>FamilyFunPack</td><td><a href='https://github.com/anOtherAnalyse/FamilyFunPack' target='_blank'>https://github.com/anOtherAnalyse/FamilyFunPack</a></td></tr>
+<tr><td>FartHack.cc</td><td><a href='https://github.com/CumHax/FartHax.cc' target='_blank'>https://github.com/CumHax/FartHax.cc</a></td></tr>
+<tr><td>FDP</td><td><a href='https://github.com/SkidderMC/FDPClient' target='_blank'>https://github.com/SkidderMC/FDPClient</a></td></tr>
+<tr><td>FemHack</td><td><a href='https://github.com/Femey/Femhack' target='_blank'>https://github.com/Femey/Femhack</a></td></tr>
+<tr><td>FencingF+2 / FencingFPlusTwo</td><td><a href='https://github.com/FencingF/FencingFPlusTwo' target='_blank'>https://github.com/FencingF/FencingFPlusTwo</a></td></tr>
+<tr><td>Ferox</td><td><a href='https://github.com/olliem5/ferox' target='_blank'>https://github.com/olliem5/ferox</a></td></tr>
+<tr><td>Ferret</td><td><a href='https://github.com/cattyngmd/Ferret' target='_blank'>https://github.com/cattyngmd/Ferret</a></td></tr>
+<tr><td>FerxaxenMod</td><td><a href='https://github.com/efekoskeroglu/FerxaxenMod-v0.3' target='_blank'>https://github.com/efekoskeroglu/FerxaxenMod-v0.3</a></td></tr>
+<tr><td>FPSMaster</td><td><a href='https://github.com/SuperSkidder/FPSMasterOpenSourceProject' target='_blank'>https://github.com/SuperSkidder/FPSMasterOpenSourceProject</a></td></tr>
+<tr><td>Fira</td><td><a href='https://github.com/cout970/FiraClient' target='_blank'>https://github.com/cout970/FiraClient</a></td></tr>
+<tr><td>Fire</td><td><a href='https://github.com/RealzPrestige/fire' target='_blank'>https://github.com/RealzPrestige/fire</a></td></tr>
+<tr><td>FireWork</td><td><a href='https://github.com/VVriter/Firework-client-public' target='_blank'>https://github.com/VVriter/Firework-client-public</a></td></tr>
+<tr><td>FishHack</td><td><a href='https://github.com/PlutoSolutions/FishHack-public' target='_blank'>https://github.com/PlutoSolutions/FishHack-public</a></td></tr>
+<tr><td>FiveGuys / 5Guys</td><td><a href='https://github.com/Canonball90/fiveguysSrc' target='_blank'>https://github.com/Canonball90/fiveguysSrc</a></td></tr>
+<tr><td>Fivve Xin</td><td><a href='https://github.com/2young2care/Fivve--Xin--' target='_blank'>https://github.com/2young2care/Fivve--Xin--</a></td></tr>
+<tr><td>Flawless</td><td><a href='https://github.com/hashdiana/Flawless-Client' target='_blank'>https://github.com/hashdiana/Flawless-Client</a></td></tr>
+<tr><td>Floppa</td><td><a href='https://github.com/HausemasterIssue/Floppa-Client-SRC' target='_blank'>https://github.com/HausemasterIssue/Floppa-Client-SRC</a></td></tr>
+<tr><td>Fluidity</td><td><a href='https://github.com/mccheatz/Fluidity' target='_blank'>https://github.com/mccheatz/Fluidity</a></td></tr>
+<tr><td>Flux</td><td><a href='https://github.com/heedii/flux-addon' target='_blank'>https://github.com/heedii/flux-addon</a></td></tr>
+<tr><td>ForeverClient</td><td><a href='https://github.com/h1tm4nqq/ForeverClient-leak' target='_blank'>https://github.com/h1tm4nqq/ForeverClient-leak</a></td></tr>
+<tr><td>ForgeHax</td><td><a href='https://github.com/fr1kin/ForgeHax' target='_blank'>https://github.com/fr1kin/ForgeHax</a></td></tr>
+<tr><td>FortniteHook</td><td><a href='https://github.com/MikuSoCute/FortniteHook-Public // https://github.com/MikuSoCute/FartniteHook-1.2' target='_blank'>https://github.com/MikuSoCute/FortniteHook-Public // https://github.com/MikuSoCute/FartniteHook-1.2</a></td></tr>
+<tr><td>Fractal</td><td><a href='https://github.com/AriaJackie/Fractal' target='_blank'>https://github.com/AriaJackie/Fractal</a></td></tr>
+<tr><td>Francium</td><td><a href='https://github.com/IllegalException/Francium' target='_blank'>https://github.com/IllegalException/Francium</a></td></tr>
+<tr><td>Francium 1.19+</td><td><a href='https://github.com/WalmartSolutions/Francium-1.20.4 // https://github.com/WalmartSolutions/Francium-Reborn // https://github.com/3000IQPlay/Francium-Cracked // https://github.com/Dexveloper/Francium-Cracked' target='_blank'>https://github.com/WalmartSolutions/Francium-1.20.4 // https://github.com/WalmartSolutions/Francium-Reborn // https://github.com/3000IQPlay/Francium-Cracked // https://github.com/Dexveloper/Francium-Cracked</a></td></tr>
+<tr><td>Freemanatee</td><td><a href='https://github.com/freethemanatee/freemanatee-client' target='_blank'>https://github.com/freethemanatee/freemanatee-client</a></td></tr>
+<tr><td>FrogWare</td><td><a href='https://github.com/XZRC/FrogWare' target='_blank'>https://github.com/XZRC/FrogWare</a></td></tr>
+<tr><td>FrostBurn</td><td><a href='https://github.com/evaan/FrostBurn' target='_blank'>https://github.com/evaan/FrostBurn</a></td></tr>
+<tr><td>FuFuClient</td><td><a href='https://github.com/IMXNOOBX/FuFuClient' target='_blank'>https://github.com/IMXNOOBX/FuFuClient</a></td></tr>
+<tr><td>FurryWare</td><td><a href='https://github.com/Intel-i80486-DX4/FurryWare-B40' target='_blank'>https://github.com/Intel-i80486-DX4/FurryWare-B40</a></td></tr>
+<tr><td>Fusion</td><td><a href='https://github.com/deadshxll/fusion' target='_blank'>https://github.com/deadshxll/fusion</a></td></tr>
+<tr><td>Future</td><td><a href='https://github.com/TwoNick/future-1.21.1 // https://futureclient.net // https://crystalpvp.ru/future/ // https://github.com/PlutoSolutions/Future' target='_blank'>https://github.com/TwoNick/future-1.21.1 // https://futureclient.net // https://crystalpvp.ru/future/ // https://github.com/PlutoSolutions/Future</a></td></tr>
+<tr><td>FutureX</td><td><a href='https://github.com/RaptorClientDevelopment/futrexclientsource // https://github.com/chris2rich/FutureX' target='_blank'>https://github.com/RaptorClientDevelopment/futrexclientsource // https://github.com/chris2rich/FutureX</a></td></tr>
+<tr><td>Fyra</td><td><a href='https://github.com/Sxmurai/fyra' target='_blank'>https://github.com/Sxmurai/fyra</a></td></tr>
+<tr><td>Galacticc</td><td><a href='https://github.com/Kopamed/Galacticc' target='_blank'>https://github.com/Kopamed/Galacticc</a></td></tr>
+<tr><td>Galactie</td><td><a href='https://github.com/maxgamesNL/Galactite' target='_blank'>https://github.com/maxgamesNL/Galactite</a></td></tr>
+<tr><td>GameSense / GS</td><td><a href='https://github.com/IUDevman/gamesense-client' target='_blank'>https://github.com/IUDevman/gamesense-client</a></td></tr>
+<tr><td>GameSense++ / GameSensePlusPlus / GS++ / GSPlusPlus</td><td><a href='https://github.com/TechAle/gsplusplus' target='_blank'>https://github.com/TechAle/gsplusplus</a></td></tr>
+<tr><td>Gardenia</td><td><a href='https://github.com/ProfKambing/Gardenia' target='_blank'>https://github.com/ProfKambing/Gardenia</a></td></tr>
+<tr><td>Garuff</td><td><a href='https://github.com/desuboruto/Garuff' target='_blank'>https://github.com/desuboruto/Garuff</a></td></tr>
+<tr><td>GateClient</td><td><a href='https://github.com/TheF1xer/GateClient' target='_blank'>https://github.com/TheF1xer/GateClient</a></td></tr>
+<tr><td>GateClient 1.19.2</td><td><a href='https://github.com/TheF1xer/GateClient-1.19.2' target='_blank'>https://github.com/TheF1xer/GateClient-1.19.2</a></td></tr>
+<tr><td>Gavhack</td><td><a href='https://github.com/Gav06/gavhack-legacy' target='_blank'>https://github.com/Gav06/gavhack-legacy</a></td></tr>
+<tr><td>Gavhack+ / GavhackPlus</td><td><a href='https://github.com/Gav06/GavhackPlus' target='_blank'>https://github.com/Gav06/GavhackPlus</a></td></tr>
+<tr><td>GeraldHack</td><td><a href='https://github.com/GentlemanMC/Geraldhack-1.69.3-BUILDABLE-SRC // https://github.com/gerald0mc/Gerald-Hack-2.0' target='_blank'>https://github.com/GentlemanMC/Geraldhack-1.69.3-BUILDABLE-SRC // https://github.com/gerald0mc/Gerald-Hack-2.0</a></td></tr>
+<tr><td>GhostBleach</td><td><a href='https://github.com/cooldma/GhostBleach' target='_blank'>https://github.com/cooldma/GhostBleach</a></td></tr>
+<tr><td>GishCode</td><td><a href='https://github.com/GishReloaded/Gish-Code-1.12.2' target='_blank'>https://github.com/GishReloaded/Gish-Code-1.12.2</a></td></tr>
+<tr><td>Glacier</td><td><a href='https://github.com/quickdaffy/Glacier-Client' target='_blank'>https://github.com/quickdaffy/Glacier-Client</a></td></tr>
+<tr><td>Gladiator</td><td><a href='https://github.com/XZRC/gladiator-src' target='_blank'>https://github.com/XZRC/gladiator-src</a></td></tr>
+<tr><td>GlassClient</td><td><a href='https://github.com/GlassClient/GlassClient' target='_blank'>https://github.com/GlassClient/GlassClient</a></td></tr>
+<tr><td>Gloom</td><td><a href='https://cdn.discordapp.com/attachments/656809769813934090/665025336278384650/Gloom-Client_B3.2.jar' target='_blank'>https://cdn.discordapp.com/attachments/656809769813934090/665025336278384650/Gloom-Client_B3.2.jar</a></td></tr>
+<tr><td>Glorium</td><td><a href='https://workupload.com/file/PavBkZvqzcA' target='_blank'>https://workupload.com/file/PavBkZvqzcA</a></td></tr>
+<tr><td>GlowClient</td><td><a href='https://github.com/3000IQPlay/GlowClient-Fixed' target='_blank'>https://github.com/3000IQPlay/GlowClient-Fixed</a></td></tr>
+<tr><td>GlyphClient</td><td><a href='https://github.com/GlyphMC/client' target='_blank'>https://github.com/GlyphMC/client</a></td></tr>
+<tr><td>GodClient</td><td><a href='https://github.com/VortexHFM/God-Client' target='_blank'>https://github.com/VortexHFM/God-Client</a></td></tr>
+<tr><td>GoldGrinder</td><td><a href='https://github.com/WalmartSolutions/GoldGrinder-3.0' target='_blank'>https://github.com/WalmartSolutions/GoldGrinder-3.0</a></td></tr>
+<tr><td>GoonWare</td><td><a href='https://github.com/notRevhacks/Goonware-3.0.0-unratted-version-' target='_blank'>https://github.com/notRevhacks/Goonware-3.0.0-unratted-version-</a></td></tr>
+<tr><td>Gothaj</td><td><a href='https://github.com/ScRichard/GOTHAJ_RECODE_UNRELEASED // https://github.com/AllahSolutions/leaked-unobfuscated-gothaj // https://github.com/WalmartSolutions/Gothaj-3.0-Alpha' target='_blank'>https://github.com/ScRichard/GOTHAJ_RECODE_UNRELEASED // https://github.com/AllahSolutions/leaked-unobfuscated-gothaj // https://github.com/WalmartSolutions/Gothaj-3.0-Alpha</a></td></tr>
+<tr><td>Gothaj NextGen</td><td><a href='https://github.com/ScRichard/Gothaj-Next-Gen' target='_blank'>https://github.com/ScRichard/Gothaj-Next-Gen</a></td></tr>
+<tr><td>GrandLine</td><td><a href='https://github.com/WalmartSolutions/GrandLine-1.4.1' target='_blank'>https://github.com/WalmartSolutions/GrandLine-1.4.1</a></td></tr>
+<tr><td>GrassWare.win</td><td><a href='https://github.com/Zane2b2t/GrassWare.win' target='_blank'>https://github.com/Zane2b2t/GrassWare.win</a></td></tr>
+<tr><td>GrassWare.win Rewrite</td><td><a href='https://github.com/Zane2b2t/Grassware.win-rewrite // https://github.com/AllahLeaksHvH/Grasswarept3' target='_blank'>https://github.com/Zane2b2t/Grassware.win-rewrite // https://github.com/AllahLeaksHvH/Grasswarept3</a></td></tr>
+<tr><td>Grim</td><td><a href='https://github.com/TwoNick/grim // https://github.com/WalmartSolutions/Grim-1.2' target='_blank'>https://github.com/TwoNick/grim // https://github.com/WalmartSolutions/Grim-1.2</a></td></tr>
+<tr><td>Guinness</td><td><a href='https://github.com/unfidelity/guinness // https://github.com/The-Gopro336-Archive/Guinness-Deobf' target='_blank'>https://github.com/unfidelity/guinness // https://github.com/The-Gopro336-Archive/Guinness-Deobf</a></td></tr>
+<tr><td>GumTune</td><td><a href='https://github.com/RoseGoldIsntGay/GumTuneClient' target='_blank'>https://github.com/RoseGoldIsntGay/GumTuneClient</a></td></tr>
+<tr><td>HackHack</td><td><a href='https://github.com/3arthx/hack-hack // https://github.com/AzGOD-qwq/hackhack-' target='_blank'>https://github.com/3arthx/hack-hack // https://github.com/AzGOD-qwq/hackhack-</a></td></tr>
+<tr><td>HalalHack</td><td><a href='https://github.com/unfidelity/halal-hack' target='_blank'>https://github.com/unfidelity/halal-hack</a></td></tr>
+<tr><td>Hamster</td><td><a href='https://www.mediafire.com/file/pp5fi5umg3tzwyr/Hamster_Client_v1.jar/file' target='_blank'>https://www.mediafire.com/file/pp5fi5umg3tzwyr/Hamster_Client_v1.jar/file</a></td></tr>
+<tr><td>Hanabi</td><td><a href='https://github.com/AckerRun1337/Open-Hanabi-5.0' target='_blank'>https://github.com/AckerRun1337/Open-Hanabi-5.0</a></td></tr>
+<tr><td>HANClient</td><td><a href='https://github.com/hf2kxn/HAN-Client' target='_blank'>https://github.com/hf2kxn/HAN-Client</a></td></tr>
+<tr><td>Haru</td><td><a href='https://github.com/Cvrwed/Haru' target='_blank'>https://github.com/Cvrwed/Haru</a></td></tr>
+<tr><td>Harvest</td><td><a href='https://github.com/BedTrap/Harvest' target='_blank'>https://github.com/BedTrap/Harvest</a></td></tr>
+<tr><td>HayBale</td><td><a href='https://github.com/HayBaleClient/HayBale-Source' target='_blank'>https://github.com/HayBaleClient/HayBale-Source</a></td></tr>
+<tr><td>Hearse</td><td><a href='https://cdn.discordapp.com/attachments/685487646197415957/735112124912762960/Hearse_Hack_b-0.5_OBF.jar // https://cdn.discordapp.com/attachments/685487646197415957/735131873042497546/Hearse_0.5_cracked.jar' target='_blank'>https://cdn.discordapp.com/attachments/685487646197415957/735112124912762960/Hearse_Hack_b-0.5_OBF.jar // https://cdn.discordapp.com/attachments/685487646197415957/735131873042497546/Hearse_0.5_cracked.jar</a></td></tr>
+<tr><td>HeavenClient</td><td><a href='https://github.com/srcgod/HeavenClientCrack' target='_blank'>https://github.com/srcgod/HeavenClientCrack</a></td></tr>
+<tr><td>Helios</td><td><a href='https://github.com/HeliosMinecraft/HeliosClient // https://github.com/HeliosDevelopement/HeliosClient' target='_blank'>https://github.com/HeliosMinecraft/HeliosClient // https://github.com/HeliosDevelopement/HeliosClient</a></td></tr>
+<tr><td>HemHacks</td><td><a href='https://github.com/Gri11edHam/HamHacks' target='_blank'>https://github.com/Gri11edHam/HamHacks</a></td></tr>
+<tr><td>Hephaestus</td><td><a href='https://github.com/Zane2b2t/Hephaestus // https://github.com/Frontear/HephaestusClient' target='_blank'>https://github.com/Zane2b2t/Hephaestus // https://github.com/Frontear/HephaestusClient</a></td></tr>
+<tr><td>Hiassi.su</td><td><a href='https://github.com/3000IQPlay/hiassi.su' target='_blank'>https://github.com/3000IQPlay/hiassi.su</a></td></tr>
+<tr><td>HilariousWare</td><td><a href='https://github.com/SirHilarious/HilariousWare' target='_blank'>https://github.com/SirHilarious/HilariousWare</a></td></tr>
+<tr><td>HitlerHax</td><td><a href='https://github.com/Yaimsputnik5/HitlerHax-Leak' target='_blank'>https://github.com/Yaimsputnik5/HitlerHax-Leak</a></td></tr>
+<tr><td>Hitori</td><td><a href='https://github.com/cattyngmd/HitoriClient // https://github.com/PlutoSolutions/Hitori-Client' target='_blank'>https://github.com/cattyngmd/HitoriClient // https://github.com/PlutoSolutions/Hitori-Client</a></td></tr>
+<tr><td>Hmxix</td><td><a href='https://github.com/cubk/HmxixClient-opensource' target='_blank'>https://github.com/cubk/HmxixClient-opensource</a></td></tr>
+<tr><td>HockeyWare</td><td><a href='https://github.com/Catuquei/hockeyware' target='_blank'>https://github.com/Catuquei/hockeyware</a></td></tr>
+<tr><td>HOPE</td><td><a href='https://github.com/TashCat/HOPE' target='_blank'>https://github.com/TashCat/HOPE</a></td></tr>
+<tr><td>Horion</td><td><a href='https://github.com/horionclient/Horion' target='_blank'>https://github.com/horionclient/Horion</a></td></tr>
+<tr><td>Houdini.cc</td><td><a href='https://github.com/Intel-i80486-DX4/houdini.cc // https://github.com/Versues/Houdini.cc-1.0.4' target='_blank'>https://github.com/Intel-i80486-DX4/houdini.cc // https://github.com/Versues/Houdini.cc-1.0.4</a></td></tr>
+<tr><td>HT+ Rewrite / HTPlus Rewrite</td><td><a href='https://github.com/HT-Rewrite/Overruling-Client' target='_blank'>https://github.com/HT-Rewrite/Overruling-Client</a></td></tr>
+<tr><td>HuqaloV</td><td><a href='https://github.com/ferderplays/HuqaloV' target='_blank'>https://github.com/ferderplays/HuqaloV</a></td></tr>
+<tr><td>Huzuni</td><td><a href='https://github.com/XxlunimexX/Huzuni-1.11' target='_blank'>https://github.com/XxlunimexX/Huzuni-1.11</a></td></tr>
+<tr><td>Huzuni+2 / HuzuniPlusTwo</td><td><a href='https://github.com/Huzuniplus/Huzuniplus2' target='_blank'>https://github.com/Huzuniplus/Huzuniplus2</a></td></tr>
+<tr><td>Hydra</td><td><a href='https://hydraclient.com' target='_blank'>https://hydraclient.com</a></td></tr>
+<tr><td>HydraWare</td><td><a href='https://github.com/aglostic/hydraware-cracked' target='_blank'>https://github.com/aglostic/hydraware-cracked</a></td></tr>
+<tr><td>HydraWare Plus / HydraWare+</td><td><a href='https://github.com/SkidFxcte/Hydrawareplus-cracked' target='_blank'>https://github.com/SkidFxcte/Hydrawareplus-cracked</a></td></tr>
+<tr><td>Hydrogen</td><td><a href='https://github.com/zPeanut/Hydrogen' target='_blank'>https://github.com/zPeanut/Hydrogen</a></td></tr>
+<tr><td>HyghLand.cc</td><td><a href='https://github.com/chris2rich/highland.cc' target='_blank'>https://github.com/chris2rich/highland.cc</a></td></tr>
+<tr><td>HyperLethal</td><td><a href='https://github.com/500thousandthenibounceit/Hyperlethal2 // https://github.com/3arthx/Hyper-Lethal' target='_blank'>https://github.com/500thousandthenibounceit/Hyperlethal2 // https://github.com/3arthx/Hyper-Lethal</a></td></tr>
+<tr><td>Hypnotic</td><td><a href='https://github.com/Hypnotic-Development/Hypnotic-Client' target='_blank'>https://github.com/Hypnotic-Development/Hypnotic-Client</a></td></tr>
+<tr><td>ChachooxWare</td><td><a href='https://github.com/master7720/ChachooxWare-1.6-release-obf-reupload' target='_blank'>https://github.com/master7720/ChachooxWare-1.6-release-obf-reupload</a></td></tr>
+<tr><td>Charon.eu</td><td><a href='https://github.com/oyzipfile/chaaron.eu' target='_blank'>https://github.com/oyzipfile/chaaron.eu</a></td></tr>
+<tr><td>CheatWare</td><td><a href='https://github.com/ZeroZipp/Cheatware' target='_blank'>https://github.com/ZeroZipp/Cheatware</a></td></tr>
+<tr><td>Cherry</td><td><a href='https://github.com/ma4squ3ke/cherry-leak' target='_blank'>https://github.com/ma4squ3ke/cherry-leak</a></td></tr>
+<tr><td>ChickenWare</td><td><a href='https://github.com/urkkiz225/ChickenWare' target='_blank'>https://github.com/urkkiz225/ChickenWare</a></td></tr>
+<tr><td>ChickenWings.cc</td><td><a href='https://github.com/JacobTheIdiot/ChickenWings.cc' target='_blank'>https://github.com/JacobTheIdiot/ChickenWings.cc</a></td></tr>
+<tr><td>ChipsHack</td><td><a href='https://github.com/CumHax/ChipsHack' target='_blank'>https://github.com/CumHax/ChipsHack</a></td></tr>
+<tr><td>ChucKHack</td><td><a href='https://github.com/chucK9b9t/chuck-hack-beta' target='_blank'>https://github.com/chucK9b9t/chuck-hack-beta</a></td></tr>
+<tr><td>ChungusWare</td><td><a href='https://github.com/bigratenthusiast/chungusware' target='_blank'>https://github.com/bigratenthusiast/chungusware</a></td></tr>
+<tr><td>IceHack</td><td><a href='https://github.com/Intel-i80486-DX4/IceHack-B1.5 // https://github.com/HausemasterIssue/ICEHack-b1-SRC // https://github.com/WarriorCrystal/ICEHack-0.5-Source' target='_blank'>https://github.com/Intel-i80486-DX4/IceHack-B1.5 // https://github.com/HausemasterIssue/ICEHack-b1-SRC // https://github.com/WarriorCrystal/ICEHack-0.5-Source</a></td></tr>
+<tr><td>Ikea</td><td><a href='https://github.com/Nooniboi/Public-Ikea' target='_blank'>https://github.com/Nooniboi/Public-Ikea</a></td></tr>
+<tr><td>ILClient</td><td><a href='https://github.com/ssllllll/IL-Client-0.2 // https://github.com/Sxmurai/IL-Client-0.2-decompiled' target='_blank'>https://github.com/ssllllll/IL-Client-0.2 // https://github.com/Sxmurai/IL-Client-0.2-decompiled</a></td></tr>
+<tr><td>Impact</td><td><a href='https://impactclient.net' target='_blank'>https://impactclient.net</a></td></tr>
+<tr><td>Impact+ / ImpactPlus</td><td><a href='https://github.com/unfidelity/impact-plus' target='_blank'>https://github.com/unfidelity/impact-plus</a></td></tr>
+<tr><td>ImpHack / ImpHax</td><td><a href='https://github.com/SaberAspect/ImpHax' target='_blank'>https://github.com/SaberAspect/ImpHax</a></td></tr>
+<tr><td>Incoming</td><td><a href='https://github.com/KillAura7170/Incoming-nix' target='_blank'>https://github.com/KillAura7170/Incoming-nix</a></td></tr>
+<tr><td>Indium.cc</td><td><a href='https://github.com/OfficialMohalk/Indium.cc' target='_blank'>https://github.com/OfficialMohalk/Indium.cc</a></td></tr>
+<tr><td>Inertia</td><td><a href='https://inertiaclient.com' target='_blank'>https://inertiaclient.com</a></td></tr>
+<tr><td>Inertial</td><td><a href='https://github.com/EclipseAFK/Inertial-Client-source-code' target='_blank'>https://github.com/EclipseAFK/Inertial-Client-source-code</a></td></tr>
+<tr><td>Inferno</td><td><a href='https://github.com/Sxmurai/inferno-old' target='_blank'>https://github.com/Sxmurai/inferno-old</a></td></tr>
+<tr><td>Infinity</td><td><a href='https://github.com/2young2care/silver-meme' target='_blank'>https://github.com/2young2care/silver-meme</a></td></tr>
+<tr><td>Infinity</td><td><a href='https://github.com/Frontear/Infinity' target='_blank'>https://github.com/Frontear/Infinity</a></td></tr>
+<tr><td>InfnityLoop</td><td><a href='https://github.com/KuroHere/InfinityLoop' target='_blank'>https://github.com/KuroHere/InfinityLoop</a></td></tr>
+<tr><td>IngrosWare</td><td><a href='https://github.com/bishopsixx/ingrosware // https://github.com/colorblindness/IngrosWare' target='_blank'>https://github.com/bishopsixx/ingrosware // https://github.com/colorblindness/IngrosWare</a></td></tr>
+<tr><td>Invicta</td><td><a href='https://github.com/2b2t-cc/Invicta' target='_blank'>https://github.com/2b2t-cc/Invicta</a></td></tr>
+<tr><td>InvincibilityHack</td><td><a href='https://github.com/Coderx-Gamer/invincibility-hack' target='_blank'>https://github.com/Coderx-Gamer/invincibility-hack</a></td></tr>
+<tr><td>ISUWare</td><td><a href='https://github.com/XG2025-Akaishin/ISU-Ware' target='_blank'>https://github.com/XG2025-Akaishin/ISU-Ware</a></td></tr>
+<tr><td>iSync</td><td><a href='https://intent.store' target='_blank'>https://intent.store</a></td></tr>
+<tr><td>Jackey</td><td><a href='https://github.com/ImCzf233/Jackey-opensource' target='_blank'>https://github.com/ImCzf233/Jackey-opensource</a></td></tr>
+<tr><td>JebHack</td><td><a href='https://github.com/fan4145/jabhak-src' target='_blank'>https://github.com/fan4145/jabhak-src</a></td></tr>
+<tr><td>JesusHack</td><td><a href='https://github.com/Vitalasy/jesushack' target='_blank'>https://github.com/Vitalasy/jesushack</a></td></tr>
+<tr><td>JexClient</td><td><a href='https://github.com/DustinRepo/JexClient' target='_blank'>https://github.com/DustinRepo/JexClient</a></td></tr>
+<tr><td>JigokuSense</td><td><a href='https://github.com/noatmc/jigokusense-leak' target='_blank'>https://github.com/noatmc/jigokusense-leak</a></td></tr>
+<tr><td>Jigsaw</td><td><a href='https://www.jigsawclient.net' target='_blank'>https://www.jigsawclient.net</a></td></tr>
+<tr><td>JorgitoHack</td><td><a href='https://github.com/BebSxy/JorgitoHack' target='_blank'>https://github.com/BebSxy/JorgitoHack</a></td></tr>
+<tr><td>JuiceClient</td><td><a href='https://github.com/ClientPlayground/Juice-Client' target='_blank'>https://github.com/ClientPlayground/Juice-Client</a></td></tr>
+<tr><td>Juul</td><td><a href='https://github.com/jeremypelletier/juul-unlicensed // https://github.com/Endemic1337/Juul // https://intent.store' target='_blank'>https://github.com/jeremypelletier/juul-unlicensed // https://github.com/Endemic1337/Juul // https://intent.store</a></td></tr>
+<tr><td>KAMI</td><td><a href='https://github.com/zeroeightysix/KAMI' target='_blank'>https://github.com/zeroeightysix/KAMI</a></td></tr>
+<tr><td>Kami++ / KamiPlusPlus</td><td><a href='https://github.com/GentlemanMC/Kamipp' target='_blank'>https://github.com/GentlemanMC/Kamipp</a></td></tr>
+<tr><td>Kami5 / KamiFive</td><td><a href='https://github.com/DriftyDev/CLEAN_Kami5-1.8-BUILDABLE_SRC' target='_blank'>https://github.com/DriftyDev/CLEAN_Kami5-1.8-BUILDABLE_SRC</a></td></tr>
+<tr><td>Kamiblue</td><td><a href='https://github.com/kami-blue/client' target='_blank'>https://github.com/kami-blue/client</a></td></tr>
+<tr><td>Kamiblue+ / KamibluePlus</td><td><a href='https://github.com/Auza2008/KamibluePlus' target='_blank'>https://github.com/Auza2008/KamibluePlus</a></td></tr>
+<tr><td>Kana</td><td><a href='https://github.com/Cypphi/kana-client' target='_blank'>https://github.com/Cypphi/kana-client</a></td></tr>
+<tr><td>Kaotik</td><td><a href='https://github.com/VenuzWeeb/Kaotik // https://github.com/LTHLeaks/Kaotik-1.3.5-Leak' target='_blank'>https://github.com/VenuzWeeb/Kaotik // https://github.com/LTHLeaks/Kaotik-1.3.5-Leak</a></td></tr>
+<tr><td>Kappa</td><td><a href='https://github.com/slmpc/kappa-client' target='_blank'>https://github.com/slmpc/kappa-client</a></td></tr>
+<tr><td>Kapuncion</td><td><a href='https://github.com/Dark-Developments/Kapuncino-Client' target='_blank'>https://github.com/Dark-Developments/Kapuncino-Client</a></td></tr>
+<tr><td>Kawaii</td><td><a href='https://intent.store' target='_blank'>https://intent.store</a></td></tr>
+<tr><td>KBPW</td><td><a href='https://github.com/KBPW-Dev/kbpw-util' target='_blank'>https://github.com/KBPW-Dev/kbpw-util</a></td></tr>
+<tr><td>KeKWClient</td><td><a href='https://github.com/VortexHFM/KekW-Client' target='_blank'>https://github.com/VortexHFM/KekW-Client</a></td></tr>
+<tr><td>Kemmy.cc</td><td><a href='https://github.com/PlutoSolutions/kemmy.cc' target='_blank'>https://github.com/PlutoSolutions/kemmy.cc</a></td></tr>
+<tr><td>Ket</td><td><a href='https://github.com/oyzipfile/ket-public' target='_blank'>https://github.com/oyzipfile/ket-public</a></td></tr>
+<tr><td>Ketamine</td><td><a href='https://intent.store' target='_blank'>https://intent.store</a></td></tr>
+<tr><td>KettleHack</td><td><a href='https://github.com/FadeRainbow/Kettle-Hack' target='_blank'>https://github.com/FadeRainbow/Kettle-Hack</a></td></tr>
+<tr><td>KevinClient</td><td><a href='https://github.com/RMCQAZ/KevinClient-1.12 // https://github.com/RMCQAZ/KevinClient' target='_blank'>https://github.com/RMCQAZ/KevinClient-1.12 // https://github.com/RMCQAZ/KevinClient</a></td></tr>
+<tr><td>KiwiClient</td><td><a href='https://github.com/TangyKiwi/KiwiClient' target='_blank'>https://github.com/TangyKiwi/KiwiClient</a></td></tr>
+<tr><td>KlaydixWare</td><td><a href='https://github.com/Plintor/klaydixware-clean' target='_blank'>https://github.com/Plintor/klaydixware-clean</a></td></tr>
+<tr><td>KnightHack</td><td><a href='https://github.com/RayyanStudios/KnightHack' target='_blank'>https://github.com/RayyanStudios/KnightHack</a></td></tr>
+<tr><td>Koks</td><td><a href='https://github.com/Schummel-Software/Koks-v3 // https://outuby.space/schummel-software/ // https://github.com/000000000-1/koks-client' target='_blank'>https://github.com/Schummel-Software/Koks-v3 // https://outuby.space/schummel-software/ // https://github.com/000000000-1/koks-client</a></td></tr>
+<tr><td>Konas</td><td><a href='https://github.com/threevt/Phobos-Rewrite // https://crystalpvp.ru/konas/ // https://github.com/PlutoSolutions/KonasEnhanced' target='_blank'>https://github.com/threevt/Phobos-Rewrite // https://crystalpvp.ru/konas/ // https://github.com/PlutoSolutions/KonasEnhanced</a></td></tr>
+<tr><td>Konc</td><td><a href='https://cdn.discordapp.com/attachments/673542685751246850/691252529954160670/KONC_2.1.1.jar // https://cdn.discordapp.com/attachments/690881210016202773/736565503740477563/KONC-Client-master-v3.2-release-deobf.jar.src.zip' target='_blank'>https://cdn.discordapp.com/attachments/673542685751246850/691252529954160670/KONC_2.1.1.jar // https://cdn.discordapp.com/attachments/690881210016202773/736565503740477563/KONC-Client-master-v3.2-release-deobf.jar.src.zip</a></td></tr>
+<tr><td>Korppu</td><td><a href='https://github.com/0mlml/korppu' target='_blank'>https://github.com/0mlml/korppu</a></td></tr>
+<tr><td>Kull</td><td><a href='https://github.com/Sxmurai/kull' target='_blank'>https://github.com/Sxmurai/kull</a></td></tr>
+<tr><td>Kura</td><td><a href='https://github.com/dyzjct/Kura-Public' target='_blank'>https://github.com/dyzjct/Kura-Public</a></td></tr>
+<tr><td>Kura NextGen</td><td><a href='https://github.com/ApertureStatic/KuraNG-Public-Edition' target='_blank'>https://github.com/ApertureStatic/KuraNG-Public-Edition</a></td></tr>
+<tr><td>KuroHack</td><td><a href='https://github.com/KuroHere/kurohack // https://github.com/master7720/KuroHack-2.0.8-release-deobf' target='_blank'>https://github.com/KuroHere/kurohack // https://github.com/master7720/KuroHack-2.0.8-release-deobf</a></td></tr>
+<tr><td>KVN</td><td><a href='https://github.com/WalmartSolutions/KVN-b4.1.0' target='_blank'>https://github.com/WalmartSolutions/KVN-b4.1.0</a></td></tr>
+<tr><td>Kyino</td><td><a href='https://github.com/WalmartSolutions/Kyino' target='_blank'>https://github.com/WalmartSolutions/Kyino</a></td></tr>
+<tr><td>Lambda</td><td><a href='https://github.com/lambda-client/lambda' target='_blank'>https://github.com/lambda-client/lambda</a></td></tr>
+<tr><td>Lambda+ / LambdaPlus</td><td><a href='https://github.com/DigimaticxHius/Lambda-Plus' target='_blank'>https://github.com/DigimaticxHius/Lambda-Plus</a></td></tr>
+<tr><td>LanderClient</td><td><a href='https://github.com/Dimples-1337/LanderClient // https://github.com/GAQPanda/LanderClient' target='_blank'>https://github.com/Dimples-1337/LanderClient // https://github.com/GAQPanda/LanderClient</a></td></tr>
+<tr><td>Lantern</td><td><a href='https://github.com/PlusPlusMC/Lantern' target='_blank'>https://github.com/PlusPlusMC/Lantern</a></td></tr>
+<tr><td>LavaHack / Kisman.cc</td><td><a href='https://github.com/TheKisDevs/LavaHack-Forge // https://github.com/TheKisDevs/LavaHack-Public' target='_blank'>https://github.com/TheKisDevs/LavaHack-Forge // https://github.com/TheKisDevs/LavaHack-Public</a></td></tr>
+<tr><td>LBounce</td><td><a href='https://github.com/AFterNode/LBounce' target='_blank'>https://github.com/AFterNode/LBounce</a></td></tr>
+<tr><td>Leave</td><td><a href='https://github.com/ImCzf233/LeaveOld-opensource' target='_blank'>https://github.com/ImCzf233/LeaveOld-opensource</a></td></tr>
+<tr><td>Legacy</td><td><a href='https://github.com/CatsAreGood1337/LegacyClient-1.2.5-src' target='_blank'>https://github.com/CatsAreGood1337/LegacyClient-1.2.5-src</a></td></tr>
+<tr><td>Lemon</td><td><a href='https://github.com/dada994a/lemon-v0.0.8Source // https://github.com/MikuSoCute/Lemon-public' target='_blank'>https://github.com/dada994a/lemon-v0.0.8Source // https://github.com/MikuSoCute/Lemon-public</a></td></tr>
+<tr><td>Lemonade</td><td><a href='https://github.com/dada994a/LEMONADE-LEAK' target='_blank'>https://github.com/dada994a/LEMONADE-LEAK</a></td></tr>
+<tr><td>Lepton</td><td><a href='https://github.com/MatrixAura/Lepton-Client' target='_blank'>https://github.com/MatrixAura/Lepton-Client</a></td></tr>
+<tr><td>LeuxBackdoor</td><td><a href='https://github.com/accessmodifier364/LeuxBackdoor' target='_blank'>https://github.com/accessmodifier364/LeuxBackdoor</a></td></tr>
+<tr><td>LifeLine</td><td><a href='https://github.com/ImCzf233/Lifeline-opensource // https://github.com/ImCzf233/lifeline-2.0-opensource' target='_blank'>https://github.com/ImCzf233/Lifeline-opensource // https://github.com/ImCzf233/lifeline-2.0-opensource</a></td></tr>
+<tr><td>Lime</td><td><a href='https://cdn.discordapp.com/attachments/1045307569482244157/1067140707342635008/Lime.zip' target='_blank'>https://cdn.discordapp.com/attachments/1045307569482244157/1067140707342635008/Lime.zip</a></td></tr>
+<tr><td>LiquidBounce</td><td><a href='https://github.com/CCBlueX/LiquidBounce' target='_blank'>https://github.com/CCBlueX/LiquidBounce</a></td></tr>
+<tr><td>LiquidBounce+ / LiquidBouncePlus</td><td><a href='https://github.com/WYSI-Foundation/LiquidBouncePlus' target='_blank'>https://github.com/WYSI-Foundation/LiquidBouncePlus</a></td></tr>
+<tr><td>LiquidBounce+ Reborn / LiquidBouncePlus Reborn</td><td><a href='https://github.com/liquidbounceplusreborn/LiquidbouncePlus-Reborn' target='_blank'>https://github.com/liquidbounceplusreborn/LiquidbouncePlus-Reborn</a></td></tr>
+<tr><td>LiquidBounce++ / LiquidBouncePlusPlus</td><td><a href='https://github.com/TheMosKau/LiquidBouncePlusPlus' target='_blank'>https://github.com/TheMosKau/LiquidBouncePlusPlus</a></td></tr>
+<tr><td>LiquidCat</td><td><a href='https://github.com/CatsDevelopment/LiquidCat' target='_blank'>https://github.com/CatsDevelopment/LiquidCat</a></td></tr>
+<tr><td>Liquido</td><td><a href='https://github.com/SuperCraftAlex/liquido' target='_blank'>https://github.com/SuperCraftAlex/liquido</a></td></tr>
+<tr><td>LiquidShadow</td><td><a href='https://github.com/woodteam/LiquidShadow' target='_blank'>https://github.com/woodteam/LiquidShadow</a></td></tr>
+<tr><td>LiquidX</td><td><a href='https://github.com/PrahXZ/LiquidX' target='_blank'>https://github.com/PrahXZ/LiquidX</a></td></tr>
+<tr><td>Lirium</td><td><a href='https://github.com/000000000-1/Lirium' target='_blank'>https://github.com/000000000-1/Lirium</a></td></tr>
+<tr><td>ListedHack</td><td><a href='https://github.com/chris2rich/ListedHack' target='_blank'>https://github.com/chris2rich/ListedHack</a></td></tr>
+<tr><td>Litka</td><td><a href='https://github.com/WalmartSolutions/Litka' target='_blank'>https://github.com/WalmartSolutions/Litka</a></td></tr>
+<tr><td>LiveSense</td><td><a href='https://github.com/WMSGaming/LiveSense' target='_blank'>https://github.com/WMSGaming/LiveSense</a></td></tr>
+<tr><td>LmaoBox</td><td><a href='https://github.com/Vimer5410/LmaoBox-leak' target='_blank'>https://github.com/Vimer5410/LmaoBox-leak</a></td></tr>
+<tr><td>LoseBypass</td><td><a href='https://losebypass.com // https://github.com/deadLORD135/losebypass-reup' target='_blank'>https://losebypass.com // https://github.com/deadLORD135/losebypass-reup</a></td></tr>
+<tr><td>LoustHack</td><td><a href='https://github.com/tRollaURa/LoustHackCracked' target='_blank'>https://github.com/tRollaURa/LoustHackCracked</a></td></tr>
+<tr><td>Love</td><td><a href='https://github.com/chris2rich/LoveClient' target='_blank'>https://github.com/chris2rich/LoveClient</a></td></tr>
+<tr><td>Lover</td><td><a href='https://github.com/DoNhutTann/Lover-public // https://github.com/KgDW/Lover-decomp-buildable' target='_blank'>https://github.com/DoNhutTann/Lover-public // https://github.com/KgDW/Lover-decomp-buildable</a></td></tr>
+<tr><td>Luchadora</td><td><a href='https://github.com/x4e/Luchadora' target='_blank'>https://github.com/x4e/Luchadora</a></td></tr>
+<tr><td>LuckyClient</td><td><a href='https://github.com/ImCzf233/LuckyClient-opensource' target='_blank'>https://github.com/ImCzf233/LuckyClient-opensource</a></td></tr>
+<tr><td>LuigiHack / Alice</td><td><a href='https://github.com/3000IQPlay/LuigiHacks-deobf' target='_blank'>https://github.com/3000IQPlay/LuigiHacks-deobf</a></td></tr>
+<tr><td>LumaHack</td><td><a href='https://github.com/cocoapc911/LumaHack-0.0.7-Leaked-by-cocoapc911' target='_blank'>https://github.com/cocoapc911/LumaHack-0.0.7-Leaked-by-cocoapc911</a></td></tr>
+<tr><td>LumeMinus / Luma-</td><td><a href='https://github.com/3000IQPlay/LumaMinus-leaked' target='_blank'>https://github.com/3000IQPlay/LumaMinus-leaked</a></td></tr>
+<tr><td>Lumen</td><td><a href='https://github.com/olliem5/lumen' target='_blank'>https://github.com/olliem5/lumen</a></td></tr>
+<tr><td>Lumina Client</td><td><a href='https://github.com/LuminaDevelopment/LuminaClient' target='_blank'>https://github.com/LuminaDevelopment/LuminaClient</a></td></tr>
+<tr><td>Luna</td><td><a href='https://github.com/NoseFlicker/Luna-master' target='_blank'>https://github.com/NoseFlicker/Luna-master</a></td></tr>
+<tr><td>LuneClient</td><td><a href='https://github.com/SuperSkidder/LuneClient' target='_blank'>https://github.com/SuperSkidder/LuneClient</a></td></tr>
+<tr><td>Lycoris</td><td><a href='https://github.com/VVriter/Lycoris-client-leak' target='_blank'>https://github.com/VVriter/Lycoris-client-leak</a></td></tr>
+<tr><td>Lycoris</td><td><a href='https://github.com/GSCSDSUN/Flower-Team-OpenSource // https://github.com/LostAttractor/Lycoris-Client // https://github.com/LostAttractor/Lycoris-Loader' target='_blank'>https://github.com/GSCSDSUN/Flower-Team-OpenSource // https://github.com/LostAttractor/Lycoris-Client // https://github.com/LostAttractor/Lycoris-Loader</a></td></tr>
+<tr><td>Lynx</td><td><a href='https://github.com/Based-devs/Lynx' target='_blank'>https://github.com/Based-devs/Lynx</a></td></tr>
+<tr><td>M3dC3t / MadCat</td><td><a href='https://github.com/redvx/M3dC3t // https://github.com/KgDW/MadCat-deobf-decomp-buildable // https://github.com/3000IQPlay/M3dC3t-leaked // https://github.com/iM4dCat/M3dC3tV2' target='_blank'>https://github.com/redvx/M3dC3t // https://github.com/KgDW/MadCat-deobf-decomp-buildable // https://github.com/3000IQPlay/M3dC3t-leaked // https://github.com/iM4dCat/M3dC3tV2</a></td></tr>
+<tr><td>MacHack</td><td><a href='https://github.com/ChiquitaV2/MacHack' target='_blank'>https://github.com/ChiquitaV2/MacHack</a></td></tr>
+<tr><td>MachineLite</td><td><a href='https://github.com/YOSSHIXD/MachineLite' target='_blank'>https://github.com/YOSSHIXD/MachineLite</a></td></tr>
+<tr><td>MackMod</td><td><a href='https://github.com/HausemasterIssue/MackMod' target='_blank'>https://github.com/HausemasterIssue/MackMod</a></td></tr>
+<tr><td>MahanWare</td><td><a href='https://github.com/OldReposRIP/Mahan-Ware-b9-Leak' target='_blank'>https://github.com/OldReposRIP/Mahan-Ware-b9-Leak</a></td></tr>
+<tr><td>Manjaro</td><td><a href='https://github.com/tuskypaster/Manjaro-Client' target='_blank'>https://github.com/tuskypaster/Manjaro-Client</a></td></tr>
+<tr><td>MarlowClient</td><td><a href='https://github.com/MarlowDevelopment/MarlowClient' target='_blank'>https://github.com/MarlowDevelopment/MarlowClient</a></td></tr>
+<tr><td>MasterMind</td><td><a href='https://github.com/Snowiiii/MasterMind' target='_blank'>https://github.com/Snowiiii/MasterMind</a></td></tr>
+<tr><td>MatHax</td><td><a href='https://github.com/Volcan4436/Mathax-2.0-Unreleased-Dev-Source // https://github.com/LordDoom-eng/MatHax-Client-Legacy // https://github.com/antonchu2006/MatHaxClient // https://github.com/CoolLucy12321/Installer' target='_blank'>https://github.com/Volcan4436/Mathax-2.0-Unreleased-Dev-Source // https://github.com/LordDoom-eng/MatHax-Client-Legacy // https://github.com/antonchu2006/MatHaxClient // https://github.com/CoolLucy12321/Installer</a></td></tr>
+<tr><td>MawouteClient</td><td><a href='https://github.com/VenuzWeeb/mawoutehack' target='_blank'>https://github.com/VenuzWeeb/mawoutehack</a></td></tr>
+<tr><td>MayhemClient</td><td><a href='https://github.com/martin010919/Mayhem_client' target='_blank'>https://github.com/martin010919/Mayhem_client</a></td></tr>
+<tr><td>MaywrWare</td><td><a href='https://github.com/maywr/maywrware' target='_blank'>https://github.com/maywr/maywrware</a></td></tr>
+<tr><td>McDonald</td><td><a href='https://github.com/MOMIN5/McDonald-1.1.7-Cracked-and-SRC' target='_blank'>https://github.com/MOMIN5/McDonald-1.1.7-Cracked-and-SRC</a></td></tr>
+<tr><td>MClient++ / MClientPlusPlus</td><td><a href='https://github.com/MClientMCPE/MClientPlusPlus' target='_blank'>https://github.com/MClientMCPE/MClientPlusPlus</a></td></tr>
+<tr><td>MCPClient</td><td><a href='https://github.com/wrrulosdev/mcpclient' target='_blank'>https://github.com/wrrulosdev/mcpclient</a></td></tr>
+<tr><td>MedusaWare</td><td><a href='https://github.com/4wl/MedusaWare' target='_blank'>https://github.com/4wl/MedusaWare</a></td></tr>
+<tr><td>Melon</td><td><a href='https://github.com/dyyibang/MelonRewrite-OpenSourceCode // https://github.com/KgDW/Melon-Fabric-leaks // https://github.com/KgDW/Melon-leaks' target='_blank'>https://github.com/dyyibang/MelonRewrite-OpenSourceCode // https://github.com/KgDW/Melon-Fabric-leaks // https://github.com/KgDW/Melon-leaks</a></td></tr>
+<tr><td>MelodySky</td><td><a href='https://github.com/sora-kawaii/MelodySky' target='_blank'>https://github.com/sora-kawaii/MelodySky</a></td></tr>
+<tr><td>MelonHack+ / MelonHackPlus</td><td><a href='https://github.com/chris2rich/melonhack-plus' target='_blank'>https://github.com/chris2rich/melonhack-plus</a></td></tr>
+<tr><td>MemeWare</td><td><a href='https://github.com/whosthatperson/MemeWare...-one-last-time' target='_blank'>https://github.com/whosthatperson/MemeWare...-one-last-time</a></td></tr>
+<tr><td>MeowHack</td><td><a href='https://github.com/NotKronos/meowhack' target='_blank'>https://github.com/NotKronos/meowhack</a></td></tr>
+<tr><td>Mercury</td><td><a href='https://github.com/DarkiBoi/Mercury-Client // https://github.com/minecraft-clients/Mercury-Client-BUILDABLE_SRC' target='_blank'>https://github.com/DarkiBoi/Mercury-Client // https://github.com/minecraft-clients/Mercury-Client-BUILDABLE_SRC</a></td></tr>
+<tr><td>Mercury Pro</td><td><a href='https://github.com/2young2care/MercuryClientPro0.3' target='_blank'>https://github.com/2young2care/MercuryClientPro0.3</a></td></tr>
+<tr><td>Meteor</td><td><a href='https://github.com/MeteorDevelopment/meteor-client // https://meteorclient.com' target='_blank'>https://github.com/MeteorDevelopment/meteor-client // https://meteorclient.com</a></td></tr>
+<tr><td>Meteor+ / MeteorPlus</td><td><a href='https://github.com/Nekiplay/MeteorPlus' target='_blank'>https://github.com/Nekiplay/MeteorPlus</a></td></tr>
+<tr><td>MethodClient</td><td><a href='https://github.com/danmaster2/MethodClient' target='_blank'>https://github.com/danmaster2/MethodClient</a></td></tr>
+<tr><td>MetteroV2</td><td><a href='https://github.com/1bytes-sb/MeteorV2' target='_blank'>https://github.com/1bytes-sb/MeteorV2</a></td></tr>
+<tr><td>Miku</td><td><a href='https://github.com/VenuzWeeb/Miku-BUILDEABLE-SRC' target='_blank'>https://github.com/VenuzWeeb/Miku-BUILDEABLE-SRC</a></td></tr>
+<tr><td>Minced</td><td><a href='https://github.com/tuskypaster/Minced-Free-Builds // https://github.com/noom1337/hacked-client-collection/tree/main/Minced%201.8%20(1.12.2)' target='_blank'>https://github.com/tuskypaster/Minced-Free-Builds // https://github.com/noom1337/hacked-client-collection/tree/main/Minced%201.8%20(1.12.2)</a></td></tr>
+<tr><td>Minced 1.20.4</td><td><a href='https://github.com/tuskev1ch/minced-1.20.4' target='_blank'>https://github.com/tuskev1ch/minced-1.20.4</a></td></tr>
+<tr><td>Mint</td><td><a href='https://github.com/RealzPrestige/Mint-Public' target='_blank'>https://github.com/RealzPrestige/Mint-Public</a></td></tr>
+<tr><td>MinusBounce</td><td><a href='https://github.com/MinusMC/MinusBounce' target='_blank'>https://github.com/MinusMC/MinusBounce</a></td></tr>
+<tr><td>Mio</td><td><a href='https://github.com/TwoNick/mio // https://mioclient.me/' target='_blank'>https://github.com/TwoNick/mio // https://mioclient.me/</a></td></tr>
+<tr><td>Mio (Free)</td><td><a href='https://github.com/asphyxia1337/mioclient-me' target='_blank'>https://github.com/asphyxia1337/mioclient-me</a></td></tr>
+<tr><td>Mirai</td><td><a href='https://github.com/kylerittenhause/mirai-client-decompiled' target='_blank'>https://github.com/kylerittenhause/mirai-client-decompiled</a></td></tr>
+<tr><td>Misericordia</td><td><a href='https://github.com/Halqq/misericordia-client' target='_blank'>https://github.com/Halqq/misericordia-client</a></td></tr>
+<tr><td>Moloch.su</td><td><a href='https://github.com/Canonball90/moloch.su // https://github.com/Woodz2706/moloch.su-FAT-leak- // https://github.com/VVriter/Moloch.su' target='_blank'>https://github.com/Canonball90/moloch.su // https://github.com/Woodz2706/moloch.su-FAT-leak- // https://github.com/VVriter/Moloch.su</a></td></tr>
+<tr><td>Momentum</td><td><a href='https://github.com/momentumdevelopment/momentum' target='_blank'>https://github.com/momentumdevelopment/momentum</a></td></tr>
+<tr><td>MoneyMod+2 / MoneyModPlusTwo</td><td><a href='https://github.com/PlutoSolutions/moneymodplus2-src' target='_blank'>https://github.com/PlutoSolutions/moneymodplus2-src</a></td></tr>
+<tr><td>MoneyMod+3 / MoneyModPlusThree</td><td><a href='https://github.com/mr-nv/moneymodplus3 // https://github.com/doctor-swag/moneymod-rewrite' target='_blank'>https://github.com/mr-nv/moneymodplus3 // https://github.com/doctor-swag/moneymod-rewrite</a></td></tr>
+<tr><td>MonkeClient</td><td><a href='https://github.com/TheDarkLach/monke-client' target='_blank'>https://github.com/TheDarkLach/monke-client</a></td></tr>
+<tr><td>MonkeyClient</td><td><a href='https://github.com/TheDarkLach/monke-client' target='_blank'>https://github.com/TheDarkLach/monke-client</a></td></tr>
+<tr><td>MonSoon</td><td><a href='https://intent.store // https://monsoon.wtf' target='_blank'>https://intent.store // https://monsoon.wtf</a></td></tr>
+<tr><td>Moon</td><td><a href='https://github.com/master7720/moon-leak' target='_blank'>https://github.com/master7720/moon-leak</a></td></tr>
+<tr><td>MoonGod</td><td><a href='https://github.com/redvx/MoonGod' target='_blank'>https://github.com/redvx/MoonGod</a></td></tr>
+<tr><td>Moonlight</td><td><a href='https://github.com/dada994a/moonlight-1.5.0' target='_blank'>https://github.com/dada994a/moonlight-1.5.0</a></td></tr>
+<tr><td>Moonlight</td><td><a href='https://github.com/Gav06/Moonlight' target='_blank'>https://github.com/Gav06/Moonlight</a></td></tr>
+<tr><td>Moonlight</td><td><a href='https://crystalpvp.ru/moonlight/ // https://github.com/PlutoSolutions/Moonlight' target='_blank'>https://crystalpvp.ru/moonlight/ // https://github.com/PlutoSolutions/Moonlight</a></td></tr>
+<tr><td>Moonlight (Meadows)</td><td><a href='https://github.com/kawaiizenbo/MoonlightMeadows' target='_blank'>https://github.com/kawaiizenbo/MoonlightMeadows</a></td></tr>
+<tr><td>Moonlight  1.8.9</td><td><a href='https://github.com/randomguy3725/MoonLight' target='_blank'>https://github.com/randomguy3725/MoonLight</a></td></tr>
+<tr><td>MoonWare</td><td><a href='https://github.com/tuskypaster/MoonWare-Client // https://github.com/noom1337/hacked-client-collection/tree/main/MoonWare%20(1.12.2)' target='_blank'>https://github.com/tuskypaster/MoonWare-Client // https://github.com/noom1337/hacked-client-collection/tree/main/MoonWare%20(1.12.2)</a></td></tr>
+<tr><td>Morgen.cc</td><td><a href='https://github.com/3000IQPlay/morgen.cc' target='_blank'>https://github.com/3000IQPlay/morgen.cc</a></td></tr>
+<tr><td>MotClient</td><td><a href='https://github.com/WarriorCrystal/MotClient-Buildeable-SRC' target='_blank'>https://github.com/WarriorCrystal/MotClient-Buildeable-SRC</a></td></tr>
+<tr><td>Mousse</td><td><a href='https://github.com/Snoworange420/Mousse' target='_blank'>https://github.com/Snoworange420/Mousse</a></td></tr>
+<tr><td>Muffin</td><td><a href='https://github.com/The-Gopro336-Archive/Muffin-SRC-BUILDABLE' target='_blank'>https://github.com/The-Gopro336-Archive/Muffin-SRC-BUILDABLE</a></td></tr>
+<tr><td>Mushroom</td><td><a href='https://github.com/WalmartSolutions/Mushroom-SRC' target='_blank'>https://github.com/WalmartSolutions/Mushroom-SRC</a></td></tr>
+<tr><td>Myau</td><td><a href='github.com/safecracks/myau/myau_july-2024_fishcracked.jar' target='_blank'>github.com/safecracks/myau/myau_july-2024_fishcracked.jar</a></td></tr>
+<tr><td>MythClient</td><td><a href='https://github.com/LocalChineseMan/MythClient' target='_blank'>https://github.com/LocalChineseMan/MythClient</a></td></tr>
+<tr><td>Nadia</td><td><a href='https://github.com/NotHarper/Nadia' target='_blank'>https://github.com/NotHarper/Nadia</a></td></tr>
+<tr><td>Namida</td><td><a href='https://github.com/Jebacka/Namida/tree/untagged-f294145a5d25e0a23317' target='_blank'>https://github.com/Jebacka/Namida/tree/untagged-f294145a5d25e0a23317</a></td></tr>
+<tr><td>NanoSense</td><td><a href='https://github.com/Mic2333/NanoSense' target='_blank'>https://github.com/Mic2333/NanoSense</a></td></tr>
+<tr><td>NClient</td><td><a href='https://github.com/sn115426/rip-nclient // https://github.com/sn115426/nclient' target='_blank'>https://github.com/sn115426/rip-nclient // https://github.com/sn115426/nclient</a></td></tr>
+<tr><td>Nebula</td><td><a href='https://github.com/Sxmurai/nebula' target='_blank'>https://github.com/Sxmurai/nebula</a></td></tr>
+<tr><td>Neko+ / NekoPlus</td><td><a href='https://github.com/ProfKambing/nekoplus-public' target='_blank'>https://github.com/ProfKambing/nekoplus-public</a></td></tr>
+<tr><td>Neptune</td><td><a href='https://github.com/Volcan4436/Neptune-Client // https://github.com/RickyTheRacc/neptuneforeveryone // https://github.com/SoftWaren1/Neptune-New' target='_blank'>https://github.com/Volcan4436/Neptune-Client // https://github.com/RickyTheRacc/neptuneforeveryone // https://github.com/SoftWaren1/Neptune-New</a></td></tr>
+<tr><td>Neptunium</td><td><a href='https://github.com/Neptunium-Development/neptunium-client' target='_blank'>https://github.com/Neptunium-Development/neptunium-client</a></td></tr>
+<tr><td>Neutron</td><td><a href='https://github.com/GentlemanMC/Neutron-1.6.0-leak' target='_blank'>https://github.com/GentlemanMC/Neutron-1.6.0-leak</a></td></tr>
+<tr><td>NeverBuy</td><td><a href='https://github.com/WalmartSolutions/NeverBuy-1.2' target='_blank'>https://github.com/WalmartSolutions/NeverBuy-1.2</a></td></tr>
+<tr><td>Neverdies</td><td><a href='https://github.com/dada994a/Neverdies-old // https://github.com/2young2care/Neverdies.me // https://github.com/primewk/neverdies-leak' target='_blank'>https://github.com/dada994a/Neverdies-old // https://github.com/2young2care/Neverdies.me // https://github.com/primewk/neverdies-leak</a></td></tr>
+<tr><td>NeverHook</td><td><a href='https://github.com/ffa0xqz/NeverHook-Reborn-v0.8-src // https://github.com/decausedinside/NeverHook-Premium-SRC' target='_blank'>https://github.com/ffa0xqz/NeverHook-Reborn-v0.8-src // https://github.com/decausedinside/NeverHook-Premium-SRC</a></td></tr>
+<tr><td>NextifyQristo</td><td><a href='https://github.com/2young2care/NextifyQristo-2.0.0-crack' target='_blank'>https://github.com/2young2care/NextifyQristo-2.0.0-crack</a></td></tr>
+<tr><td>Nexus</td><td><a href='https://github.com/StephenIsTaken/NexusOpen // https://github.com/AllahSolutions/cracked-nexus-client // https://github.com/WalmartSolutions/Nexus-1.0' target='_blank'>https://github.com/StephenIsTaken/NexusOpen // https://github.com/AllahSolutions/cracked-nexus-client // https://github.com/WalmartSolutions/Nexus-1.0</a></td></tr>
+<tr><td>Nexus Edge</td><td><a href='https://github.com/Smug2f/Nexus-Edge' target='_blank'>https://github.com/Smug2f/Nexus-Edge</a></td></tr>
+<tr><td>Nhack</td><td><a href='https://github.com/whosthatperson/Nhack' target='_blank'>https://github.com/whosthatperson/Nhack</a></td></tr>
+<tr><td>NHack3</td><td><a href='https://github.com/whosthatperson/Nhack3-V0.9.1-itristan-log-removed' target='_blank'>https://github.com/whosthatperson/Nhack3-V0.9.1-itristan-log-removed</a></td></tr>
+<tr><td>Nhack4</td><td><a href='https://github.com/funtimeonly990/nhack4' target='_blank'>https://github.com/funtimeonly990/nhack4</a></td></tr>
+<tr><td>NiggaHack</td><td><a href='https://github.com/zopac/niggahack' target='_blank'>https://github.com/zopac/niggahack</a></td></tr>
+<tr><td>NightClient</td><td><a href='https://cdn.discordapp.com/attachments/688386845062725662/688389070908424287/NightClient.jar' target='_blank'>https://cdn.discordapp.com/attachments/688386845062725662/688389070908424287/NightClient.jar</a></td></tr>
+<tr><td>NightWare+ / NightWarePlus</td><td><a href='https://github.com/quangtien1/Nightware-Plus-Hacked-Client' target='_blank'>https://github.com/quangtien1/Nightware-Plus-Hacked-Client</a></td></tr>
+<tr><td>NightX</td><td><a href='https://github.com/Aspw-w/NightX-Client' target='_blank'>https://github.com/Aspw-w/NightX-Client</a></td></tr>
+<tr><td>NineHack</td><td><a href='https://github.com/ninethousand9000/ninehackv1' target='_blank'>https://github.com/ninethousand9000/ninehackv1</a></td></tr>
+<tr><td>Noat Wurst+2 / Noat WurstPlusTwo</td><td><a href='https://github.com/kool-kuhm-klients/noat-wurstplus-two' target='_blank'>https://github.com/kool-kuhm-klients/noat-wurstplus-two</a></td></tr>
+<tr><td>NobleSix</td><td><a href='https://github.com/helloworldSB/NobleSixHL32K // https://cdn.discordapp.com/attachments/611452108826214401/686087486681776161/NobleSixb2.9-release.jar' target='_blank'>https://github.com/helloworldSB/NobleSixHL32K // https://cdn.discordapp.com/attachments/611452108826214401/686087486681776161/NobleSixb2.9-release.jar</a></td></tr>
+<tr><td>NoobHack</td><td><a href='https://github.com/NoobHackLol/NoobHack' target='_blank'>https://github.com/NoobHackLol/NoobHack</a></td></tr>
+<tr><td>Norsa</td><td><a href='https://github.com/Valkriea/Norsa' target='_blank'>https://github.com/Valkriea/Norsa</a></td></tr>
+<tr><td>Norules</td><td><a href='https://github.com/jabask3dd3r/Norules-src' target='_blank'>https://github.com/jabask3dd3r/Norules-src</a></td></tr>
+<tr><td>NotEnoughtCoins Premium / NEC Premium</td><td><a href='https://github.com/3000IQPlay/NEC-Premium' target='_blank'>https://github.com/3000IQPlay/NEC-Premium</a></td></tr>
+<tr><td>Notorious</td><td><a href='https://github.com/CumHax/NOTORIOUS-BUILDABLE-SRC // https://github.com/oyzipfile/Notorious-5.5-Buildable // https://github.com/Notme11/Notorious2.0' target='_blank'>https://github.com/CumHax/NOTORIOUS-BUILDABLE-SRC // https://github.com/oyzipfile/Notorious-5.5-Buildable // https://github.com/Notme11/Notorious2.0</a></td></tr>
+<tr><td>November</td><td><a href='https://github.com/WalmartSolutions/November-3.03' target='_blank'>https://github.com/WalmartSolutions/November-3.03</a></td></tr>
+<tr><td>Novoline</td><td><a href='https://github.com/jeremypelletier/novoline-unlicensed // https://novoline.wtf' target='_blank'>https://github.com/jeremypelletier/novoline-unlicensed // https://novoline.wtf</a></td></tr>
+<tr><td>NullHack</td><td><a href='https://github.com/xiguajerry/NullHack' target='_blank'>https://github.com/xiguajerry/NullHack</a></td></tr>
+<tr><td>NullPoint</td><td><a href='https://github.com/hashdiana/NullPoint-Client // https://github.com/dyyibang/NullPoint-Client // https://github.com/KgDW/NullPoint-Fabric // https://github.com/2young2care/Nullpoint-v2.1.3' target='_blank'>https://github.com/hashdiana/NullPoint-Client // https://github.com/dyyibang/NullPoint-Client // https://github.com/KgDW/NullPoint-Fabric // https://github.com/2young2care/Nullpoint-v2.1.3</a></td></tr>
+<tr><td>Nursultan</td><td><a href='http://nursultan.fun' target='_blank'>http://nursultan.fun</a></td></tr>
+<tr><td>North</td><td><a href='https://github.com/WalmartSolutions/North' target='_blank'>https://github.com/WalmartSolutions/North</a></td></tr>
+<tr><td>NutGod.CC</td><td><a href='https://github.com/HausemasterIssue/Nutgod.cc-b1.5-SRC // https://cdn.discordapp.com/attachments/689054797818888226/703185565016653884/NutGod_b5.3-propercrackbycrystallinqq.jar' target='_blank'>https://github.com/HausemasterIssue/Nutgod.cc-b1.5-SRC // https://cdn.discordapp.com/attachments/689054797818888226/703185565016653884/NutGod_b5.3-propercrackbycrystallinqq.jar</a></td></tr>
+<tr><td>NyaHack</td><td><a href='https://github.com/chunfeng666/nyahack' target='_blank'>https://github.com/chunfeng666/nyahack</a></td></tr>
+<tr><td>OakClient</td><td><a href='https://github.com/desertcod98/OakClient' target='_blank'>https://github.com/desertcod98/OakClient</a></td></tr>
+<tr><td>Oasis</td><td><a href='https://github.com/0xTas/oasis' target='_blank'>https://github.com/0xTas/oasis</a></td></tr>
+<tr><td>ObamaHack</td><td><a href='https://github.com/chris2rich/ObamaHack' target='_blank'>https://github.com/chris2rich/ObamaHack</a></td></tr>
+<tr><td>Oblivion</td><td><a href='https://cdn.discordapp.com/attachments/622299315028885514/701308296673362030/Oblivion-v0.3-release.jar' target='_blank'>https://cdn.discordapp.com/attachments/622299315028885514/701308296673362030/Oblivion-v0.3-release.jar</a></td></tr>
+<tr><td>OctoHack</td><td><a href='https://github.com/Primooctopus33/octohack' target='_blank'>https://github.com/Primooctopus33/octohack</a></td></tr>
+<tr><td>Omega</td><td><a href='https://github.com/ya-ilya/omega' target='_blank'>https://github.com/ya-ilya/omega</a></td></tr>
+<tr><td>OmegaHack</td><td><a href='https://github.com/neilhuang007/omegahack' target='_blank'>https://github.com/neilhuang007/omegahack</a></td></tr>
+<tr><td>OmegaHack Rewrite</td><td><a href='https://github.com/neilhuang007/omegahack-rewrite' target='_blank'>https://github.com/neilhuang007/omegahack-rewrite</a></td></tr>
+<tr><td>OnePop</td><td><a href='https://github.com/MrsRina/onepop' target='_blank'>https://github.com/MrsRina/onepop</a></td></tr>
+<tr><td>Onigiri</td><td><a href='https://github.com/Nodoka4318/OnigiriClient' target='_blank'>https://github.com/Nodoka4318/OnigiriClient</a></td></tr>
+<tr><td>Onyx</td><td><a href='https://github.com/PlayingCow69420/Onyx-Client-Archive' target='_blank'>https://github.com/PlayingCow69420/Onyx-Client-Archive</a></td></tr>
+<tr><td>Opal</td><td><a href='https://github.com/WalmartSolutions/Opal-1.6' target='_blank'>https://github.com/WalmartSolutions/Opal-1.6</a></td></tr>
+<tr><td>Opium</td><td><a href='https://github.com/dada994a/Opium-buildableScd' target='_blank'>https://github.com/dada994a/Opium-buildableScd</a></td></tr>
+<tr><td>Orangette</td><td><a href='https://github.com/cocoapc911/Orangatte-Client-Leak // https://github.com/OrangetteTeam/Orangette' target='_blank'>https://github.com/cocoapc911/Orangatte-Client-Leak // https://github.com/OrangetteTeam/Orangette</a></td></tr>
+<tr><td>ORH</td><td><a href='https://github.com/VVriter/ORH' target='_blank'>https://github.com/VVriter/ORH</a></td></tr>
+<tr><td>Oringo</td><td><a href='https://github.com/Negro-Development/OringoClient-Cracked' target='_blank'>https://github.com/Negro-Development/OringoClient-Cracked</a></td></tr>
+<tr><td>Orion</td><td><a href='https://github.com/AntiCope/orion' target='_blank'>https://github.com/AntiCope/orion</a></td></tr>
+<tr><td>Osiris</td><td><a href='https://github.com/DarkiBoi/Osiris' target='_blank'>https://github.com/DarkiBoi/Osiris</a></td></tr>
+<tr><td>Osiris+ / OsirisPlus</td><td><a href='https://github.com/THCFree/client' target='_blank'>https://github.com/THCFree/client</a></td></tr>
+<tr><td>Outrage</td><td><a href='https://github.com/yallxe/outrage' target='_blank'>https://github.com/yallxe/outrage</a></td></tr>
+<tr><td>Ovaq Reborn</td><td><a href='https://github.com/dada994a/OvaqReborn' target='_blank'>https://github.com/dada994a/OvaqReborn</a></td></tr>
+<tr><td>Ovaq RebornPlus / Ovaq Reborn+</td><td><a href='https://github.com/hypinohaizin/OvaqRebornPlus' target='_blank'>https://github.com/hypinohaizin/OvaqRebornPlus</a></td></tr>
+<tr><td>Override</td><td><a href='https://github.com/Syamu0120/Override' target='_blank'>https://github.com/Syamu0120/Override</a></td></tr>
+<tr><td>OwnedWare</td><td><a href='https://github.com/Own3dM3/OwnedWare-leacked' target='_blank'>https://github.com/Own3dM3/OwnedWare-leacked</a></td></tr>
+<tr><td>OyVey</td><td><a href='https://github.com/The-Gopro336-Archive/OyVey_Rewrite-BUILDABLE_SRC // https://github.com/ssllllll/OyVey-Continued-FaxHack-Owned // https://github.com/Zane2b2t/oyvey-0.0.3' target='_blank'>https://github.com/The-Gopro336-Archive/OyVey_Rewrite-BUILDABLE_SRC // https://github.com/ssllllll/OyVey-Continued-FaxHack-Owned // https://github.com/Zane2b2t/oyvey-0.0.3</a></td></tr>
+<tr><td>OyVey+ / OyVeyPlus</td><td><a href='https://github.com/BigJayMuffinSkidsShit/OyVeyPlus' target='_blank'>https://github.com/BigJayMuffinSkidsShit/OyVeyPlus</a></td></tr>
+<tr><td>OyVey Rewrite</td><td><a href='https://github.com/jiyun233/OyveyRewrite' target='_blank'>https://github.com/jiyun233/OyveyRewrite</a></td></tr>
+<tr><td>Ozark</td><td><a href='https://github.com/Trambled/OzarkClient' target='_blank'>https://github.com/Trambled/OzarkClient</a></td></tr>
+<tr><td>PandoraHack</td><td><a href='https://github.com/jam-in-a-jar/PandoraHack-for-everyone' target='_blank'>https://github.com/jam-in-a-jar/PandoraHack-for-everyone</a></td></tr>
+<tr><td>Paragon</td><td><a href='https://github.com/Wolfsurge/Paragon' target='_blank'>https://github.com/Wolfsurge/Paragon</a></td></tr>
+<tr><td>Past</td><td><a href='https://github.com/olliem5/past' target='_blank'>https://github.com/olliem5/past</a></td></tr>
+<tr><td>PastiqueV2</td><td><a href='https://github.com/RubberDucky5/PastiqueV2' target='_blank'>https://github.com/RubberDucky5/PastiqueV2</a></td></tr>
+<tr><td>Penguin</td><td><a href='https://github.com/funtimeonly990/Penguin-Client' target='_blank'>https://github.com/funtimeonly990/Penguin-Client</a></td></tr>
+<tr><td>PepsiMod</td><td><a href='https://github.com/Team-Pepsi/pepsimod' target='_blank'>https://github.com/Team-Pepsi/pepsimod</a></td></tr>
+<tr><td>PerryPhobos</td><td><a href='https://github.com/Eralp232/PerryPhobos-Latest' target='_blank'>https://github.com/Eralp232/PerryPhobos-Latest</a></td></tr>
+<tr><td>PGz</td><td><a href='https://github.com/3000IQPlay/PGzClient' target='_blank'>https://github.com/3000IQPlay/PGzClient</a></td></tr>
+<tr><td>Phasma</td><td><a href='https://github.com/Librry1337/phasma-1.16.5-client' target='_blank'>https://github.com/Librry1337/phasma-1.16.5-client</a></td></tr>
+<tr><td>Phobos</td><td><a href='https://github.com/The-Gopro336-Archive/CLEAN_Phobos_1.9.0-BUILDABLE-SRC' target='_blank'>https://github.com/The-Gopro336-Archive/CLEAN_Phobos_1.9.0-BUILDABLE-SRC</a></td></tr>
+<tr><td>Phobos Lite</td><td><a href='https://github.com/WarriorCrystal/PhobosLite' target='_blank'>https://github.com/WarriorCrystal/PhobosLite</a></td></tr>
+<tr><td>PhoboxNotGay</td><td><a href='https://github.com/PeterPePem/PhoboxNotGay' target='_blank'>https://github.com/PeterPePem/PhoboxNotGay</a></td></tr>
+<tr><td>PigHack</td><td><a href='https://github.com/chris2rich/PigHack-Buildable-SRC // https://github.com/w0rl3x/PigHack' target='_blank'>https://github.com/chris2rich/PigHack-Buildable-SRC // https://github.com/w0rl3x/PigHack</a></td></tr>
+<tr><td>PikaHack</td><td><a href='https://cdn.discordapp.com/attachments/738991724793299004/738998489194823736/PikaHack-Owner-master-b9-release.jar' target='_blank'>https://cdn.discordapp.com/attachments/738991724793299004/738998489194823736/PikaHack-Owner-master-b9-release.jar</a></td></tr>
+<tr><td>PistonClient</td><td><a href='https://github.com/AlexProgrammerDE/PistonClient' target='_blank'>https://github.com/AlexProgrammerDE/PistonClient</a></td></tr>
+<tr><td>Pizza</td><td><a href='https://github.com/AstrqlDev/Pizza-Client' target='_blank'>https://github.com/AstrqlDev/Pizza-Client</a></td></tr>
+<tr><td>PocketClient</td><td><a href='https://github.com/JMcrafter26/pocket-client' target='_blank'>https://github.com/JMcrafter26/pocket-client</a></td></tr>
+<tr><td>PollosHook</td><td><a href='https://github.com/smokedope2k16/polloshook-buildable' target='_blank'>https://github.com/smokedope2k16/polloshook-buildable</a></td></tr>
+<tr><td>PornoClient</td><td><a href='https://github.com/ezhhh/pornoclient' target='_blank'>https://github.com/ezhhh/pornoclient</a></td></tr>
+<tr><td>Postamn++ / PostmanPlusPlus</td><td><a href='https://github.com/srgantmoomoo/postmanplusplus' target='_blank'>https://github.com/srgantmoomoo/postmanplusplus</a></td></tr>
+<tr><td>Postman</td><td><a href='https://github.com/srgantmoomoo/postman' target='_blank'>https://github.com/srgantmoomoo/postman</a></td></tr>
+<tr><td>Prestige</td><td><a href='https://github.com/lattiahirvio/prestige-src // https://gitlab.com/3000IQPlay/Prestige // https://prestigeclient.vip // https://crystalpvp.ru/prestige' target='_blank'>https://github.com/lattiahirvio/prestige-src // https://gitlab.com/3000IQPlay/Prestige // https://prestigeclient.vip // https://crystalpvp.ru/prestige</a></td></tr>
+<tr><td>Pride+ / PridePlus</td><td><a href='https://github.com/MolokyMC/PridePlus' target='_blank'>https://github.com/MolokyMC/PridePlus</a></td></tr>
+<tr><td>Proactive</td><td><a href='https://github.com/ChompChompDead/Proactive' target='_blank'>https://github.com/ChompChompDead/Proactive</a></td></tr>
+<tr><td>Progreso</td><td><a href='https://github.com/ya-ilya/progreso' target='_blank'>https://github.com/ya-ilya/progreso</a></td></tr>
+<tr><td>ProtoHax</td><td><a href='https://github.com/hax0r31337/ProtoHax' target='_blank'>https://github.com/hax0r31337/ProtoHax</a></td></tr>
+<tr><td>Proton</td><td><a href='https://cdn.discordapp.com/attachments/689371591976681522/726629851519254608/proton-1.2-build20200604.jar' target='_blank'>https://cdn.discordapp.com/attachments/689371591976681522/726629851519254608/proton-1.2-build20200604.jar</a></td></tr>
+<tr><td>Pulse</td><td><a href='https://github.com/WalmartSolutions/Pulse-1.0.3' target='_blank'>https://github.com/WalmartSolutions/Pulse-1.0.3</a></td></tr>
+<tr><td>Pulsive</td><td><a href='https://intent.store' target='_blank'>https://intent.store</a></td></tr>
+<tr><td>PureHack</td><td><a href='https://github.com/Mathrandom7910/PureHack' target='_blank'>https://github.com/Mathrandom7910/PureHack</a></td></tr>
+<tr><td>Pyro</td><td><a href='https://www.pyroclient.com // https://crystalpvp.ru/pyro/ // https://github.com/PlutoSolutions/Pyro' target='_blank'>https://www.pyroclient.com // https://crystalpvp.ru/pyro/ // https://github.com/PlutoSolutions/Pyro</a></td></tr>
+<tr><td>Quantum</td><td><a href='https://github.com/PlutoSolutions/6god-Quantum' target='_blank'>https://github.com/PlutoSolutions/6god-Quantum</a></td></tr>
+<tr><td>Quantum Continued</td><td><a href='https://github.com/fan4145/quantum-continued-releases // https://github.com/fan4145/quantum-src-releases' target='_blank'>https://github.com/fan4145/quantum-continued-releases // https://github.com/fan4145/quantum-src-releases</a></td></tr>
+<tr><td>Qubit</td><td><a href='https://github.com/QuantumClient/Qubit' target='_blank'>https://github.com/QuantumClient/Qubit</a></td></tr>
+<tr><td>Qusar</td><td><a href='https://github.com/goose-TM/Qusar-Client' target='_blank'>https://github.com/goose-TM/Qusar-Client</a></td></tr>
+<tr><td>QweruHax</td><td><a href='https://github.com/gkursi/QweruHax' target='_blank'>https://github.com/gkursi/QweruHax</a></td></tr>
+<tr><td>Radeon</td><td><a href='https://github.com/zopac/Radeon-v1.2-Open-source-edition // https://github.com/IllegalException/Radeon' target='_blank'>https://github.com/zopac/Radeon-v1.2-Open-source-edition // https://github.com/IllegalException/Radeon</a></td></tr>
+<tr><td>Rage</td><td><a href='https://github.com/noom1337/rage-client-deobfuscated' target='_blank'>https://github.com/noom1337/rage-client-deobfuscated</a></td></tr>
+<tr><td>RailHack</td><td><a href='https://github.com/kisman2000/RailHack-Ratted // https://github.com/3000IQPlay/RailHack-0.5.9-Src' target='_blank'>https://github.com/kisman2000/RailHack-Ratted // https://github.com/3000IQPlay/RailHack-0.5.9-Src</a></td></tr>
+<tr><td>Rainbow</td><td><a href='https://github.com/noom1337/rainbow_client-src-leak' target='_blank'>https://github.com/noom1337/rainbow_client-src-leak</a></td></tr>
+<tr><td>Raion</td><td><a href='https://github.com/Ropro2002/raion-public // https://github.com/Phantom568/Raion // https://cdn.discordapp.com/attachments/689371591976681522/726059676051177513/Raion_Loader.jar' target='_blank'>https://github.com/Ropro2002/raion-public // https://github.com/Phantom568/Raion // https://cdn.discordapp.com/attachments/689371591976681522/726059676051177513/Raion_Loader.jar</a></td></tr>
+<tr><td>RatWare</td><td><a href='https://github.com/Tr0llMode/RatWare-leak-0.4.0' target='_blank'>https://github.com/Tr0llMode/RatWare-leak-0.4.0</a></td></tr>
+<tr><td>RavenB- / RavenBMinus</td><td><a href='https://github.com/WalmartSolutions/RavenB-v9 // https://github.com/WalmartSolutions/RavenB-Latest // https://github.com/WalmartSolutions/RavenB-Old2 // https://github.com/WalmartSolutions/RavenB-Old' target='_blank'>https://github.com/WalmartSolutions/RavenB-v9 // https://github.com/WalmartSolutions/RavenB-Latest // https://github.com/WalmartSolutions/RavenB-Old2 // https://github.com/WalmartSolutions/RavenB-Old</a></td></tr>
+<tr><td>Raven B+ / RavenBPlus</td><td><a href='https://github.com/Kopamed/Raven-bPLUS' target='_blank'>https://github.com/Kopamed/Raven-bPLUS</a></td></tr>
+<tr><td>Raven B++ / RavenBPlusPlus</td><td><a href='https://github.com/ImCzf233/Raven-B-PlusPlus-opensource' target='_blank'>https://github.com/ImCzf233/Raven-B-PlusPlus-opensource</a></td></tr>
+<tr><td>Raven B+++ / RavenBPlusPlusPlus</td><td><a href='https://github.com/StephenIsTaken/Raven-BPlusPlusPlus' target='_blank'>https://github.com/StephenIsTaken/Raven-BPlusPlusPlus</a></td></tr>
+<tr><td>Raven BS</td><td><a href='https://github.com/Strangerrrs/Raven-bS' target='_blank'>https://github.com/Strangerrrs/Raven-bS</a></td></tr>
+<tr><td>Raven BS Alpha</td><td><a href='https://github.com/q1/raven-bs-alpha' target='_blank'>https://github.com/q1/raven-bs-alpha</a></td></tr>
+<tr><td>Raven N+ / RavenNPlus</td><td><a href='https://github.com/SleepyFishYT/RavenNPlus' target='_blank'>https://github.com/SleepyFishYT/RavenNPlus</a></td></tr>
+<tr><td>Raven O++ / RavenOPlusPlus</td><td><a href='https://github.com/ItzzOwo/RavenOPlusPlus' target='_blank'>https://github.com/ItzzOwo/RavenOPlusPlus</a></td></tr>
+<tr><td>Raven XD</td><td><a href='https://github.com/xia-mc/Raven-XD' target='_blank'>https://github.com/xia-mc/Raven-XD</a></td></tr>
+<tr><td>RavenWeave</td><td><a href='https://github.com/PianoPenguin471/RavenWeave' target='_blank'>https://github.com/PianoPenguin471/RavenWeave</a></td></tr>
+<tr><td>Razmorozka</td><td><a href='https://github.com/amfero/razmorozka' target='_blank'>https://github.com/amfero/razmorozka</a></td></tr>
+<tr><td>Reach Premium</td><td><a href='https://github.com/VVriter/Reach-Premium-src' target='_blank'>https://github.com/VVriter/Reach-Premium-src</a></td></tr>
+<tr><td>Reaper</td><td><a href='https://github.com/AntiCope/reaper-addon' target='_blank'>https://github.com/AntiCope/reaper-addon</a></td></tr>
+<tr><td>Rebirth</td><td><a href='https://github.com/FinLemonKe/RebirthClient // https://github.com/chunfeng666/rebirth-public // https://github.com/iM4dCat/Rebirth // https://github.com/KgDW/Rebirth-deobf-decomp-buildable' target='_blank'>https://github.com/FinLemonKe/RebirthClient // https://github.com/chunfeng666/rebirth-public // https://github.com/iM4dCat/Rebirth // https://github.com/KgDW/Rebirth-deobf-decomp-buildable</a></td></tr>
+<tr><td>Rebirth 1.20.1</td><td><a href='https://github.com/abk19x/Rebirth-1.5-private' target='_blank'>https://github.com/abk19x/Rebirth-1.5-private</a></td></tr>
+<tr><td>Rebirth Alpha</td><td><a href='https://github.com/hashdiana/Rebirth-Alpha' target='_blank'>https://github.com/hashdiana/Rebirth-Alpha</a></td></tr>
+<tr><td>Rebirth Nextgen</td><td><a href='https://github.com/dyyibang/Rebirth-Nextgen-Public' target='_blank'>https://github.com/dyyibang/Rebirth-Nextgen-Public</a></td></tr>
+<tr><td>reDACTED</td><td><a href='https://github.com/paramkudle/reDACTED' target='_blank'>https://github.com/paramkudle/reDACTED</a></td></tr>
+<tr><td>ReflectionClient</td><td><a href='https://github.com/xss1de/ReflectionClient' target='_blank'>https://github.com/xss1de/ReflectionClient</a></td></tr>
+<tr><td>Remnant</td><td><a href='https://github.com/miamionthetrack/remnant' target='_blank'>https://github.com/miamionthetrack/remnant</a></td></tr>
+<tr><td>RenoSense</td><td><a href='https://github.com/Sjnez613/RenoSense-Rewrite' target='_blank'>https://github.com/Sjnez613/RenoSense-Rewrite</a></td></tr>
+<tr><td>RenoSenseTwo</td><td><a href='https://github.com/RaddonEnterprises/renosense-cracked' target='_blank'>https://github.com/RaddonEnterprises/renosense-cracked</a></td></tr>
+<tr><td>RerHack.club</td><td><a href='https://github.com/Canonball90/RerHack.club' target='_blank'>https://github.com/Canonball90/RerHack.club</a></td></tr>
+<tr><td>Resilience</td><td><a href='https://github.com/MinecraftModdedClients/Resilience-Client-Source' target='_blank'>https://github.com/MinecraftModdedClients/Resilience-Client-Source</a></td></tr>
+<tr><td>Revenge</td><td><a href='https://github.com/PlutoSolutions/revenge-1.5.6-Leak' target='_blank'>https://github.com/PlutoSolutions/revenge-1.5.6-Leak</a></td></tr>
+<tr><td>Reverse</td><td><a href='https://github.com/PlutoSolutions/ReverseClient' target='_blank'>https://github.com/PlutoSolutions/ReverseClient</a></td></tr>
+<tr><td>Reznya</td><td><a href='https://github.com/ZimnyCat/reznya' target='_blank'>https://github.com/ZimnyCat/reznya</a></td></tr>
+<tr><td>Rift</td><td><a href='https://github.com/3000IQPlay/Rift-Client-1.0.3-Src' target='_blank'>https://github.com/3000IQPlay/Rift-Client-1.0.3-Src</a></td></tr>
+<tr><td>Rich</td><td><a href='https://github.com/decausedinside/Rich-Client-Free-Source-Code' target='_blank'>https://github.com/decausedinside/Rich-Client-Free-Source-Code</a></td></tr>
+<tr><td>Rise</td><td><a href='https://github.com/dada994a/Rise-Latest-Source-leak // https://riseclient.com // https://anonfiles.com/6a7bnaZ1ye/Rise_6_0_master_zip // https://github.com/tuskypaster/Rise-Client-Source' target='_blank'>https://github.com/dada994a/Rise-Latest-Source-leak // https://riseclient.com // https://anonfiles.com/6a7bnaZ1ye/Rise_6_0_master_zip // https://github.com/tuskypaster/Rise-Client-Source</a></td></tr>
+<tr><td>Rocan</td><td><a href='https://github.com/MrsRina/Official-Rocan // https://github.com/4wl/rocan-main' target='_blank'>https://github.com/MrsRina/Official-Rocan // https://github.com/4wl/rocan-main</a></td></tr>
+<tr><td>RockEZHack</td><td><a href='https://github.com/oyzipfile/rockEZHack' target='_blank'>https://github.com/oyzipfile/rockEZHack</a></td></tr>
+<tr><td>RockStar</td><td><a href='https://github.com/ConeTin/rockstar-free' target='_blank'>https://github.com/ConeTin/rockstar-free</a></td></tr>
+<tr><td>RoseGold</td><td><a href='https://github.com/RoseGoldIsntGay/RoseGoldClient' target='_blank'>https://github.com/RoseGoldIsntGay/RoseGoldClient</a></td></tr>
+<tr><td>Ruby</td><td><a href='https://github.com/RealzPrestige/Ruby' target='_blank'>https://github.com/RealzPrestige/Ruby</a></td></tr>
+<tr><td>Ruhama</td><td><a href='https://github.com/chris2rich/Ruhama' target='_blank'>https://github.com/chris2rich/Ruhama</a></td></tr>
+<tr><td>Ruhama+</td><td><a href='https://github.com/rolkoztm/ruhama-plus-with-jar' target='_blank'>https://github.com/rolkoztm/ruhama-plus-with-jar</a></td></tr>
+<tr><td>RusherHack</td><td><a href='https://rusherhack.org // https://crystalpvp.ru/rusherhack/' target='_blank'>https://rusherhack.org // https://crystalpvp.ru/rusherhack/</a></td></tr>
+<tr><td>RussianWare</td><td><a href='https://github.com/d2hv/RussianWare' target='_blank'>https://github.com/d2hv/RussianWare</a></td></tr>
+<tr><td>Rustme</td><td><a href='https://github.com/oyzipfile/Rustme-Clients-Source-Code' target='_blank'>https://github.com/oyzipfile/Rustme-Clients-Source-Code</a></td></tr>
+<tr><td>SafePoint.club / SafePointClub</td><td><a href='https://github.com/Canonball90/SafePointy' target='_blank'>https://github.com/Canonball90/SafePointy</a></td></tr>
+<tr><td>SafePoint+2 / SafePointPlusTwo</td><td><a href='https://github.com/Canonball90/Safepoint2' target='_blank'>https://github.com/Canonball90/Safepoint2</a></td></tr>
+<tr><td>Salhack</td><td><a href='https://github.com/ionar2/spidermod' target='_blank'>https://github.com/ionar2/spidermod</a></td></tr>
+<tr><td>SalHackSkid</td><td><a href='https://github.com/pleasegivesource/SalHackSkid' target='_blank'>https://github.com/pleasegivesource/SalHackSkid</a></td></tr>
+<tr><td>Salt</td><td><a href='https://github.com/gerald0mc/Salt' target='_blank'>https://github.com/gerald0mc/Salt</a></td></tr>
+<tr><td>Satellite</td><td><a href='https://github.com/SatelliteClient/Satellite' target='_blank'>https://github.com/SatelliteClient/Satellite</a></td></tr>
+<tr><td>Saturn</td><td><a href='https://github.com/Sxmurai/saturn-client' target='_blank'>https://github.com/Sxmurai/saturn-client</a></td></tr>
+<tr><td>Saturn / EsoHack Rewrite</td><td><a href='https://github.com/cryst-al/oyvey-skids/releases/tag/saturn // https://github.com/Intel-i80486-DX4/esohack-rewrite-upload' target='_blank'>https://github.com/cryst-al/oyvey-skids/releases/tag/saturn // https://github.com/Intel-i80486-DX4/esohack-rewrite-upload</a></td></tr>
+<tr><td>Schizoid</td><td><a href='https://github.com/Lyzev/Schizoid' target='_blank'>https://github.com/Lyzev/Schizoid</a></td></tr>
+<tr><td>Scrim</td><td><a href='https://github.com/Tehnicki1/Scrim-Client' target='_blank'>https://github.com/Tehnicki1/Scrim-Client</a></td></tr>
+<tr><td>Selene</td><td><a href='https://github.com/Canonball90/SeleneLeak' target='_blank'>https://github.com/Canonball90/SeleneLeak</a></td></tr>
+<tr><td>Seppuku</td><td><a href='https://github.com/seppukudevelopment/seppuku' target='_blank'>https://github.com/seppukudevelopment/seppuku</a></td></tr>
+<tr><td>Serenity</td><td><a href='https://github.com/KohimaNayagato/Serenity' target='_blank'>https://github.com/KohimaNayagato/Serenity</a></td></tr>
+<tr><td>SerenityCE</td><td><a href='https://github.com/SerenityEnterprises/SerenityCE' target='_blank'>https://github.com/SerenityEnterprises/SerenityCE</a></td></tr>
+<tr><td>SeturHack</td><td><a href='https://github.com/3000IQPlay/SaturHack' target='_blank'>https://github.com/3000IQPlay/SaturHack</a></td></tr>
+<tr><td>SevCheat</td><td><a href='https://github.com/SevJSix/SevCheat' target='_blank'>https://github.com/SevJSix/SevCheat</a></td></tr>
+<tr><td>SexHack</td><td><a href='https://github.com/noatmc/sexhack' target='_blank'>https://github.com/noatmc/sexhack</a></td></tr>
+<tr><td>SexMaster.cc</td><td><a href='https://github.com/AnotherNoName/SexMaster.CC' target='_blank'>https://github.com/AnotherNoName/SexMaster.CC</a></td></tr>
+<tr><td>Shadow</td><td><a href='https://github.com/LunaWasFlaggedAgain/Shadow' target='_blank'>https://github.com/LunaWasFlaggedAgain/Shadow</a></td></tr>
+<tr><td>ShafferHack</td><td><a href='https://github.com/IntelliBlade/ShafferHack-Lightweight-PvP-Client' target='_blank'>https://github.com/IntelliBlade/ShafferHack-Lightweight-PvP-Client</a></td></tr>
+<tr><td>ShellSock</td><td><a href='https://github.com/ImCzf233/OpenLogger' target='_blank'>https://github.com/ImCzf233/OpenLogger</a></td></tr>
+<tr><td>SHGR</td><td><a href='https://github.com/KamiSkidder/shgr-client' target='_blank'>https://github.com/KamiSkidder/shgr-client</a></td></tr>
+<tr><td>Shid</td><td><a href='https://github.com/stever9487/shid-client' target='_blank'>https://github.com/stever9487/shid-client</a></td></tr>
+<tr><td>Shimeji</td><td><a href='https://github.com/enokitoraisu/ShimejiClient-Public' target='_blank'>https://github.com/enokitoraisu/ShimejiClient-Public</a></td></tr>
+<tr><td>Shoreline</td><td><a href='https://github.com/KuroHere/shoreline // https://github.com/pisun6666/shoreline-main' target='_blank'>https://github.com/KuroHere/shoreline // https://github.com/pisun6666/shoreline-main</a></td></tr>
+<tr><td>Shoreline NEW</td><td><a href='https://github.com/Skitttyy/shoreline-client // https://github.com/TwoNick/shoreline' target='_blank'>https://github.com/Skitttyy/shoreline-client // https://github.com/TwoNick/shoreline</a></td></tr>
+<tr><td>Shrimp</td><td><a href='https://github.com/Aids-dev/shrimp' target='_blank'>https://github.com/Aids-dev/shrimp</a></td></tr>
+<tr><td>ShrimpHack</td><td><a href='https://github.com/King-Sonder-dev/ShrimpHack' target='_blank'>https://github.com/King-Sonder-dev/ShrimpHack</a></td></tr>
+<tr><td>SigamWare.CC</td><td><a href='https://github.com/DrillFyph/SigmaWare.cc' target='_blank'>https://github.com/DrillFyph/SigmaWare.cc</a></td></tr>
+<tr><td>Sigma</td><td><a href='https://www.sigmajello.ga/downloads' target='_blank'>https://www.sigmajello.ga/downloads</a></td></tr>
+<tr><td>Sikiskenkurt.CC</td><td><a href='https://github.com/MustafaTheRage/sikiskenkurt.cc-client' target='_blank'>https://github.com/MustafaTheRage/sikiskenkurt.cc-client</a></td></tr>
+<tr><td>Silence</td><td><a href='https://github.com/chris2rich/SilenceClient' target='_blank'>https://github.com/chris2rich/SilenceClient</a></td></tr>
+<tr><td>Sirius</td><td><a href='https://github.com/MrBubblegum/Sirius-Mod' target='_blank'>https://github.com/MrBubblegum/Sirius-Mod</a></td></tr>
+<tr><td>Skid+ / SkidPlus</td><td><a href='https://github.com/cocoapc911/Skid-Plus-Client' target='_blank'>https://github.com/cocoapc911/Skid-Plus-Client</a></td></tr>
+<tr><td>SkidBounce</td><td><a href='https://github.com/ManInMyVan/SkidBounce' target='_blank'>https://github.com/ManInMyVan/SkidBounce</a></td></tr>
+<tr><td>Skidcraft</td><td><a href='https://github.com/b0LBwZ7r5HOeh6CBMuQIhVu3-s-random-fork/Skidcraft' target='_blank'>https://github.com/b0LBwZ7r5HOeh6CBMuQIhVu3-s-random-fork/Skidcraft</a></td></tr>
+<tr><td>Skidd.ed / Skidded</td><td><a href='https://github.com/Nitaki-dev/Skidd.ed-Client' target='_blank'>https://github.com/Nitaki-dev/Skidd.ed-Client</a></td></tr>
+<tr><td>SkidwareMC</td><td><a href='https://github.com/SkidwareMC/Skidware-Client' target='_blank'>https://github.com/SkidwareMC/Skidware-Client</a></td></tr>
+<tr><td>Skill</td><td><a href='https://cdn.discordapp.com/attachments/689467748308222040/724824674160082954/skillclient-1.12.2-b11.5.jar' target='_blank'>https://cdn.discordapp.com/attachments/689467748308222040/724824674160082954/skillclient-1.12.2-b11.5.jar</a></td></tr>
+<tr><td>SkilledClient</td><td><a href='https://github.com/pesshown/Skilled-Client-v3' target='_blank'>https://github.com/pesshown/Skilled-Client-v3</a></td></tr>
+<tr><td>Skuxx</td><td><a href='https://github.com/slowcheet4h/Skuxx-1.6' target='_blank'>https://github.com/slowcheet4h/Skuxx-1.6</a></td></tr>
+<tr><td>Slack</td><td><a href='https://github.com/DGVPSH/SlackOpen // https://github.com/WalmartSolutions/Slack-b1.0' target='_blank'>https://github.com/DGVPSH/SlackOpen // https://github.com/WalmartSolutions/Slack-b1.0</a></td></tr>
+<tr><td>Sleek</td><td><a href='https://github.com/intexception/SleekClient // https://github.com/SleekCC/leaked-builds' target='_blank'>https://github.com/intexception/SleekClient // https://github.com/SleekCC/leaked-builds</a></td></tr>
+<tr><td>Slinky.gg</td><td><a href='https://github.com/PlutoSolutions/Slinky // https://crystalpvp.ru/slinky/' target='_blank'>https://github.com/PlutoSolutions/Slinky // https://crystalpvp.ru/slinky/</a></td></tr>
+<tr><td>Sloth</td><td><a href='https://github.com/WalmartSolutions/Sloth' target='_blank'>https://github.com/WalmartSolutions/Sloth</a></td></tr>
+<tr><td>Slu.gg / SluGG</td><td><a href='https://github.com/notRevhacks/Slu.gg-1.0' target='_blank'>https://github.com/notRevhacks/Slu.gg-1.0</a></td></tr>
+<tr><td>SlugClient</td><td><a href='https://github.com/The-Forecaster/Slug-client' target='_blank'>https://github.com/The-Forecaster/Slug-client</a></td></tr>
+<tr><td>SmartClient</td><td><a href='https://github.com/sssssssthedev/SmartClient' target='_blank'>https://github.com/sssssssthedev/SmartClient</a></td></tr>
+<tr><td>Smok</td><td><a href='https://github.com/SleepyFish-YT/Smok' target='_blank'>https://github.com/SleepyFish-YT/Smok</a></td></tr>
+<tr><td>SMPHack</td><td><a href='https://github.com/tanishisherewithhh/Smp-hack' target='_blank'>https://github.com/tanishisherewithhh/Smp-hack</a></td></tr>
+<tr><td>Sn0w</td><td><a href='https://github.com/ImLegiitXD/Sn0w // https://github.com/pineapplebby/sn0w-2.0.0' target='_blank'>https://github.com/ImLegiitXD/Sn0w // https://github.com/pineapplebby/sn0w-2.0.0</a></td></tr>
+<tr><td>Snow</td><td><a href='https://github.com/PlutoSolutions/Snow' target='_blank'>https://github.com/PlutoSolutions/Snow</a></td></tr>
+<tr><td>SnowFallWare</td><td><a href='https://github.com/Sn0wNight/SnowFallWare' target='_blank'>https://github.com/Sn0wNight/SnowFallWare</a></td></tr>
+<tr><td>SodaWare</td><td><a href='https://github.com/s0daa/sodaware' target='_blank'>https://github.com/s0daa/sodaware</a></td></tr>
+<tr><td>SolClient</td><td><a href='https://github.com/Sol-Client/Client' target='_blank'>https://github.com/Sol-Client/Client</a></td></tr>
+<tr><td>Sorus</td><td><a href='https://github.com/4wl/Sorus' target='_blank'>https://github.com/4wl/Sorus</a></td></tr>
+<tr><td>SovietWare</td><td><a href='https://github.com/CumHax/SovietWare' target='_blank'>https://github.com/CumHax/SovietWare</a></td></tr>
+<tr><td>Spark</td><td><a href='https://github.com/Spark-Client-Development/Spark-Client' target='_blank'>https://github.com/Spark-Client-Development/Spark-Client</a></td></tr>
+<tr><td>Spark</td><td><a href='https://github.com/Sxmurai/spark' target='_blank'>https://github.com/Sxmurai/spark</a></td></tr>
+<tr><td>SpectClient</td><td><a href='https://github.com/SaberAspect/SpectClient' target='_blank'>https://github.com/SaberAspect/SpectClient</a></td></tr>
+<tr><td>Spicy</td><td><a href='https://github.com/Spicy-Client/Spicy' target='_blank'>https://github.com/Spicy-Client/Spicy</a></td></tr>
+<tr><td>SpiderSense</td><td><a href='https://github.com/HausemasterIssue/spidersense' target='_blank'>https://github.com/HausemasterIssue/spidersense</a></td></tr>
+<tr><td>SplashClient</td><td><a href='https://github.com/master7720/SplashClient' target='_blank'>https://github.com/master7720/SplashClient</a></td></tr>
+<tr><td>Stay</td><td><a href='https://github.com/xiguajerry/Stay // https://github.com/cocoapc911/StayClientCrack // https://github.com/hf2kxn/STAY-Client/releases/tag/ALL' target='_blank'>https://github.com/xiguajerry/Stay // https://github.com/cocoapc911/StayClientCrack // https://github.com/hf2kxn/STAY-Client/releases/tag/ALL</a></td></tr>
+<tr><td>StayPro</td><td><a href='https://github.com/chunfeng666/StayProPublic-WuShuang // https://github.com/hf2kxn/STAY-Client/releases/tag/ALL' target='_blank'>https://github.com/chunfeng666/StayProPublic-WuShuang // https://github.com/hf2kxn/STAY-Client/releases/tag/ALL</a></td></tr>
+<tr><td>Stifle</td><td><a href='https://github.com/BadMoXi/Stifle' target='_blank'>https://github.com/BadMoXi/Stifle</a></td></tr>
+<tr><td>Styles</td><td><a href='https://github.com/2young2care/Styles-Client-Old2023_-FULL-CRACKED' target='_blank'>https://github.com/2young2care/Styles-Client-Old2023_-FULL-CRACKED</a></td></tr>
+<tr><td>Storm</td><td><a href='https://github.com/AllahLeaksHvH/Storm-Client' target='_blank'>https://github.com/AllahLeaksHvH/Storm-Client</a></td></tr>
+<tr><td>Sudo</td><td><a href='https://github.com/Canonball90/SudoClientLeak' target='_blank'>https://github.com/Canonball90/SudoClientLeak</a></td></tr>
+<tr><td>Strafehack</td><td><a href='https://github.com/kyv3/Strafehack-leaked' target='_blank'>https://github.com/kyv3/Strafehack-leaked</a></td></tr>
+<tr><td>Sugoma</td><td><a href='https://github.com/eetgeenappels/Sugoma' target='_blank'>https://github.com/eetgeenappels/Sugoma</a></td></tr>
+<tr><td>Sukumi</td><td><a href='https://github.com/iwantheadpats/sukumi-bedrock-opensrc' target='_blank'>https://github.com/iwantheadpats/sukumi-bedrock-opensrc</a></td></tr>
+<tr><td>Summit</td><td><a href='https://github.com/THCFree/summit-client-full // https://github.com/ionar2/summit' target='_blank'>https://github.com/THCFree/summit-client-full // https://github.com/ionar2/summit</a></td></tr>
+<tr><td>Summit+ / SummitPlus</td><td><a href='https://github.com/JohnShiozo/SummitPlus' target='_blank'>https://github.com/JohnShiozo/SummitPlus</a></td></tr>
+<tr><td>SumoClient</td><td><a href='https://github.com/pesshown/Sumo-Ghost-Client-Mod-1.8.9 // https://github.com/ImCzf233/Sumo-decompiled' target='_blank'>https://github.com/pesshown/Sumo-Ghost-Client-Mod-1.8.9 // https://github.com/ImCzf233/Sumo-decompiled</a></td></tr>
+<tr><td>Sunshine</td><td><a href='https://github.com/Chromatic-Vision/Sunshine' target='_blank'>https://github.com/Chromatic-Vision/Sunshine</a></td></tr>
+<tr><td>Supermacy</td><td><a href='https://github.com/master7720/Supermacy-client-1.8.jar-leaked' target='_blank'>https://github.com/master7720/Supermacy-client-1.8.jar-leaked</a></td></tr>
+<tr><td>Sushi</td><td><a href='https://github.com/hashdiana/Sushi-Client // https://github.com/Toshimichi0915/sushi-client' target='_blank'>https://github.com/hashdiana/Sushi-Client // https://github.com/Toshimichi0915/sushi-client</a></td></tr>
+<tr><td>Sushi.cc v2</td><td><a href='https://github.com/3000IQPlay/Sushi.cc-v2-Phobos-Edition-NoHWID' target='_blank'>https://github.com/3000IQPlay/Sushi.cc-v2-Phobos-Edition-NoHWID</a></td></tr>
+<tr><td>Sydney</td><td><a href='https://github.com/sydney-client/Sydney-Legacy' target='_blank'>https://github.com/sydney-client/Sydney-Legacy</a></td></tr>
+<tr><td>Syracuse</td><td><a href='https://github.com/killerkong24/Syracuse-4.0 // https://github.com/Volcan4436/Syracuse-NextGen/tree/master // https://github.com/Volcan4436/Syracuse-3.0-source-leak' target='_blank'>https://github.com/killerkong24/Syracuse-4.0 // https://github.com/Volcan4436/Syracuse-NextGen/tree/master // https://github.com/Volcan4436/Syracuse-3.0-source-leak</a></td></tr>
+<tr><td>Sweet / Sweet+ / SweetPlus</td><td><a href='https://github.com/3000IQPlay/Sweets-deobf' target='_blank'>https://github.com/3000IQPlay/Sweets-deobf</a></td></tr>
+<tr><td>Swift</td><td><a href='https://github.com/hashPirate/Swift-Client-1.12.2' target='_blank'>https://github.com/hashPirate/Swift-Client-1.12.2</a></td></tr>
+<tr><td>Tarasande</td><td><a href='https://github.com/Sumandora/tarasande' target='_blank'>https://github.com/Sumandora/tarasande</a></td></tr>
+<tr><td>Target</td><td><a href='https://github.com/yaskylan/Target_Client' target='_blank'>https://github.com/yaskylan/Target_Client</a></td></tr>
+<tr><td>TaterGod.cc</td><td><a href='https://github.com/RealzPrestige/TaterGod-Leak' target='_blank'>https://github.com/RealzPrestige/TaterGod-Leak</a></td></tr>
+<tr><td>TeddyWare</td><td><a href='https://github.com/ChompChompDead/Teddyware-Client' target='_blank'>https://github.com/ChompChompDead/Teddyware-Client</a></td></tr>
+<tr><td>Temple</td><td><a href='https://github.com/PhilipPanda/Temple-Client' target='_blank'>https://github.com/PhilipPanda/Temple-Client</a></td></tr>
+<tr><td>Tenacity</td><td><a href='https://intent.store // https://github.com/HCU-Reborn/Tenacity // https://github.com/tuskypaster/Tenacity-for-1.12.2' target='_blank'>https://intent.store // https://github.com/HCU-Reborn/Tenacity // https://github.com/tuskypaster/Tenacity-for-1.12.2</a></td></tr>
+<tr><td>Tensor</td><td><a href='https://github.com/IUDevman/Tensor' target='_blank'>https://github.com/IUDevman/Tensor</a></td></tr>
+<tr><td>Theresa</td><td><a href='https://github.com/YumeGod/TheresaModules' target='_blank'>https://github.com/YumeGod/TheresaModules</a></td></tr>
+<tr><td>Thesame.space</td><td><a href='https://github.com/oyzipfile/thesame-space' target='_blank'>https://github.com/oyzipfile/thesame-space</a></td></tr>
+<tr><td>Toast</td><td><a href='https://github.com/RemainingToast/ToastClient' target='_blank'>https://github.com/RemainingToast/ToastClient</a></td></tr>
+<tr><td>Tokyo</td><td><a href='https://github.com/RacoonDog/Tokyo-Client' target='_blank'>https://github.com/RacoonDog/Tokyo-Client</a></td></tr>
+<tr><td>Tomato</td><td><a href='https://github.com/SlickJava/tomato' target='_blank'>https://github.com/SlickJava/tomato</a></td></tr>
+<tr><td>Toxic.club</td><td><a href='https://github.com/iBikky/toxic.club' target='_blank'>https://github.com/iBikky/toxic.club</a></td></tr>
+<tr><td>TransWare</td><td><a href='https://github.com/VxlerieUwU/transware' target='_blank'>https://github.com/VxlerieUwU/transware</a></td></tr>
+<tr><td>TrapClient</td><td><a href='https://github.com/trap-client/trap-client' target='_blank'>https://github.com/trap-client/trap-client</a></td></tr>
+<tr><td>Trinity</td><td><a href='https://github.com/LeonLeonPotato/Trinity' target='_blank'>https://github.com/LeonLeonPotato/Trinity</a></td></tr>
+<tr><td>Trinity+ / TrinityPlus</td><td><a href='https://github.com/ssllllll/TrinityPlus-PWNED // https://github.com/urelNiP/TrinityPlus-b2.8-OBF' target='_blank'>https://github.com/ssllllll/TrinityPlus-PWNED // https://github.com/urelNiP/TrinityPlus-b2.8-OBF</a></td></tr>
+<tr><td>TrollGod.cc / RealthClient</td><td><a href='https://github.com/DBOwinnings/TrollGodCC-v1.5.4-Source-Code // https://github.com/kucukam/RealthClient-TrollGod // https://github.com/bluteest/trollgod.cc-deobf' target='_blank'>https://github.com/DBOwinnings/TrollGodCC-v1.5.4-Source-Code // https://github.com/kucukam/RealthClient-TrollGod // https://github.com/bluteest/trollgod.cc-deobf</a></td></tr>
+<tr><td>Trollhack</td><td><a href='https://github.com/Luna5ama/TrollHack' target='_blank'>https://github.com/Luna5ama/TrollHack</a></td></tr>
+<tr><td>Troxill</td><td><a href='https://github.com/Librry1337/Troxill-1.16.5-src' target='_blank'>https://github.com/Librry1337/Troxill-1.16.5-src</a></td></tr>
+<tr><td>TurcoHack.cc</td><td><a href='https://github.com/3000IQPlay/TurcoHack.cc' target='_blank'>https://github.com/3000IQPlay/TurcoHack.cc</a></td></tr>
+<tr><td>Turok</td><td><a href='https://github.com/chris2rich/turok' target='_blank'>https://github.com/chris2rich/turok</a></td></tr>
+<tr><td>TuxHack</td><td><a href='https://github.com/Tux8068/TuxHack' target='_blank'>https://github.com/Tux8068/TuxHack</a></td></tr>
+<tr><td>Uranium</td><td><a href='https://github.com/maywr/uranium' target='_blank'>https://github.com/maywr/uranium</a></td></tr>
+<tr><td>Urmomia</td><td><a href='https://github.com/Urmomia/urmomia-client' target='_blank'>https://github.com/Urmomia/urmomia-client</a></td></tr>
+<tr><td>Uop.cc</td><td><a href='https://github.com/browsky300/uop.cc' target='_blank'>https://github.com/browsky300/uop.cc</a></td></tr>
+<tr><td>UwUGod</td><td><a href='https://github.com/Torono909-archive/UwUGod-Modules-Src // https://github.com/MikuSoCute/UwUGod-AllVersion' target='_blank'>https://github.com/Torono909-archive/UwUGod-Modules-Src // https://github.com/MikuSoCute/UwUGod-AllVersion</a></td></tr>
+<tr><td>UZI</td><td><a href='https://github.com/yandhi/uzi-1-12' target='_blank'>https://github.com/yandhi/uzi-1-12</a></td></tr>
+<tr><td>UZI Client</td><td><a href='https://github.com/Unicode01/UZI-Client' target='_blank'>https://github.com/Unicode01/UZI-Client</a></td></tr>
+<tr><td>Vanadium</td><td><a href='https://github.com/TwoNick/vanadium' target='_blank'>https://github.com/TwoNick/vanadium</a></td></tr>
+<tr><td>Vape V4 / VapeV4</td><td><a href='https://github.com/RandomVapeUser/Vape-4.17 // https://github.com/Spec-JohnXina/Vape-v4.16 // https://github.com/KgDW/Vape-V4 // https://github.com/DuckySoLucky/Vape-V4 // https://github.com/skody01/Vape-V4.10-Crack' target='_blank'>https://github.com/RandomVapeUser/Vape-4.17 // https://github.com/Spec-JohnXina/Vape-v4.16 // https://github.com/KgDW/Vape-V4 // https://github.com/DuckySoLucky/Vape-V4 // https://github.com/skody01/Vape-V4.10-Crack</a></td></tr>
+<tr><td>Vapid</td><td><a href='https://github.com/starcraft66/vapid' target='_blank'>https://github.com/starcraft66/vapid</a></td></tr>
+<tr><td>Vector</td><td><a href='https://github.com/master7720/vector-0.2.9-leak' target='_blank'>https://github.com/master7720/vector-0.2.9-leak</a></td></tr>
+<tr><td>VectorClient</td><td><a href='https://github.com/VectorClient/Vector-Releases' target='_blank'>https://github.com/VectorClient/Vector-Releases</a></td></tr>
+<tr><td>Vegaline</td><td><a href='https://github.com/WalmartSolutions/VegaLine-00083E // https://github.com/WalmartSolutions/VegaLine-00082E // https://github.com/WalmartSolutions/VegaLine-00078E // https://github.com/WalmartSolutions/VegaLine-00067E // https://github.com/3000IQPlay/VegaLine-00065D-Hotfix' target='_blank'>https://github.com/WalmartSolutions/VegaLine-00083E // https://github.com/WalmartSolutions/VegaLine-00082E // https://github.com/WalmartSolutions/VegaLine-00078E // https://github.com/WalmartSolutions/VegaLine-00067E // https://github.com/3000IQPlay/VegaLine-00065D-Hotfix</a></td></tr>
+<tr><td>Velocity</td><td><a href='https://github.com/The-Gopro336-Archive/Velocity-BUILDABLE_SRC' target='_blank'>https://github.com/The-Gopro336-Archive/Velocity-BUILDABLE_SRC</a></td></tr>
+<tr><td>VenHack</td><td><a href='https://github.com/v0ndy/venhack' target='_blank'>https://github.com/v0ndy/venhack</a></td></tr>
+<tr><td>VenomHack</td><td><a href='https://github.com/2young2care/Venomhack-1.20.1-update // https://github.com/Bohema-developers/VenomHack-leak // https://github.com/rwah277/Venomhack420-Meteor-Plugin' target='_blank'>https://github.com/2young2care/Venomhack-1.20.1-update // https://github.com/Bohema-developers/VenomHack-leak // https://github.com/rwah277/Venomhack420-Meteor-Plugin</a></td></tr>
+<tr><td>Vertex</td><td><a href='https://github.com/AstralDB/VertexClient' target='_blank'>https://github.com/AstralDB/VertexClient</a></td></tr>
+<tr><td>Vertine</td><td><a href='https://github.com/VertineClient/vertine' target='_blank'>https://github.com/VertineClient/vertine</a></td></tr>
+<tr><td>VeteranHack</td><td><a href='https://github.com/HausemasterIssue/VeteranHack-Decomp' target='_blank'>https://github.com/HausemasterIssue/VeteranHack-Decomp</a></td></tr>
+<tr><td>VetHack</td><td><a href='https://cdn.discordapp.com/attachments/710922475231248505/723154139902902292/Vethack-b3.7-Release-Meber.jar' target='_blank'>https://cdn.discordapp.com/attachments/710922475231248505/723154139902902292/Vethack-b3.7-Release-Meber.jar</a></td></tr>
+<tr><td>Viagra</td><td><a href='https://github.com/Shwepss/ViagraClient-1.12.2-hack' target='_blank'>https://github.com/Shwepss/ViagraClient-1.12.2-hack</a></td></tr>
+<tr><td>Violet</td><td><a href='https://github.com/noatmc/violet' target='_blank'>https://github.com/noatmc/violet</a></td></tr>
+<tr><td>Virgin</td><td><a href='https://github.com/WalmartSolutions/Virgins-4.4 // https://github.com/WalmartSolutions/Virgins-1.5.0 // https://gitlab.com/3000IQPlay/virgins-1.2 // https://github.com/WalmartSolutions/Virgin-Latest // https://github.com/WalmartSolutions/Virgin-0.22.0 // https://github.com/WalmartSolutions/Virgin-0.21.0 // https://github.com/WalmartSolutions/Virgin-b0.9.5-SRC' target='_blank'>https://github.com/WalmartSolutions/Virgins-4.4 // https://github.com/WalmartSolutions/Virgins-1.5.0 // https://gitlab.com/3000IQPlay/virgins-1.2 // https://github.com/WalmartSolutions/Virgin-Latest // https://github.com/WalmartSolutions/Virgin-0.22.0 // https://github.com/WalmartSolutions/Virgin-0.21.0 // https://github.com/WalmartSolutions/Virgin-b0.9.5-SRC</a></td></tr>
+<tr><td>Vonware</td><td><a href='https://github.com/dada994a/vonware-4.1.0-clean // https://github.com/primewk/vonware-deobf' target='_blank'>https://github.com/dada994a/vonware-4.1.0-clean // https://github.com/primewk/vonware-deobf</a></td></tr>
+<tr><td>Vox</td><td><a href='https://github.com/Rabies1337/Vox' target='_blank'>https://github.com/Rabies1337/Vox</a></td></tr>
+<tr><td>VydraHack</td><td><a href='https://github.com/VVriter/VydraHack' target='_blank'>https://github.com/VVriter/VydraHack</a></td></tr>
+<tr><td>Vrpos</td><td><a href='https://github.com/cocoapc911/Vrpos' target='_blank'>https://github.com/cocoapc911/Vrpos</a></td></tr>
+<tr><td>VyperHax</td><td><a href='https://github.com/KRYMZ0N/VyperHax' target='_blank'>https://github.com/KRYMZ0N/VyperHax</a></td></tr>
+<tr><td>W1seHack</td><td><a href='https://github.com/pineapplebby/w1sehack-public' target='_blank'>https://github.com/pineapplebby/w1sehack-public</a></td></tr>
+<tr><td>Walksy</td><td><a href='https://github.com/5mog/cwhack-walksyclient-1.19.2' target='_blank'>https://github.com/5mog/cwhack-walksyclient-1.19.2</a></td></tr>
+<tr><td>WebHack</td><td><a href='https://github.com/chris2rich/webhack // https://github.com/Nutelaspaceman/WebHack' target='_blank'>https://github.com/chris2rich/webhack // https://github.com/Nutelaspaceman/WebHack</a></td></tr>
+<tr><td>Warden</td><td><a href='https://github.com/WalmartSolutions/Warden-3.2' target='_blank'>https://github.com/WalmartSolutions/Warden-3.2</a></td></tr>
+<tr><td>WeepCraft</td><td><a href='https://github.com/PlutoSolutions/WeepCraft // https://github.com/FeydH/Weepcraft-1.12' target='_blank'>https://github.com/PlutoSolutions/WeepCraft // https://github.com/FeydH/Weepcraft-1.12</a></td></tr>
+<tr><td>WaizyHack</td><td><a href='https://cdn.discordapp.com/attachments/628306876479701002/640683072341278730/waizyhacktest2_1.jar' target='_blank'>https://cdn.discordapp.com/attachments/628306876479701002/640683072341278730/waizyhacktest2_1.jar</a></td></tr>
+<tr><td>Walksy</td><td><a href='https://github.com/5mog/cwhack-walksyclient-1.19.2' target='_blank'>https://github.com/5mog/cwhack-walksyclient-1.19.2</a></td></tr>
+<tr><td>WDNC</td><td><a href='https://github.com/playstation452/WDNC-Client // https://github.com/wdnc-mc-client/WDNC-Client' target='_blank'>https://github.com/playstation452/WDNC-Client // https://github.com/wdnc-mc-client/WDNC-Client</a></td></tr>
+<tr><td>WetHack</td><td><a href='https://github.com/weterandevelopment/wethack' target='_blank'>https://github.com/weterandevelopment/wethack</a></td></tr>
+<tr><td>WexSide</td><td><a href='https://wexside.xyz // https://github.com/7b7aProject/WexSide-crack-1.12.2' target='_blank'>https://wexside.xyz // https://github.com/7b7aProject/WexSide-crack-1.12.2</a></td></tr>
+<tr><td>WhiskerZ</td><td><a href='https://github.com/Hi-doki/WhiskerZ' target='_blank'>https://github.com/Hi-doki/WhiskerZ</a></td></tr>
+<tr><td>Wild</td><td><a href='https://www.wildclient.ru' target='_blank'>https://www.wildclient.ru</a></td></tr>
+<tr><td>Windy</td><td><a href='https://github.com/ImCzf233/windy-opensource' target='_blank'>https://github.com/ImCzf233/windy-opensource</a></td></tr>
+<tr><td>Wing Client</td><td><a href='https://github.com/Tehnicki1/WingClient' target='_blank'>https://github.com/Tehnicki1/WingClient</a></td></tr>
+<tr><td>Winter</td><td><a href='https://github.com/pvpb0t/Winter' target='_blank'>https://github.com/pvpb0t/Winter</a></td></tr>
+<tr><td>WintWare</td><td><a href='https://github.com/noom1337/WintWare-source-code' target='_blank'>https://github.com/noom1337/WintWare-source-code</a></td></tr>
+<tr><td>WizClient</td><td><a href='https://github.com/its-wiz/WizClient' target='_blank'>https://github.com/its-wiz/WizClient</a></td></tr>
+<tr><td>WOO</td><td><a href='https://github.com/maywr/WOO-Buildable' target='_blank'>https://github.com/maywr/WOO-Buildable</a></td></tr>
+<tr><td>Wonderwhale.ng</td><td><a href='https://github.com/dada994a/wonderwhale_ng' target='_blank'>https://github.com/dada994a/wonderwhale_ng</a></td></tr>
+<tr><td>WubzMod</td><td><a href='https://github.com/dkonis/WubzMod' target='_blank'>https://github.com/dkonis/WubzMod</a></td></tr>
+<tr><td>Wurst- / WurstMinus</td><td><a href='https://github.com/TheReal3rd/WurstMinus-Public' target='_blank'>https://github.com/TheReal3rd/WurstMinus-Public</a></td></tr>
+<tr><td>Wurst+1 / WurstPlusOne</td><td><a href='https://github.com/TrvsF/wurstplus-one' target='_blank'>https://github.com/TrvsF/wurstplus-one</a></td></tr>
+<tr><td>Wurst+2 / WurstPlusTwo</td><td><a href='https://github.com/WurstPlus/wurstplus-two' target='_blank'>https://github.com/WurstPlus/wurstplus-two</a></td></tr>
+<tr><td>Wurst+3 / WurstPlusThree</td><td><a href='https://github.com/WurstPlus/wurst-plus-three' target='_blank'>https://github.com/WurstPlus/wurst-plus-three</a></td></tr>
+<tr><td>Wurst+4 / WurstPlusFour</td><td><a href='https://github.com/levkush/wurst-plus-four' target='_blank'>https://github.com/levkush/wurst-plus-four</a></td></tr>
+<tr><td>Xanax</td><td><a href='https://github.com/PlutoSolutions/Xanax' target='_blank'>https://github.com/PlutoSolutions/Xanax</a></td></tr>
+<tr><td>Xannax</td><td><a href='https://github.com/The-Gopro336-Archive/Xannax-master' target='_blank'>https://github.com/The-Gopro336-Archive/Xannax-master</a></td></tr>
+<tr><td>Xatzotica</td><td><a href='https://github.com/XatzClient/Xatzotica' target='_blank'>https://github.com/XatzClient/Xatzotica</a></td></tr>
+<tr><td>Xdolf</td><td><a href='https://github.com/sudofox/xdolf' target='_blank'>https://github.com/sudofox/xdolf</a></td></tr>
+<tr><td>Xeno</td><td><a href='https://github.com/3000IQPlay/Xeno-Client // https://github.com/Sxmurai/xeno-client-buildable' target='_blank'>https://github.com/3000IQPlay/Xeno-Client // https://github.com/Sxmurai/xeno-client-buildable</a></td></tr>
+<tr><td>Xenophyre</td><td><a href='https://github.com/KRYMZ0N/Xenophyre' target='_blank'>https://github.com/KRYMZ0N/Xenophyre</a></td></tr>
+<tr><td>XG42</td><td><a href='https://github.com/Skitttyy/xg-42-cracked // https://github.com/4wl/XG42' target='_blank'>https://github.com/Skitttyy/xg-42-cracked // https://github.com/4wl/XG42</a></td></tr>
+<tr><td>Xl Client</td><td><a href='https://github.com/2young2care/Xl-Client-Beta-finally- // https://github.com/2young2care/Last-Xl-Client-Beta' target='_blank'>https://github.com/2young2care/Xl-Client-Beta-finally- // https://github.com/2young2care/Last-Xl-Client-Beta</a></td></tr>
+<tr><td>XSWare</td><td><a href='https://github.com/XSS6-2b2t/XSWARE-RELEASE' target='_blank'>https://github.com/XSS6-2b2t/XSWARE-RELEASE</a></td></tr>
+<tr><td>Xulu</td><td><a href='https://github.com/Elementars/Xulu-v1.5.2 // https://github.com/The-Gopro336-Archive/XULU_Buildable_SRC' target='_blank'>https://github.com/Elementars/Xulu-v1.5.2 // https://github.com/The-Gopro336-Archive/XULU_Buildable_SRC</a></td></tr>
+<tr><td>Xulu+ / XuluPlus</td><td><a href='https://github.com/master7720/XuluPlus' target='_blank'>https://github.com/master7720/XuluPlus</a></td></tr>
+<tr><td>Xyla</td><td><a href='https://github.com/Tehnicki1/Xyla' target='_blank'>https://github.com/Tehnicki1/Xyla</a></td></tr>
+<tr><td>Yasashii</td><td><a href='https://github.com/TerrificTable/Yasashii-Rewrite' target='_blank'>https://github.com/TerrificTable/Yasashii-Rewrite</a></td></tr>
+<tr><td>Yee</td><td><a href='https://cdn.discordapp.com/attachments/689371591976681522/728990362672300042/Yee-Client-B2.4-1.12.2-release.jar // https://cdn.discordapp.com/attachments/695548730664812635/695548986756431912/Yee-Client-2.3-release.jar' target='_blank'>https://cdn.discordapp.com/attachments/689371591976681522/728990362672300042/Yee-Client-B2.4-1.12.2-release.jar // https://cdn.discordapp.com/attachments/695548730664812635/695548986756431912/Yee-Client-2.3-release.jar</a></td></tr>
+<tr><td>YoinkHack</td><td><a href='https://github.com/PlutoSolutions/YoinkHack' target='_blank'>https://github.com/PlutoSolutions/YoinkHack</a></td></tr>
+<tr><td>Zamorozka</td><td><a href='https://zamorozka.fun // https://github.com/PlutoSolutions/Zamorozka' target='_blank'>https://zamorozka.fun // https://github.com/PlutoSolutions/Zamorozka</a></td></tr>
+<tr><td>Zelix</td><td><a href='https://github.com/ImCzf233/zelix-opensource' target='_blank'>https://github.com/ImCzf233/zelix-opensource</a></td></tr>
+<tr><td>ZenGit</td><td><a href='https://github.com/noom1337/ZenGit-Hacked-Client' target='_blank'>https://github.com/noom1337/ZenGit-Hacked-Client</a></td></tr>
+<tr><td>Zenith</td><td><a href='https://github.com/Pan4ur/Zenith-client // https://github.com/The-Gopro336-Archive/Zenith-Public' target='_blank'>https://github.com/Pan4ur/Zenith-client // https://github.com/The-Gopro336-Archive/Zenith-Public</a></td></tr>
+<tr><td>Zeon</td><td><a href='https://github.com/CrystalCL/zeon-crack // https://github.com/ZeonDevelopment/Zeon' target='_blank'>https://github.com/CrystalCL/zeon-crack // https://github.com/ZeonDevelopment/Zeon</a></td></tr>
+<tr><td>ZeroDay</td><td><a href='https://intent.store' target='_blank'>https://intent.store</a></td></tr>
+<tr><td>ZeroHack</td><td><a href='https://github.com/panpanadc/Zero-Hack' target='_blank'>https://github.com/panpanadc/Zero-Hack</a></td></tr>
+<tr><td>ZeroTwo</td><td><a href='https://github.com/CatsAreGood1337/ZeroTwo-src' target='_blank'>https://github.com/CatsAreGood1337/ZeroTwo-src</a></td></tr>
+<tr><td>Zeus</td><td><a href='https://github.com/ezLeaks/Zeus' target='_blank'>https://github.com/ezLeaks/Zeus</a></td></tr>
+<tr><td>Zinc</td><td><a href='https://github.com/BigJayMuffinSkidsShit/Zinc-0.1' target='_blank'>https://github.com/BigJayMuffinSkidsShit/Zinc-0.1</a></td></tr>
+<tr><td>Zirconium</td><td><a href='https://github.com/3000IQPlay/Zirconium-1.3.2' target='_blank'>https://github.com/3000IQPlay/Zirconium-1.3.2</a></td></tr>
+<tr><td>Zispanos</td><td><a href='https://github.com/zispanos/Zispanos-Backdoor-Rewrite' target='_blank'>https://github.com/zispanos/Zispanos-Backdoor-Rewrite</a></td></tr>
+<tr><td>Zodiac</td><td><a href='https://github.com/cattyngmd/zodiac' target='_blank'>https://github.com/cattyngmd/zodiac</a></td></tr>
+<tr><td>Zori</td><td><a href='https://github.com/slol2/zori-but-actually-good' target='_blank'>https://github.com/slol2/zori-but-actually-good</a></td></tr>
+<tr><td>Zork</td><td><a href='https://github.com/AckerRun1337/Zork-Client' target='_blank'>https://github.com/AckerRun1337/Zork-Client</a></td></tr>
+<tr><td>ZSpaceHack</td><td><a href='https://github.com/ApertureStatic/ZSpaceHack-Public' target='_blank'>https://github.com/ApertureStatic/ZSpaceHack-Public</a></td></tr>
+<tr><td>ZWare.CC</td><td><a href='https://github.com/ZWareDevelopment/ZWare.cc // https://github.com/ZWareDevelopment/ZWare.cc-Old' target='_blank'>https://github.com/ZWareDevelopment/ZWare.cc // https://github.com/ZWareDevelopment/ZWare.cc-Old</a></td></tr>
+<tr><td>Zyklon</td><td><a href='https://github.com/jeopardization/Zyklon' target='_blank'>https://github.com/jeopardization/Zyklon</a></td></tr>
+
+</tbody>
+</table>
+
+<script>
+// Search function
+function searchTable() {
+    let input = document.getElementById("searchBox");
+    let filter = input.value.toLowerCase();
+    let table = document.getElementById("clientTable");
+    let tr = table.getElementsByTagName("tr");
+
+    for (let i = 1; i < tr.length; i++) {
+        let tds = tr[i].getElementsByTagName("td");
+        let show = false;
+        for (let j = 0; j < tds.length; j++) {
+            if (tds[j].textContent.toLowerCase().indexOf(filter) > -1) {
+                show = true;
+                break;
+            }
+        }
+        tr[i].style.display = show ? "" : "none";
+    }
+}
+
+// Sort function
+function sortTable(n) {
+    let table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+    table = document.getElementById("clientTable");
+    switching = true;
+    dir = "asc"; 
+    while (switching) {
+        switching = false;
+        rows = table.rows;
+        for (i = 1; i < (rows.length - 1); i++) {
+            shouldSwitch = false;
+            x = rows[i].getElementsByTagName("TD")[n];
+            y = rows[i + 1].getElementsByTagName("TD")[n];
+            if (dir === "asc") {
+                if (x.textContent.toLowerCase() > y.textContent.toLowerCase()) {
+                    shouldSwitch = true;
+                    break;
+                }
+            } else if (dir === "desc") {
+                if (x.textContent.toLowerCase() < y.textContent.toLowerCase()) {
+                    shouldSwitch = true;
+                    break;
+                }
+            }
+        }
+        if (shouldSwitch) {
+            rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+            switching = true;
+            switchcount++;      
+        } else {
+            if (switchcount === 0 && dir === "asc") {
+                dir = "desc";
+                switching = true;
+            }
+        }
+    }
+}
+</script>
+</body>
+</html>
