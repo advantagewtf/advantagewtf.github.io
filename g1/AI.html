@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CLOUD AI Chat</title>
+    <link href="css/main.css" rel="stylesheet" />
+    <link href="css/type.css" rel="stylesheet" />
+    <link href="css/all.css" rel="stylesheet" />
+    <link href="css/stars.css" rel="stylesheet" />
+     
+    <style>
+      #primary-background,
+      .layer{
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        filter:blur(3px);
+      }
+
+      .chat-container {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        max-width: 800px;
+        margin: 0 auto;
+        background: rgba(0, 0, 0, 0.5);
+        padding: 1rem;
+        box-sizing: border-box;
+      }
+
+      .mode-toggle {
+        margin-bottom: 0.5rem;
+      }
+
+      .mode-toggle button {
+        margin-right: 0.5rem;
+        padding: 0.4rem 0.8rem;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        background: #333;
+        color: #fff;
+      }
+
+      .mode-toggle button.active {
+        background: #274dce;
+      }
+
+      .messages {
+        flex: 1;
+        overflow-y: auto;
+        margin-bottom: 1rem;
+        padding-right: 0.5rem;
+      }
+
+      .message {
+        margin-bottom: 0.7rem;
+        word-wrap: break-word;
+        line-height: 1.4rem;
+      }
+
+      .message.user {
+        text-align: right;
+      }
+
+      .message.user .prefix {
+        font-weight: bold;
+        color: #274dce;
+      }
+
+      .message.ai {
+        text-align: left;
+      }
+
+      .message.ai .prefix {
+        font-weight: bold;
+        color: #43f;
+      }
+
+      .input-container {
+        display: flex;
+        width: 100%;
+      }
+
+      input[type="text"] {
+        flex: 1;
+        padding: 0.6rem 1rem;
+        border-radius: 12px;
+        border: none;
+        outline: none;
+        background: #222;
+        color: #fff;
+        font-size: 16px;
+      }
+
+      button.send-btn {
+        margin-left: 0.5rem;
+        padding: 0.6rem 1rem;
+        background: #274dce;
+        color: #fff;
+        border: none;
+        border-radius: 12px;
+        cursor: pointer;
+        font-size: 16px;
+      }
+
+      button.send-btn:hover {
+        background: #433bff;
+      }
+    </style>
+  </head>
+  <canvas></canvas>
+  <body>
+    <div
+      class="edrea_tm_all_wrap"
+      data-magic-cursor="show"
+      data-enter="fadeInUp"
+      data-exit
+    >
+      <div id="primary" class="content-area">
+        <div id="primary-background">
+          <div class="layer" data-depth="1.00"></div>
+        </div>
+      </div>
+      <div class="stars"></div>
+      <div class="stars2"></div>
+      <div class="stars3"></div>
+
+    </div>
+
+    <div class="chat-container">
+      <div class="mode-toggle">
+        <button id="mathModeBtn" class="active">Math Mode</button>
+        <button id="realAIModeBtn">Real AI Mode</button>
+      </div>
+      <div class="messages" id="messages"></div>
+      <div class="input-container">
+        <input type="text" id="userInput" placeholder="Ask me anything..." />
+        <button class="send-btn" id="sendBtn">Send</button>
+      </div>
+    </div>
+
+    <script>
+      let mode = "math";
+      const mathBtn = document.getElementById("mathModeBtn");
+      const aiBtn = document.getElementById("realAIModeBtn");
+
+      mathBtn.addEventListener("click", () => {
+        mode = "math";
+        mathBtn.classList.add("active");
+        aiBtn.classList.remove("active");
+      });
+      aiBtn.addEventListener("click", () => {
+        mode = "ai";
+        aiBtn.classList.add("active");
+        mathBtn.classList.remove("active");
+      });
+
+      const messagesEl = document.getElementById("messages");
+      const inputEl = document.getElementById("userInput");
+      const sendBtn = document.getElementById("sendBtn");
+
+      function solveForX(equation) {
+        try {
+          equation = equation
+            .toLowerCase()
+            .replace(/^\s*solve\s*/, "")
+            .trim();
+          const [left, rightStr] = equation.split("=");
+          if (!left || !rightStr) return "Can't parse equation";
+          const right = parseFloat(eval(rightStr.trim()));
+          let expr = left.replace(/\s+/g, "").replace(/(\d)(x)/gi, "$1*$2");
+          let coef = 0,
+            constant = 0;
+          const xMatch = expr.match(/([+-]?\d*\.?\d*)\*?x/);
+          if (xMatch)
+            coef = parseFloat(
+              xMatch[1] === "" || xMatch[1] === "+" ? 1 : xMatch[1]
+            );
+          else return "No x term found";
+          const constantMatch = expr.replace(/([+-]?\d*\.?\d*)\*?x/, "");
+          if (constantMatch) constant = eval(constantMatch);
+          const solution = (right - constant) / coef;
+          return `x = ${solution}`;
+        } catch (e) {
+          return "Error solving equation: " + e.message;
+        }
+      }
+
+      async function queryAI(prompt) {
+        try {
+          const response = await fetch(
+            `https://api.freegpt4.ddns.net/?text=${encodeURIComponent(prompt)}`,
+            { method: "POST", headers: { "Content-Type": "application/json" } }
+          );
+          if (!response.ok) throw new Error(`API Error: ${response.status}`);
+          const data = await response.json();
+          return data.choices?.[0]?.message?.content || "No response from API.";
+        } catch (err) {
+          console.error(err);
+          return "AI is down right now!";
+        }
+      }
+
+      function generateMathResponse(text) {
+        const lower = text.toLowerCase();
+        if (/solve|calculate|find/i.test(lower)) {
+          if (text.includes("=") && text.includes("x")) return solveForX(text);
+          try {
+            let expr = text.replace(/[^0-9+\-*/().]/g, "");
+            if (expr) return `Answer: ${eval(expr)}`;
+            return "Couldn't parse math expression.";
+          } catch (e) {
+            return "Error calculating math.";
+          }
+        }
+        return "I'm in Math Mode. Try writing a math problem to solve.";
+      }
+
+      function appendMessage(sender, text) {
+        const msgEl = document.createElement("div");
+        msgEl.classList.add("message", sender);
+        msgEl.innerHTML = `<span class="prefix">${sender.toUpperCase()}:</span> ${text}`;
+        messagesEl.appendChild(msgEl);
+        messagesEl.scrollTop = messagesEl.scrollHeight;
+      }
+
+      async function sendMessage() {
+        const userText = inputEl.value.trim();
+        if (!userText) return;
+        appendMessage("user", userText);
+        inputEl.value = "";
+
+        let reply = "";
+        if (mode === "math") reply = generateMathResponse(userText);
+        else reply = await queryAI(userText);
+
+        appendMessage("ai", reply);
+      }
+
+      sendBtn.addEventListener("click", sendMessage);
+      inputEl.addEventListener("keypress", (e) => {
+        if (e.key === "Enter") sendMessage();
+      });
+    </script>
+        <script src="js/jquery.min.js"></script>
+            <script src="js/type.js"></script>
+            <script src="js/config.js"></script>
+            <script src="js/js-webname.js"></script>
+
+            <script src="js/concat.min.js"></script>
+             <script>
+    const script = document.createElement('script');
+    script.src = `js/connecting-dots.js?v=${new Date().getTime()}`;
+    document.body.appendChild(script);
+</script>
+  </body>
+
+</html>
