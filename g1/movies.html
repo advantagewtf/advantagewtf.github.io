@@ -1,0 +1,230 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CLOUDMOVIES</title>
+    <link rel="stylesheet" href="movies.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+ 
+            <div class="nav-menu">
+                <a href="#" class="nav-link">Movies</a>
+                <div class="nav-dropdown">
+                    <a href="#" class="nav-link dropdown-trigger" id="genresDropdown">
+                        Genres <i class="fas fa-chevron-down"></i>
+                    </a>
+                    <div class="dropdown-content" id="genresDropdownContent">
+                        <a href="#" data-genre="action">Action</a>
+                        <a href="#" data-genre="comedy">Comedy</a>
+                        <a href="#" data-genre="drama">Drama</a>
+                        <a href="#" data-genre="horror">Horror</a>
+                        <a href="#" data-genre="romance">Romance</a>
+                        <a href="#" data-genre="thriller">Thriller</a>
+                        <a href="#" data-genre="sci-fi">Sci-Fi</a>
+                        <a href="#" data-genre="documentary">Documentary</a>
+                    </div>
+                </div>
+                <a href="#" class="nav-link" id="liveShowsLink">Live Shows</a>
+            </div>
+            <div class="nav-actions">
+                <button class="search-btn" id="searchBtn">
+                    <i class="fas fa-search"></i>
+                </button>
+                
+            </div>
+        </div>
+        <div class="search-overlay" id="searchOverlay">
+            <div class="search-container">
+                <input type="text" placeholder="Search movies and TV shows..." id="searchInput">
+                <button class="search-close" id="searchClose">
+                    <i class="fas fa-times"></i>
+                </button>
+                <div id="suggestions" class="search-suggestions"></div>
+            </div>
+        </div>
+    </nav>
+
+ 
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Hero Section -->
+        <section class="hero-section" style="display: none;">
+            <div class="hero-carousel" id="heroCarousel">
+                <!-- Hero slides will be populated by JavaScript -->
+            </div>
+        </section>
+
+        <!-- Continue Watching Section -->
+        <section class="content-section" id="continueWatchingSection" style="display: none;">
+            <h2>Continue Watching</h2>
+            <div class="movie-row" id="continueWatchingRow">
+                <!-- Movies will be populated by JavaScript -->
+            </div>
+        </section>
+
+        <!-- Movie Sections -->
+        <section class="content-section">
+            <h2>Trending Now</h2>
+            <div class="movie-row" id="trendingRow">
+                <!-- Movies will be populated by JavaScript -->
+            </div>
+        </section>
+
+        <section class="content-section">
+            <h2>Top Rated</h2>
+            <div class="movie-row" id="topRatedRow">
+                <!-- Movies will be populated by JavaScript -->
+            </div>
+        </section>
+
+        
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="footer">
+        <div class="footer-container">
+            <a href="#" class="footer-link" id="statusBtn">Status</a>
+            <span class="footer-separator">|</span>
+            <a href="#" class="footer-link" id="aboutBtn">About Us</a>
+        </div>
+    </footer>
+
+    <!-- My Favorites Page -->
+    <div class="page-overlay" id="myFavoritesPage">
+        <div class="page-container">
+            <div class="page-header">
+                <button class="back-btn" id="favoritesBackBtn">
+                    <i class="fas fa-arrow-left"></i>
+                </button>
+                <h1>My Favorites</h1>
+            </div>
+            <div class="page-content">
+                <div class="movies-grid" id="favoritesGrid">
+                    <!-- Favorite movies will be populated here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Watch Later Page -->
+    <div class="page-overlay" id="watchLaterPage">
+        <div class="page-container">
+            <div class="page-header">
+                <button class="back-btn" id="watchLaterBackBtn">
+                    <i class="fas fa-arrow-left"></i>
+                </button>
+                <h1>Watch Later</h1>
+            </div>
+            <div class="page-content">
+                <div class="movies-grid" id="watchLaterGrid">
+                    <!-- Watch later movies will be populated here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Watch History Page -->
+    <div class="page-overlay" id="watchHistoryPage">
+        <div class="page-container">
+            <div class="page-header">
+                <button class="back-btn" id="historyBackBtn">
+                    <i class="fas fa-arrow-left"></i>
+                </button>
+                <h1>Watch History</h1>
+            </div>
+            <div class="page-content">
+                <div class="movies-grid" id="historyGrid">
+                    <!-- Watch history will be populated here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="page-overlay" id="contactPage">
+    </div>
+
+   
+
+    <!-- Movie Detail Modal -->
+    <div class="modal-overlay" id="movieModal">
+        <div class="movie-detail-fullscreen">
+            <button class="close-btn" id="closeModal">
+                <i class="fas fa-times"></i>
+            </button>
+            
+            <!-- Hero Section with Trailer -->
+            <div class="movie-hero">
+                <div class="movie-backdrop">
+                    <img id="modalBackdrop" src="" alt="">
+                    <div class="backdrop-overlay">
+                        <div class="hero-content">
+                            <div class="movie-poster-small">
+                                <img id="modalPoster" src="" alt="">
+                            </div>
+                            <div class="movie-info-hero">
+                                <h1 id="modalTitle"></h1>
+                          
+                                </div>
+                                <p class="description" id="modalDescription"></p>
+                                
+                                <!-- Main Action Buttons -->
+                                <div class="main-actions">
+                                    <button class="play-button" id="playBtn">
+                                        <i class="fas fa-play"></i>
+                                        <span>Play</span>
+                                    </button>
+                                   
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Content Sections -->
+            <div class="movie-detail-sections">
+                <!-- TV Show Episodes Section -->
+                <div id="episodesSection" class="detail-section" style="display: none;">
+                    <h2>Episodes</h2>
+                    <div class="season-selector">
+                        <select id="seasonSelect">
+                            <option value="1">Season 1</option>
+                        </select>
+                    </div>
+                    <div class="episodes-grid" id="episodesGrid">
+                        <!-- Episodes will be populated here -->
+                    </div>
+                </div>
+                
+                <!-- Details & Cast Section -->
+                
+            </div>
+        </div>
+    </div>
+
+    <!-- Video Player -->
+    <div class="video-player-overlay" id="videoPlayer" style="position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: #000; z-index: 3000; opacity: 0; visibility: hidden; transition: all 0.3s ease;">
+        <div class="video-container" style="width: 100%; height: 100%; position: relative;">
+            <button class="back-btn" id="backBtn" style="position: absolute; top: 1rem; left: 1rem; z-index: 10; background: rgba(0,0,0,0.8); color: white; border: none; width: 50px; height: 50px; border-radius: 50%; cursor: pointer; font-size: 1.2rem;">
+                <i class="fas fa-arrow-left"></i>
+            </button>
+            <div class="embed-player" id="embedPlayer" style="width: 100%; height: 100%;">
+                <!-- Embed iframe will be inserted here -->
+            </div>
+        </div>
+    </div>
+
+
+    <script src="movies.js">
+        
+    </script>
+    <script src="js/connecting-dots.js"></script>
+</body>
+</html>
