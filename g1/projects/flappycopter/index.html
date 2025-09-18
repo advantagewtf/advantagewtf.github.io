@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html manifest="cache.manifest">
+    <head>
+        <title>Flappy Copter</title>
+		<meta name="description" content="If you like Flappy Bird, then you'll love Flappy Copter! Fly as high as you can and avoid the obstacles. Compete against your friends on kik for the high score. Join the fun!">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-title" content="Flappy Copter">
+		<meta name="viewport" content="width=device-width,target-densitydpi=medium-dpi,initial-scale=1,user-scalable=no,maximum-scale=1,minimum-scale=1,minimal-ui">
+		
+		<meta name="kik-unsupported" content="android-2.2">
+		<link rel="kik-icon" href="/imgs/kik_icon.png" />
+		<link rel="terms" href="https://gamemix.com/tos/" />
+		<link rel="privacy" href="https://gamemix.com/crosspromotion/privacy/" />
+		
+		<meta property="og:title" content="Flappy Copter" />
+		<meta property="og:type" content="website" />
+		<meta property="og:site_name" content="Flappy Copter"/>
+		<meta property="og:image" content="https://www.flappycopter.com/imgs/favicon-200.png" />
+		<meta property="og:description" content="If you like Flappy Bird, then you'll love Flappy Copter! Fly as high as you can and avoid the obstacles. Compete against your friends for the high score. Join the fun!" />
+		<meta property="og:url" content="https://www.flappycopter.com/" />
+		
+        <link rel="stylesheet" type="text/css" href="style/css.css">
+		
+		<link rel="apple-touch-icon" href="/imgs/favicon-105.png" sizes="105x105" />
+		<link rel="icon" type="image/png" href="/imgs/favicon.png" />
+		<link rel="shortcut icon" type="image/png" href="/imgs/favicon.png" />
+		
+		<link rel="canonical" href="https://www.flappycopter.com/">
+		
+		<script src="//cdn.kik.com/kik/1.0.9/kik.js"></script>
+		<script>
+			window.crossPromoSettings = {
+				currentGame : 'flappycopter'
+			};
+		</script>
+		<script src="//more.gamemix.com/api.js"></script>
+		<script type="text/javascript">
+			window.gameVersion = '1.4.0';
+			window.G = {};
+		</script>
+    </head>
+    <body>
+		<div style="position: absolute; left: -1000px; font-family: 'Pixel5x5';">&nbsp;</div>
+        <div id="mainCon">
+            <div id="limitCon">
+                <div id="centerDivWrapper">
+                    <div id="centerDiv">
+                        <div id="gameCanvasCon">
+                            <canvas id="gameCanvas" width="480" height="690"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+			
+			<div id="adInterstitialScreen" class="screen dismissableArea">
+				<div class="screenContentWrapper dismissableArea">
+					<div class="screenContent dismissableArea">
+						<div id="adInterstitialWrapper" style="margin: 0 auto;">
+							<div id="div-gpt-ad" class="ad"></div>
+							<div id="div-leadbolt-ad" class="ad"></div>
+							<div id="div-mopub-ad" class="ad"></div>
+							<div id="adInterstitialClose"></div>
+						</div>
+					</div>
+				</div>
+        	</div>
+		</div>
+        <script type="text/javascript" src="js/main-built.js"></script>
+		
+    </body>
+</html>
