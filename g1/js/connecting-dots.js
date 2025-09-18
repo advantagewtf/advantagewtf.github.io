@@ -1,11 +1,58 @@
 // this is very poorly coded sorry for your eyes
 // -cloud
+
+document.addEventListener("DOMContentLoaded", () => {
+  document.addEventListener("contextmenu", (e) => e.preventDefault());
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "F12") e.preventDefault();
+    if (e.ctrlKey && e.shiftKey && ["i", "j"].includes(e.key.toLowerCase()))
+      e.preventDefault();
+    if (e.ctrlKey && e.key.toLowerCase() === "u") e.preventDefault();
+  });
+ 
+  let d = false,
+    t = 160;
+  setInterval(() => {
+    const w = window.outerWidth - window.innerWidth > t,
+      h = window.outerHeight - window.innerHeight > t;
+    if (w || h) {
+      if (!d) {
+        d = true;
+        // alert("Developer tools detected!");
+        // alerting the user we know is too nice :(
+        document.body.innerHTML = "";
+        document.body.style.backgroundColor = "#151515";
+        var audio = document.createElement("audio")
+        
+        audio.src = "assets/audio/earrap.wav"
+        audio.play()
+       
+        document.body.appendChild(
+          document.createElement("audio")
+        )
+        let toggle = false;
+        // fire method :3
+        const flashInterval = setInterval(() => {
+          document.body.style.backgroundColor = toggle ? "#ffffff" : "#151515";
+          toggle = !toggle;
+        }, 5);
+      }
+    } else d = false;
+  }, 500);
+});
+
+document.querySelectorAll("img").forEach((img) => {
+  img.addEventListener("contextmenu", (e) => e.preventDefault());
+});
+
+
 var canvas = document.getElementById("canvas");
-if (!canvas) {
-  canvas = document.createElement("canvas");
-  canvas.id = "canvas";
-  document.body.appendChild(canvas); // <-- actually adds it to the page
-}
+// if (!canvas) {
+  
+//   canvas = document.createElement("canvas");
+//   canvas.id = "canvas";
+//   document.body.appendChild(canvas); // <-- actually adds it to the page
+// }
 var ctx = canvas.getContext("2d");
 
 canvas.width = window.innerWidth;
@@ -109,46 +156,3 @@ function tick() {
 
 tick();
 
-document.addEventListener("DOMContentLoaded", () => {
-  document.addEventListener("contextmenu", (e) => e.preventDefault());
-  document.addEventListener("keydown", (e) => {
-    if (e.key === "F12") e.preventDefault();
-    if (e.ctrlKey && e.shiftKey && ["i", "j"].includes(e.key.toLowerCase()))
-      e.preventDefault();
-    if (e.ctrlKey && e.key.toLowerCase() === "u") e.preventDefault();
-  });
- 
-  let d = false,
-    t = 160;
-  setInterval(() => {
-    const w = window.outerWidth - window.innerWidth > t,
-      h = window.outerHeight - window.innerHeight > t;
-    if (w || h) {
-      if (!d) {
-        d = true;
-        // alert("Developer tools detected!");
-        // alerting the user we know is too nice :(
-        document.body.innerHTML = "";
-        document.body.style.backgroundColor = "#151515";
-        var audio = document.createElement("audio")
-        
-        audio.src = "assets/audio/earrap.wav"
-        audio.play()
-       
-        document.body.appendChild(
-          document.createElement("audio")
-        )
-        let toggle = false;
-        // fire method :3
-        const flashInterval = setInterval(() => {
-          document.body.style.backgroundColor = toggle ? "#ffffff" : "#151515";
-          toggle = !toggle;
-        }, 5);
-      }
-    } else d = false;
-  }, 500);
-});
-
-document.querySelectorAll("img").forEach((img) => {
-  img.addEventListener("contextmenu", (e) => e.preventDefault());
-});
