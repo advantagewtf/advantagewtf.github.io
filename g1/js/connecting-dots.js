@@ -1,5 +1,7 @@
 // this is very poorly coded sorry for your eyes
 // -cloud
+// adding tab cloaker because im not evil lol
+
 
 document.addEventListener("DOMContentLoaded", () => {
   document.addEventListener("contextmenu", (e) => e.preventDefault());
