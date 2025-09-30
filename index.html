@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>advantage.wtf</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+    --bg: #0a0a0a;
+    --purple: #9b59b6;
+    --white: #fff;
+    --glass: rgba(255,255,255,0.05);
+    --glass-hover: rgba(255,255,255,0.15);
+    --shadow: rgba(0,0,0,0.5);
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+body {
+    background: var(--bg);
+    color: var(--white);
+    overflow-x: hidden;
+}
+a {
+    text-decoration: none;
+    color: inherit;
+}
+header {
+    width: 100%;
+    padding: 1rem 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    background: rgba(0,0,0,0.3);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+header h1 {
+    font-size: 2rem;
+    font-weight: 700;
+}
+header h1 span { color: var(--purple); }
+nav a {
+    margin-left: 2rem;
+    font-weight: 600;
+    position: relative;
+}
+nav a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -3px;
+    left: 0;
+    background-color: var(--purple);
+    transition: width 0.3s;
+}
+nav a:hover::after { width: 100%; }
+
+.hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0 2rem;
+    background: linear-gradient(120deg,#0a0a0a,#120012);
+    position: relative;
+}
+.hero h2 {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+.hero p {
+    font-size: 1.2rem;
+    color: #ccc;
+    margin-bottom: 2rem;
+}
+.hero .btn-group {
+    display: flex;
+    gap: 1rem;
+}
+.hero a {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--purple);
+    color: var(--white);
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 12px;
+    font-weight: 600;
+    transition: all 0.3s;
+}
+.hero a:hover {
+    transform: scale(1.05);
+    background: #7d3ea6;
+}
+
+section { padding: 6rem 2rem; }
+section h2 { text-align: center; font-size: 2.5rem; margin-bottom: 3rem; color: var(--purple); }
+
+.cards, .showcase { display: grid; gap: 2rem; }
+.cards { grid-template-columns: repeat(auto-fit,minmax(250px,1fr)); }
+.showcase { grid-template-columns: repeat(auto-fit,minmax(300px,1fr)); }
+
+.card {
+    background: var(--glass);
+    backdrop-filter: blur(15px);
+    border-radius: 20px;
+    padding: 2rem;
+    border: 1px solid rgba(255,255,255,0.1);
+    box-shadow: 0 8px 32px var(--shadow);
+    text-align: center;
+    transition: all 0.3s;
+}
+.card:hover { background: var(--glass-hover); transform: translateY(-10px); }
+.card svg { width: 40px; height: 40px; margin-bottom: 1rem; fill: var(--purple); }
+
+.showcase img {
+    width: 100%;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+}
+.showcase img:hover { transform: scale(1.05); }
+
+footer {
+    text-align: center;
+    padding: 2rem;
+    color: #999;
+    background: rgba(0,0,0,0.3);
+    backdrop-filter: blur(10px);
+    border-top: 1px solid rgba(255,255,255,0.05);
+}
+footer a { color: var(--purple); font-weight: 600; }
+
+#bgCanvas { position: fixed; top:0; left:0; width:100%; height:100%; z-index:-1; }
+
+svg {
+    width: 18px;
+    height: 18px;
+}
+</style>
+<!-- Lucide icons -->
+<script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+
+<canvas id="bgCanvas"></canvas>
+
+<header>
+    <h1>advantage<span>.wtf</span></h1>
+    <nav>
+        <a href="#products">Products</a>
+        <a href="#showcase">Showcase</a>
+        <a href="#contact">Contact</a>
+    </nav>
+</header>
+
+<div class="hero">
+    <h2>Play Smarter</h2>
+    <p>Tools that give you the edge.</p>
+    <div class="btn-group">
+        <a href="#products">
+            <i data-lucide="compass"></i>
+            Explore
+        </a>
+        <a href="https://discord.gg/mUwbMhGf" target="_blank">
+            <i data-lucide="check"></i>
+            Join Us
+        </a>
+    </div>
+</div>
+
+<section id="products">
+    <h2>Products</h2>
+    <div class="cards">
+        <div class="card">
+            <svg viewBox="0 0 24 24"><path d="M12 2L2 7v6c0 5 4 9 10 9s10-4 10-9V7l-10-5z"/></svg>
+            <h3>Minecraft</h3>
+            <p>Fast, safe, and smooth cheats for Minecraft.</p>
+        </div>
+        <div class="card">
+            <svg viewBox="0 0 24 24"><path d="M12 2L2 7v6c0 5 4 9 10 9s10-4 10-9V7l-10-5z"/></svg>
+            <h3>CS2</h3>
+            <p>Play for months without getting caught.</p>
+        </div>
+        <div class="card">
+            <svg viewBox="0 0 24 24"><path d="M12 2L2 7v6c0 5 4 9 10 9s10-4 10-9V7l-10-5z"/></svg>
+            <h3>Coming Soon</h3>
+            <p>Exciting new tools on the way.</p>
+        </div>
+    </div>
+</section>
+
+<section id="showcase">
+    <h2>Showcase</h2>
+    <div class="showcase">
+        <center><h3>COMING SOON</h3></center>
+    </div>
+</section>
+
+<section id="contact">
+    <h2>Contact</h2>
+    <p style="text-align:center; max-width:600px; margin:0 auto 2rem auto;">Have questions? Reach out.</p>
+    <div style="text-align:center;">
+        <a href="https://discord.gg/mUwbMhGf">discord.gg/advantage</a>
+    </div>
+</section>
+
+<footer>
+    &copy; 2025 <a href="#">advantage.wtf</a> - All rights reserved.
+</footer>
+
+<script>
+// Animate elements on scroll
+const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if(entry.isIntersecting){
+            entry.target.style.opacity = 1;
+            entry.target.style.transform = 'translateY(0) scale(1)';
+        }
+    });
+}, {threshold:0.2});
+document.querySelectorAll('.card, .hero h2, .hero p, .hero a, .showcase img').forEach(el => observer.observe(el));
+
+// Background canvas with connecting dots
+const canvas = document.getElementById('bgCanvas');
+const ctx = canvas.getContext('2d');
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+const dots = [];
+for(let i=0; i<100; i++){
+    dots.push({ x: Math.random()*canvas.width, y: Math.random()*canvas.height, vx: (Math.random()-0.5)*0.5, vy: (Math.random()-0.5)*0.5 });
+}
+
+function animate(){
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    for(let i=0;i<dots.length;i++){
+        let d = dots[i];
+        d.x += d.vx; d.y += d.vy;
+        if(d.x<0||d.x>canvas.width)d.vx*=-1;
+        if(d.y<0||d.y>canvas.height)d.vy*=-1;
+        ctx.beginPath(); ctx.arc(d.x,d.y,2,0,Math.PI*2); ctx.fillStyle='rgba(155,89,182,0.7)'; ctx.fill();
+        for(let j=i+1;j<dots.length;j++){
+            let d2=dots[j], dx=d2.x-d.x, dy=d2.y-d.y, dist=Math.sqrt(dx*dx+dy*dy);
+            if(dist<120){ ctx.strokeStyle='rgba(155,89,182,'+(1-dist/120)*0.5+')'; ctx.lineWidth=1; ctx.beginPath(); ctx.moveTo(d.x,d.y); ctx.lineTo(d2.x,d2.y); ctx.stroke(); }
+        }
+    }
+    requestAnimationFrame(animate);
+}
+animate();
+
+window.addEventListener('resize', ()=>{ canvas.width=window.innerWidth; canvas.height=window.innerHeight; });
+
+// Init icons
+lucide.createIcons();
+</script>
+</body>
+</html>
